@@ -8,7 +8,7 @@
 	<style type="text/css">
 		@font-face{
 			font-family: game_font;
-			src:url('../WhichTeamIsThis/assets/font/Dusha_-_FIFA_World_Cup_2018.ttf');
+			src:url('../assets/font/Dusha_-_FIFA_World_Cup_2018.ttf');
 		}
 		#canvas{
 			display:block;
@@ -270,6 +270,7 @@ var hiddenpositions={
 		this.tipCount = 20;
 		this.hintPos = [];
 		this.hintNum = (level<5?2:1);
+		this.breadthLimit=10;
 		for(var i = 0; i<this.hintNum; i++){
 			var randPos;
 			var valid = false;
