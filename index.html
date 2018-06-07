@@ -8,7 +8,7 @@
 	<style type="text/css">
 		@font-face{
 			font-family: game_font;
-			src:url('../FootballXGame/assets/font/Dusha_-_FIFA_World_Cup_2018.ttf');
+			src:url('../WhichTeamIsThis/assets/font/Dusha_-_FIFA_World_Cup_2018.ttf');
 		}
 		#canvas{
 			display:block;
@@ -32,29 +32,6 @@
 //some things needed to be repaired...
 
 
-
-
-
-
-//share this to facebook
-var LINK_TO_SHARE = "vuduydu.com";
-Share = {
-	facebook: function(purl, ptitle, pimg, text) {
-		url = 'http://www.facebook.com/sharer.php?s=100';
-		url += '&p[title]=' + encodeURIComponent(ptitle);
-		url += '&p[summary]=' + encodeURIComponent(text);
-		url += '&p[url]=' + encodeURIComponent(purl);
-		url += '&p[images][0]=' + encodeURIComponent(pimg);
-		Share.popup(url);
-	},
-
-	popup: function(url) {
-		if(window.open(url,'','toolbar=0,status=0,width=626, height=436'))
-			if(debugMode)
-				console.log("OK");
-		//else
-		//	window.open(url,'_blank');
-	}};
 
 
 
@@ -123,6 +100,12 @@ loadGameAssetsFromServer();
 
 
 
+
+
+
+
+//////////////////////////////////////////THAT'S IT/////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -720,8 +703,8 @@ Button2.prototype.hover = function(x,y){
 		this.targetBlur = 0;
 	return false;
 }
-Button2.prototype.draw = function(){
 
+Button2.prototype.draw = function(){
 	ctx.shadowColor = '#87c3f3';
 	ctx.shadowBlur = this.MaxBlur*(this.scale-1)*5;
 
@@ -730,7 +713,6 @@ Button2.prototype.draw = function(){
 
 	drawImage(this.image,this.x, this.y,this.w,
 		this.h,this.flip);
-
 
 	ctx.shadowBlur = 0;
 }
@@ -756,15 +738,19 @@ function Card(name){
 }
 Card.prototype = Object.create(Button.prototype);
 Card.prototype.constructor = Card;
+
+
 //Card method can override
 Card.prototype.update=function(){
 	Button.prototype.update.call(this);
 	this.velX = (this.targetX-this.x)*0.125;
 	this.x+=this.velX;
-	this.y+=(this.targetY-this.y)*0.45;}
+	this.y+=(this.targetY-this.y)*0.45;
+}
 Card.prototype.moveTo = function(x,y){
 	this.targetX = x;
-	this.targetY = y;}
+	this.targetY = y;
+}
 Card.prototype.draw = function(originX,originY){
 
 
@@ -1088,6 +1074,9 @@ PromptScene.prototype.show = function(){
 	this.showAnswer.showup = (score._score>SCORE_TO_VIEW_ANSWER);
 
 	this.paid = false
+	this.offsetW = -500;
+	this.offsetH = -140;
+	this.count = 50;
 }
 PromptScene.prototype.onpress = function(x,y){
 	if(this.showup)
@@ -1416,6 +1405,46 @@ Leaderboard.prototype.draw = function(){
 }
 
 
+function TipScene(){
+	PromptScene.call(this,'TipBackground',new Button('HomeButton',1416,1220,false,true));
+	//this.OKButtons[0].image = 'HomeButton';
+}
+
+TipScene.prototype = Object.create(PromptScene.prototype);
+TipScene.prototype.constructor = TipScene;
+
+TipScene.prototype.show = function(){
+	this.showup = true;
+	this.prevState = currentState;
+	currentState = states.Prompt;
+}
+
+TipScene.prototype.update = function(){
+	if(this.showup){
+		this.OKButtons[0].update();
+		if(this.OKButtons[0].isTriggered()){
+			this.showup = false;
+			currentState = this.prevState;
+		}
+	}
+}
+
+TipScene.prototype.draw = function(){
+	if(this.showup){
+		drawImage(this.image,WIDTH/2,HEIGHT/2);
+		this.OKButtons[0].draw();
+	}
+}
+
+
+
+
+
+
+
+
+
+
 function ButtonName(x,y,name,h=60){
 	this.x = x;
 	this.y = y-h/2;
@@ -1509,8 +1538,9 @@ var splash = {
 			promptScenes["Leaderboard"].show();
 		}
 		if(this.shareButton.isTriggered())
-			Share.facebook(LINK_TO_SHARE,'TITLE','IMG_PATH','DESC');
-
+	        share();
+		if(this.tipButton.isTriggered())
+			promptScenes["TipScene"].show();
 	}
 	,draw:function(){
 		drawImage("BackgroundMenu",WIDTH/2,HEIGHT/2);
@@ -1539,6 +1569,7 @@ function onpress(evt){
 			promptScenes["CorrectAnswer"].onpress(mX,mY);
 			promptScenes["WrongAnswer"].onpress(mX,mY);
 			promptScenes["Leaderboard"].onpress(mX,mY);
+			promptScenes["TipScene"].onpress(mX,mY);
 			break;
 		case states.Splash:
 			splash.onpress(mX,mY);
@@ -1569,6 +1600,7 @@ function onrelease(evt){
 		promptScenes["CorrectAnswer"].onrelease();
 		promptScenes["WrongAnswer"].onrelease();
 		promptScenes["Leaderboard"].onrelease();
+		promptScenes["TipScene"].onrelease();
 	}
 	if(currentState === states.Score){
 		promptScenes["GameOver"].onrelease();
@@ -1582,6 +1614,7 @@ function onmousemove(evt){
 		promptScenes["CorrectAnswer"].onmousemove(mX,mY);
 		promptScenes["WrongAnswer"].onmousemove(mX,mY);
 		promptScenes["Leaderboard"].onmousemove(mX,mY);
+		promptScenes["TipScene"].onmousemove(mX,mY);
 	}
 	if(currentState == states.Splash){
 		splash.onmousemove(mX,mY);
@@ -1652,6 +1685,7 @@ function loadAsset(){
 	loadImage('TipBar');
 	loadImage('ShowAnswerButton');
 	loadImage('ShowAnswerBar');
+	loadImage('TipBackground');
 
 	//load the club logo assets
 	for(var i = 0; i<gamedata.clubs.length; i++)
@@ -1777,8 +1811,7 @@ function init(l){
 		promptScenes["WrongAnswer"] = new PromptScene("WrongAnswer");
 		promptScenes["CorrectAnswer"] = new PromptScene("CorrectAnswer");
 		promptScenes["Leaderboard"] = new Leaderboard();
-		//var promptOnTip = new PromptScene("Tip");
-		//var promptOnTip = new PromptScene("Tip");
+		promptScenes["TipScene"] = new TipScene();
 
 	}else{
 		currentState = states.Hint;
@@ -1820,6 +1853,7 @@ function update(){
 	frame>100*3*3.141592?frame=0:frame++;
 	if(currentState === states.Prompt){
 		promptScenes["Leaderboard"].update();
+		promptScenes["TipScene"].update();
 
 		if(promptScenes["CorrectAnswer"].update()
 			||promptScenes["WrongAnswer"].update()){
@@ -1881,6 +1915,7 @@ function render(){
 		promptScenes["CorrectAnswer"].draw();
 		promptScenes["WrongAnswer"].draw();		
 		promptScenes["Leaderboard"].draw();		
+		promptScenes["TipScene"].draw();		
 		//drawText(score.amountToAdd,1444,168,TEXT_COLOR,120);
 	}
 	if(currentState === states.Score){
@@ -1995,10 +2030,30 @@ function drawRectWithHole(x1,y1,w1,h1,x2,y2,w2,h2,color,alpha){
 function drawCoverWithHole(x,y,w,h,alpha=0.7){
 	drawRectWithHole(0,0,WIDTH,HEIGHT,x,y,w,h,'rgb(21,30,61)',alpha);
 }
+function share(){
+
+	function popitup(url,windowName) {
+       newwindow=window.open(url,windowName,'height=500,width=560');
+       if (window.focus) {newwindow.focus()}
+       return false;
+     }
+     popitup("https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fd40f944f.ngrok.io%2FWhichTeamIsThis%2F&amp;src=sdkpreparse",
+		'_blank',"SHARE");
+}
+
+</script>
 
 
-
-	</script>
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
 
 
 </body>
