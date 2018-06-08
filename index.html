@@ -8,7 +8,7 @@
 	<style type="text/css">
 		@font-face{
 			font-family: game_font;
-			src:url('../FootballXGame/master/assets/font/Dusha_-_FIFA_World_Cup_2018.ttf');
+			src:url('../WhichTeamIsThis/assets/font/Dusha_-_FIFA_World_Cup_2018.ttf');
 		}
 		#canvas{
 			display:block;
@@ -191,7 +191,7 @@ var teams = {
 			JSONteams.splice(uniqueIndex,1);
 		}
 		
-		console.log(this._teams);
+		//console.log(this._teams);
 	},
 	update:function(){
 		this.breadth = this.breadthLimit*Math.cos(3*frame*3.141592/180.0);		
@@ -303,8 +303,8 @@ var hiddenpositions={
 			this.positions.push({
 				x:this.ps[i][0],
 				y:this.ps[i][1],
-				width:images['HiddenPosition'].width,
-				height:images['HiddenPosition'].height,
+				width:108,
+				height:108,
 				_mouseover:false,
 				opened:false,
 				isHint:h
@@ -437,8 +437,8 @@ var clock = {
 	countFirst:30,
 	firstTime:false,
 	init:function(count = 30){
-		if(debugMode)
-			console.log("Init Clock");
+		//if(debugMode)
+		//	console.log("Init Clock");
 		this.countFirst = 30;
 		this.count = count;
 		this.sec = Math.floor(this.count/1);
@@ -1659,10 +1659,19 @@ function loadImage(name,src = ""){
 		images[name].src = src;	
 }
 function loadAsset(){
+
+	var tempdata = [];
+	for(var i = 0; i<gamedata.teams.length;i++){
+		loadImage(gamedata.teams[i].name, gamedata.teams[i].team_logo);
+		tempdata.push(gamedata.teams[i]);
+	}
+	teams.load(tempdata);
+
 	//load assets from server
 	if(debugMode)
-		totalResources = 24 + gamedata.clubs.length;
+		totalResources = 25 + gamedata.clubs.length;
 	loadImage('Background');
+	loadImage('BackgroundMenu');
 	loadImage('CorrectAnswer');
 	loadImage('WrongAnswer');
 	loadImage('ScoreIcon');
@@ -1671,17 +1680,16 @@ function loadAsset(){
 	loadImage('ClockIcon');
 	loadImage('TriangleButton');
 	loadImage('OKButton');
-	loadImage('HiddenPosition_hint');
+	loadImage('HiddenPosition_hint');//10
 	loadImage('HiddenPosition_bright');
 	loadImage('HiddenPosition');
-	loadImage('BackgroundMenu');
 	loadImage('Play Button');
 	loadImage('Leaderboard Button');
 	loadImage('Leaderboard Background');
 	loadImage('Share Button');
 	loadImage('Tip Button');
 	loadImage('ShareButton');
-	loadImage('HomeButton');
+	loadImage('HomeButton');//20
 	loadImage('GameOver');
 	loadImage('TipBar');
 	loadImage('ShowAnswerButton');
@@ -1692,14 +1700,6 @@ function loadAsset(){
 	for(var i = 0; i<gamedata.clubs.length; i++)
 		loadImage(gamedata.clubs[i].name,gamedata.clubs[i].club_logo);
 
-	var tempdata = [];
-	for(var i = 0; i<gamedata.teams.length;i++){
-		loadImage(gamedata.teams[i].name, gamedata.teams[i].team_logo);
-		tempdata.push(gamedata.teams[i]);
-	}
-
-
-	teams.load(tempdata);
 }
 var progressBarDone = false
 function main(){
@@ -1767,7 +1767,7 @@ function main(){
 				clearTimeout(sim);
 				progressBarDone = true;
 			}
-			al+=debugMode?0.005:0.002;
+			al+=debugMode?0.002:0.002;
 	}
 	var sim;
 	var progressBg = new Image();
