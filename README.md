@@ -13,3 +13,6 @@ https://developers.facebook.com/tools/explorer/145634995501895/?method=GET&path=
 
 vao day. de autheticate the token lay duoc o tren.
 http://code.ttab.me:4646/#/xuser/xuserAuth
+
+
+
