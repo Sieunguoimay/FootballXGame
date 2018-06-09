@@ -16,7 +16,7 @@
 		}
 	</style>
 	<script src="https://cdn.firebase.com/js/client/2.3.0/firebase.js"></script>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body style="background:#333">
 
@@ -25,6 +25,20 @@
 
 <canvas id="canvas" ></canvas>
 <script type="text/javascript">
+
+
+
+
+
+function getQueryVariable(variable){
+	var query = window.location.search.substring(1);
+	var vars = query.split("&");
+	for (var i=0;i<vars.length;i++) {
+		var pair = vars[i].split("=");
+		if(pair[0] == variable){return pair[1];}
+	}
+	return(false);
+}
 
 
 
@@ -47,6 +61,28 @@ function getUserInfo(){
 	//please give me the user_name and user_id from your website
 	//otherwise it will be default.
 
+
+var token = getQueryVariable('access_token')
+console.log(token);
+
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "http://code.ttab.me:51167/v2/xuser/auth",
+  "method": "POST",
+  "headers": {
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "01d1d446-c512-41b2-a484-96bdb4638ba7"
+  },
+  "data": {
+    "access_token": token
+  }
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
 
 }
 
@@ -72,6 +108,8 @@ function loadLeaderboard(){
 		for(var i = 0; i<loaded_data.length; i++)
 			loaded_score_data.push(loaded_data[i]);
 		promptScenes["Leaderboard"].loadScore();
+
+		getUserInfo();
 	}
 	function errData(err){
 		console.log("Error!");
@@ -1655,6 +1693,7 @@ function sound(src) {
     this.sound.setAttribute("controls", "none");
     this.sound.style.display = "none";
     document.body.appendChild(this.sound);
+
     this.play = function(){
         this.sound.play();
     }
@@ -1698,6 +1737,7 @@ function loadAsset(){
 	loadSound('MainMusic');
 	loadSound('CoinFlip');
 	loadSound('CorrectAnswer'); 
+	loadSound('WrongAnswer'); 
 
 	totalResources = 25 + gamedata.clubs.length;
 	//load assets from server
@@ -1860,8 +1900,6 @@ function run(){
 	var loop = function(){
 		if(progressBarDone){
 			update();
-			///ctx.fillStyle = '#000';
-			//ctx.fillRect(0,0,WIDTH,HEIGHT);
 			ctx.clearRect(0,0,WIDTH,HEIGHT);
 			render();
 		}
@@ -1875,10 +1913,12 @@ function nextLevel(reason){
 		scoreOfThisMatch = 0;
 		promptScenes["WrongAnswer"].textDisplay = "NO NO NO!";
 		promptScenes["WrongAnswer"].show(reason);
+		sounds['WrongAnswer'].play();
 	}else if(reason === reasons.Timeout){
 		scoreOfThisMatch = 0;
 		promptScenes["WrongAnswer"].textDisplay = "TIME'S UP";
 		promptScenes["WrongAnswer"].show(reason);
+		sounds['WrongAnswer'].play();
 	}else if(reason === reasons.Correct){
 		promptScenes["CorrectAnswer"].show();
 		sounds['CorrectAnswer'].play();
