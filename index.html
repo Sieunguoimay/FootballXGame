@@ -62,21 +62,22 @@ function getUserInfo(){
 	//otherwise it will be default.
 
 
-var token = getQueryVariable('access_token')
+var token = getQueryVariable('access_token');
+var user_id = getQueryVariable('user_id');
+var base_url = "http://code.ttab.me:51167";
+
 console.log(token);
 
+// "/v2/xuser/2375/refesh"
 var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://code.ttab.me:51167/v2/xuser/auth",
-  "method": "POST",
+  "url": `${base_url}/v2/xuser/${user_id}/refesh`,
+  "method": "GET",
   "headers": {
-    "Content-Type": "application/x-www-form-urlencoded",
+    "Authorization": `Bearer ${token}`,
     "Cache-Control": "no-cache",
-    "Postman-Token": "01d1d446-c512-41b2-a484-96bdb4638ba7"
-  },
-  "data": {
-    "access_token": token
+    "Postman-Token": "2510b186-a5c7-46cc-a551-a8008c30b598"
   }
 }
 
