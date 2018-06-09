@@ -15,17 +15,16 @@
 			margin:auto;
 		}
 	</style>
+	<script src="https://cdn.firebase.com/js/client/2.3.0/firebase.js"></script>
+
 </head>
 <body style="background:#333">
 
 
 
 
-	<canvas id="canvas" ></canvas>
-	<script type="text/javascript">
-
-
-
+<canvas id="canvas" ></canvas>
+<script type="text/javascript">
 
 
 
@@ -33,16 +32,16 @@
 
 
 
-
-
-var debugMode = true;
+var debugMode = false;
 
 
 
 //user name to display
-var USER_NAME = "CurrentPlayer";
+var USER_NAME = "Anonymous";
 //keep the ID for later use
-var USER_ID = "1234567";
+var USER_ID = Math.floor(Math.random()*5);
+
+var user = {name:USER_NAME,id:USER_ID,score:0,time:0,count:0};
 
 function getUserInfo(){
 	//please give me the user_name and user_id from your website
@@ -52,30 +51,43 @@ function getUserInfo(){
 }
 
 
+var myFBref = new Firebase("https://footballxgame.firebaseio.com/");
 
 
 //work with the leaderboard here.
 var loaded_score_data = [];
 
 function loadLeaderboard(){
-	loaded_score_data = [];
 	//give me the leaderboard data
 	//structure of JSON file: [{name:string,score:integer,time:integer}]
-	
 
-	//ignore this line
-	if(debugMode)console.log("Leaderboard loaded");
+	var ref = myFBref.ref();
+	ref.on('value',gotData,errData);
+	function gotData(data){
+
+		loaded_score_data = [];
+
+		var loaded_data = data.val();
+
+		for(var i = 0; i<loaded_data.length; i++)
+			loaded_score_data.push(loaded_data[i]);
+		promptScenes["Leaderboard"].loadScore();
+	}
+	function errData(err){
+		console.log("Error!");
+		console.log(err);
+	}
 }
+//clear data on firebase:))))))
+//myFBref.set({});
 
 function sendScore(){
-	var userScoreToSend = {name:USER_NAME,id:USER_ID,score:score._score,time:score._playtime};
+	//var userScoreToSend = {name:USER_NAME,id:USER_ID,score:score._score,time:score._playtime};
 	//send this score to somewhere please.
-
+	myFBref.set(loaded_score_data);
 	//ignore this line
-	if(debugMode)console.log("Sent Player Score");
+	//console.log("Sent Player Score");
 }
-
-
 
 
 
@@ -162,12 +174,12 @@ var teams = {
 		//the reason for not storing both the logos here and 32 teams
 		//is that . the answer bar display the teams that is in 32 teams, not just 20
 		//and that after each level, the random 20 teams is generated again
-
-		for(var i = 0; i<MaxLevel; i++){
+		MaxLevel = JSONteams.length;
+		for(var i = 0; i<JSONteams.length; i++){
 
 			//generate unique number for one team
-			var uniqueIndex = 0;
-			uniqueIndex = Math.floor(Math.random()*JSONteams.length);
+			var uniqueIndex = i;
+			//uniqueIndex = Math.floor(Math.random()*JSONteams.length);
 
 
 			var temp=[];
@@ -182,13 +194,12 @@ var teams = {
 			for(var j  = 0; j<temp.length;j++){
 				ps.push(temp[j].club);
 			}
-			
 			this._teams.push({
-				name:JSONteams[uniqueIndex].name,
+				name:JSONteams[uniqueIndex].answer,
 				positions:ps
 			});
 
-			JSONteams.splice(uniqueIndex,1);
+			//JSONteams.splice(uniqueIndex,1);
 		}
 		
 		//console.log(this._teams);
@@ -202,9 +213,16 @@ var teams = {
 			console.log("One team has 11 players only, dude.");
 		//drawText(this._teams[this.level-1].positions[position],x,y,'rgba(0,0,0)',50+this.breadth);
 		//drawImage(this._teams[this.level-1].positions[position],x,y,);
+		var img = this._teams[level].positions[position];
 		var w = CLUB_LOGO_SIZE;
-		var h = w*(images['ScoreIcon'].height/images['ScoreIcon'].width);
-		drawImage('ScoreIcon',x,y-h/4,w+this.breadth,h+this.breadth);
+		//console.log(img + " " + position);
+		ctx.shadowColor = '#fff';
+		ctx.shadowBlur = 50;
+		if(images[img]){
+			var h = w*(images[img].height/images[img].width);
+			drawImage(img,x,y-h/4,w+this.breadth,h+this.breadth);
+		}
+		ctx.shadowBlur = 0;
 	}
 };
 
@@ -262,8 +280,6 @@ var hiddenpositions={
 	hintNum:2,
 	tipCount:20,
 	init:function(){
-		if(debugMode)
-			console.log("Get the HinPos/invalid HinPos");
 		this.breadth = 0;
 		this.numberOpened = 0;
 		this.positions = [];
@@ -280,13 +296,9 @@ var hiddenpositions={
 				for(var j = 0; j<i; j++)
 					if(randPos===this.hintPos[j])
 						valid = false;
-				if(debugMode)
-					console.log(valid?"Get the HinPos":"invalid HinPos");
 			}
 
 			this.hintPos[i] = randPos;
-			if(debugMode)
-				console.log(this.hintPos[i]);
 		}
 
 
@@ -311,8 +323,6 @@ var hiddenpositions={
 			});}
 
 
-		if(debugMode)
-			console.log("Complete Init HiddenPositionon");
 	},
 	update:function(){
 		this.breadth = this.breadthLimit*Math.cos(3*frame*3.141592/180.0);
@@ -359,8 +369,6 @@ var hiddenpositions={
 			}else{
 				teams.draw(i,this.positions[i].x,this.positions[i].y);
 			}
-			//if(debugMode)
-			//	drawText(i+1,this.positions[i].x,this.positions[i].y);
 		}
 		for(var i = 0; i<this.clicktoflips.length; i++)
 			this.clicktoflips[i].draw();			
@@ -384,15 +392,13 @@ var hiddenpositions={
 		this.numberOpened++;
 		scoreOfThisMatch-=(this.numberOpened===11)?5:10;
 		varprizedScores.put(this.positions[index].x,this.positions[index].y);
-		if(debugMode)
-			console.log("Opened "+index);
 	},
 	open:function(x,y){
 		for(var i = 0; i<this.positions.length;i++){
 			if(!this.positions[i].opened)
 			if(pointInRect(x,y,this.positions[i].x,this.positions[i].y,
 				this.positions[i].width+this.breadth,this.positions[i].height+this.breadth)){
-
+					sounds['CoinFlip'].play();
 					if(currentState === states.Hint){//open the hints
 						if(this.positions[i].isHint){
 							this.positions[i].opened=true;
@@ -437,8 +443,6 @@ var clock = {
 	countFirst:30,
 	firstTime:false,
 	init:function(count = 30){
-		//if(debugMode)
-		//	console.log("Init Clock");
 		this.countFirst = 30;
 		this.count = count;
 		this.sec = Math.floor(this.count/1);
@@ -761,7 +765,7 @@ Card.prototype.draw = function(originX,originY){
 				 this.w*this.scale,this.h*this.scale);
 	ctx.globalAlpha = 1;
 
-	drawImage(debugMode?"Background":this.name,originX+this.x,originY+this.y-35,
+	drawImage(this.name,originX+this.x,originY+this.y-35,
 				 (180)*this.scale,(194)*this.scale);
 	var size = this.name.length<11?50:40;
 	drawText(this.name,this.x+originX, originY+this.y+110*this.scale,'#012153',size*this.scale);
@@ -810,9 +814,11 @@ var answerBar = {
 		this.buttons.push(new Button('TriangleButton',this.x+1490,this.y+142,true));
 
 		//load the json data for the team name
-		for(var i = 0; i<gamedata.teams.length; i++){
-			this.cardPool.push(new Card(gamedata.teams[i].name));
+		for(var i = 0; i<gamedata.clubs.length; i++){
+			if(gamedata.clubs[i].type===1)
+				this.cardPool.push(new Card(gamedata.clubs[i].name));
 		}
+		console.log(this.cardPool);
 		this.selectTen();
 
 		//choose 10 remaining team from the pool
@@ -825,10 +831,11 @@ var answerBar = {
 
 		//select 9 abitrary cards remaining in cardpool
 		var answerIndex = 0;
+		console.log(this.cardPool);
 		for(var i = 0; i<this.cardPool.length; i++){
 			//update id of each card
 			this.cardPool[i].idInCardPool = i;
-			if(this.cardPool[i].name === teams._teams[level].name){
+			if(this.cardPool[i].name === teams._teams[level].name){//
 				this.cardPool[i].isAnswer = true;
 				answerIndex = i;
 			}
@@ -857,9 +864,7 @@ var answerBar = {
 			if(i === whereToInsertTheAnswer)
 				this.cards.push(this.cardPool[answerIndex]);
 		}
-		console.log("cardPool "+this.cardPool.length+" "+gamedata.teams.length);
-		if(debugMode)
-			console.log(this.cards);
+		//console.log("cardPool "+this.cardPool.length+" "+gamedata.clubs.length);
 		this.rearange();
 	},
 	rearange:function(){
@@ -914,8 +919,6 @@ var answerBar = {
 				maxCardHorizontalSpeed = s;
 			if(this.cards[i].isTriggered()){
 				//answer is selected
-				if(debugMode)
-					console.log(this.cards[i].name);
 				var selectedCard = this.cards[i].name;
 				var answer = teams._teams[level].name;
 				if(answer === selectedCard){
@@ -925,8 +928,6 @@ var answerBar = {
 					this.cardPool.splice(this.cards[i].idInCardPool,1);
 					this.cards.splice(i,1);
 
-					if(debugMode)
-						console.log("delete "+this.cards.length);
 
 					nextLevel(reasons.Correct);
 				}else{
@@ -936,11 +937,6 @@ var answerBar = {
 
 					//since in the debug mode, many answer in the answer cards is identical
 					//but they must be unique in the real game running
-					if(debugMode){
-						this.cardPool.splice(this.cards[i].idInCardPool,1);
-						this.cards.splice(i,1);
-						console.log("delete " + this.cards.length);
-					}else
 						for(var j = 0; j<this.cards.length;j++)
 							if(answer === this.cards[j].name){
 								this.cardPool.splice(this.cards[j].idInCardPool,1);
@@ -1108,6 +1104,7 @@ PromptScene.prototype.update = function(){
 			this.count--;
 			if(this.count<=0&&score.added()){
 				promptScenes["GameOver"].show(this._id);
+
 				this.showup = false;
 			}
 		}else{
@@ -1200,10 +1197,10 @@ GameOver.prototype.show = function(id){
 	this.showup = true;
 	this.prevState = states.Splash;
 	currentState = states.Score;
+
 	loadLeaderboard();
 
-	if(this._id === 'WrongAnswer')
-		this.showAnswer.showup = (score._score>SCORE_TO_VIEW_ANSWER);
+	this.showAnswer.showup = (score._score>SCORE_TO_VIEW_ANSWER&&this._id === 'WrongAnswer');
 
 	this.paid = false
 }
@@ -1225,6 +1222,8 @@ GameOver.prototype.update = function(){
 		if(this.OKButtons[0].isTriggered()){
 			this.showup = false;
 			//currentState = this.prevState;
+			promptScenes["Leaderboard"].loadScore();
+			sendScore();
 			promptScenes["Leaderboard"].show();
 			return true;
 		}
@@ -1288,8 +1287,10 @@ function Leaderboard(){
 	this.OKButtons.push(new Button('ShareButton',1416,1000,false,true));
 
 	this._id = 'Leaderboard';
-	this.loadScore();
-}
+	this.firstTime = true;
+	if(!this.loaded)
+		this.loadScore();
+}	
 
 
 Leaderboard.prototype = Object.create(PromptScene.prototype);
@@ -1297,39 +1298,47 @@ Leaderboard.prototype.constructor = Leaderboard;
 
 
 Leaderboard.prototype.loadScore = function(){
+	this.loaded = true;
+	if(user.score<score._score){
+		user.score = score._score;
+		user.time = score._playtime;
+	}
+	var existed = false
+	for(var i = 0; i<loaded_score_data.length; i++)
+		if(loaded_score_data[i].id === user.id){
+			existed = true;
+			loaded_score_data[i].count++;
+			if(loaded_score_data[i].score < user.score){
+				loaded_score_data[i].score = user.score;
+				loaded_score_data[i].time = user.time;
+			}else if(loaded_score_data[i].score === user.score){
+				if(loaded_score_data[i].time > user.time){
+					loaded_score_data[i].score = user.score;
+					loaded_score_data[i].time = user.time;
+				}
+			}
+			break;
+		}
 
-	var score_data = debugMode?
-						[{name:"RedJoker",score:100,time:5},
-						{name:"RedJoker",score:100,time:3},
-						{name:"RedJoker",score:100,time:10},
-						{name:"RedJoker",score:100,time:92},
-						{name:"RedJoker",score:100,time:40},
-						{name:"RedJoker",score:100,time:60},
-						{name:"RedJoker",score:100,time:700},
-						{name:"RedJoker",score:100,time:900},
-						{name:"RedJoker",score:100,time:200},
-						{name:"RedJoker",score:100,time:63},
-						{name:"RedJoker",score:1000,time:70}]:loaded_score_data;
+	if(!existed)
+		loaded_score_data.push(user);
 
-	score_data.push({name:USER_NAME,score:score._score,time:score._playtime});
-
-
-	score_data.sort(function(a,b){
+	loaded_score_data.sort(function(a,b){
 		return (b.score - a.score);
 	});
-
+	//console.log(loaded_score_data);
 	function findrank(element) {
 		return (element.score <= score._score&&element.time >= score._playtime);
 	}
-	console.log(score_data);
-	this.rank = score_data.findIndex(findrank)+1;
+	//console.log(score_data);
+	this.rank = Math.max(loaded_score_data.findIndex(findrank)+1,1);
 
 	this.bars = [];
 
-	for(var i = 0; i<Math.min(score_data.length,7); i++)
+	for(var i = 0; i<Math.min(loaded_score_data.length,7); i++)
 		this.bars.push({
-			name:score_data[i].name,
-			score:score_data[i].score,
+			name:loaded_score_data[i].name,
+			score:loaded_score_data[i].score,
 			_id:i,
 			x:404,y:440,w:781,h:108,
 			s:40,
@@ -1375,8 +1384,7 @@ Leaderboard.prototype.update = function(){
 			return true;
 		}
 		if(this.OKButtons[1].isTriggered()){
-			Share.facebook(LINK_TO_SHARE,'TITLE','IMG_PATH','DESC');
-
+			share();
 		}
 
 	}
@@ -1469,7 +1477,7 @@ function ButtonName(x,y,name,h=60){
 		ctx.fillRect(this.x,this.y,this.w,this.h);
 		var l =  this.name.length;	
 		var index = Math.abs(this.w-this.maxlength)<20?l:Math.floor(this.w/40);
-		drawText(this.name.substring(l-index,l),this.x+50,this.y+50,'#c1141b',50,'left');
+		drawText(this.name.substring(l-index,l),this.x+50,this.y+45,'#c1141b',50,'left');
 	}
 }
 
@@ -1511,6 +1519,7 @@ var splash = {
 
 	},
 	update:function(){
+
 		this.playButton.update();
 		this.leaderboardButton.update();
 		this.shareButton.update();
@@ -1536,6 +1545,7 @@ var splash = {
 			displayLevel.show('Level');
 		}
 		if(this.leaderboardButton.isTriggered()){
+
 			promptScenes["Leaderboard"].show();
 		}
 		if(this.shareButton.isTriggered())
@@ -1635,6 +1645,28 @@ function onwheel(e){
 	var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
 	answerBar.onwheel(delta);
 }
+
+
+var sounds = {};
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+        this.sound.play();
+    }
+    this.stop = function(){
+        this.sound.pause();
+    }    
+}
+
+function loadSound(name){
+	sounds[name] = new sound('assets/sounds/'+name+'.mp3');
+}
+
 function loadImage(name,src = ""){
 
 	images[name] = new Image();
@@ -1642,10 +1674,6 @@ function loadImage(name,src = ""){
 	images[name].onload = function(){
 		numResourcesLoaded += 1;
 		if(numResourcesLoaded===totalResources){
-			if(debugMode)
-				console.log(numResourcesLoaded);
-
-
 			////////loaded successfully///////
 			run();//run the fucking game//////
 			////////come on babe /////////////
@@ -1661,15 +1689,18 @@ function loadImage(name,src = ""){
 function loadAsset(){
 
 	var tempdata = [];
-	for(var i = 0; i<gamedata.teams.length;i++){
-		loadImage(gamedata.teams[i].name, gamedata.teams[i].team_logo);
-		tempdata.push(gamedata.teams[i]);
+	for(var i = 0; i<gamedata.levels.length;i++){
+		tempdata.push(gamedata.levels[i]);
 	}
+	//console.log(tempdata.length+" length "+gamedata.levels.length);
 	teams.load(tempdata);
 
+	loadSound('MainMusic');
+	loadSound('CoinFlip');
+	loadSound('CorrectAnswer'); 
+
+	totalResources = 25 + gamedata.clubs.length;
 	//load assets from server
-	if(debugMode)
-		totalResources = 25 + gamedata.clubs.length;
 	loadImage('Background');
 	loadImage('BackgroundMenu');
 	loadImage('CorrectAnswer');
@@ -1767,7 +1798,7 @@ function main(){
 				clearTimeout(sim);
 				progressBarDone = true;
 			}
-			al+=debugMode?0.002:0.002;
+			al+=0.002;
 	}
 	var sim;
 	var progressBg = new Image();
@@ -1792,10 +1823,12 @@ function main(){
 
 function init(l){
 	level = l;
+	console.log(teams._teams);
 	frame = 0;
 	hiddenpositions.init();
-	clock.init(debugMode?30:30);
+	clock.init(30);
 	score.init();
+
 
 	if(firstTime){
 		score._score = 0;
@@ -1823,7 +1856,7 @@ function init(l){
 
 }
 function run(){
-	init(debugMode?0:0);
+	init(0);
 	var loop = function(){
 		if(progressBarDone){
 			update();
@@ -1846,8 +1879,10 @@ function nextLevel(reason){
 		scoreOfThisMatch = 0;
 		promptScenes["WrongAnswer"].textDisplay = "TIME'S UP";
 		promptScenes["WrongAnswer"].show(reason);
-	}else if(reason === reasons.Correct)
+	}else if(reason === reasons.Correct){
 		promptScenes["CorrectAnswer"].show();
+		sounds['CorrectAnswer'].play();
+	}
 	score.add(scoreOfThisMatch);
 }
 function update(){
@@ -1859,7 +1894,6 @@ function update(){
 		if(promptScenes["CorrectAnswer"].update()
 			||promptScenes["WrongAnswer"].update()){
 			if(level<MaxLevel-1){
-				if(debugMode) console.log(level);
 				init(level+1);
 			}
 		}
@@ -1875,8 +1909,10 @@ function update(){
 		displayLevel.update();
 	}
 	if(currentState === states.Splash){
+		sounds['MainMusic'].play();
 		splash.update();
-	}
+	}else
+		sounds['MainMusic'].stop();
 	if(currentState === states.Hint){
 		hiddenpositions.hint();
 	}
@@ -2042,6 +2078,9 @@ function share(){
 		'_blank',"SHARE");
 }
 
+
+
+
 </script>
 
 
@@ -2055,6 +2094,8 @@ function share(){
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 </script>
+
+
 
 
 </body>

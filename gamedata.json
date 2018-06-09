@@ -1,1618 +1,296 @@
 {
   "clubs": [
     {
-      "club_logo": "assets/ScoreIcon.png",
-       "name": "ClubNameToAccessLogo"
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/argentina.png",
+      "name": "Argentina",
+      "type": 1
     },
     {
-      "club_logo": "assets/ScoreIcon.png",
-      "name": "ClubNameToAccessLogo1"
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/australia.png",
+      "name": "Australia",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/belgium.png",
+      "name": "Belgium",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/brazil.png",
+      "name": "Brazil",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/colombia.png",
+      "name": "Colombia",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/costa.png",
+      "name": "Costa Rica",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/croatia.png",
+      "name": "Croatia",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/denmark.png",
+      "name": "Denmark",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/egypt.png",
+      "name": "Egypt",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/england.png",
+      "name": "England",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/france.png",
+      "name": "France",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/germany.png",
+      "name": "Germany",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/iceland.png",
+      "name": "Iceland",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/iran.png",
+      "name": "Iran",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/japan.png",
+      "name": "Japan",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/mexico.png",
+      "name": "Mexico",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/morocco.png",
+      "name": "Morocco",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/nigeria.png",
+      "name": "Nigeria",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/panama.png",
+      "name": "Panama",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/peru.png",
+      "name": "Peru",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/poland.png",
+      "name": "Poland",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/portugal.png",
+      "name": "Portugal",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/russia.png",
+      "name": "Russia",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/saudi-arabia.png",
+      "name": "Saudi Arabia",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/senegal.png",
+      "name": "Senegal",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/serbia.png",
+      "name": "Serbia",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/south-korea.png",
+      "name": "South Korea",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/spain.png",
+      "name": "Spain",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/sweden.png",
+      "name": "Sweden",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/switzerland.png",
+      "name": "Switzerland",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/tunisia.png",
+      "name": "Tunisia",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/uruguay.png",
+      "name": "Uruguay",
+      "type": 1
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/BUR.png",
+      "name": "Burnley",
+      "type": 2
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/CHE.png",
+      "name": "Chelsea",
+      "type": 2
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/TOT.png",
+      "name": "Tottenham Hotspur",
+      "type": 2
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/Manchester_City_FC.png",
+      "name": "Manchester City",
+      "type": 2
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/LIV.png",
+      "name": "Liverpool",
+      "type": 2
+    },
+    {
+      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/LEI.png",
+      "name": "Leicester City",
+      "type": 2
     }
   ],
-
-
-
-
-  "teams": [
+  "levels": [
     {
+      "answer": "England",
       "formation": [
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Burnley",
           "fp": "1:1"
         },
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Chelsea",
           "fp": "2:1"
         },
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Tottenham Hotspur",
           "fp": "2:2"
         },
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Manchester City",
           "fp": "3:1"
         },
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Manchester United",
           "fp": "3:2"
         },
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Manchester City",
           "fp": "3:3"
         },
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Liverpool",
           "fp": "3:4"
         },
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Arsenal",
           "fp": "4:1"
         },
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Tottenham Hotspur",
           "fp": "4:2"
         },
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Leicester City",
           "fp": "5:1"
         },
         {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
+          "club": "Manchester United",
+          "fp": "5:2"
         }
       ],
-      "name": "Egypt",
-      "team_logo": "assets/LogoWC.png"
+      "point": 100
     },
     {
+      "answer": "Germany",
       "formation": [
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Burnley",
           "fp": "1:1"
         },
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Chelsea",
           "fp": "2:1"
         },
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Tottenham Hotspur",
           "fp": "2:2"
         },
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Manchester City",
           "fp": "3:1"
         },
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Manchester United",
           "fp": "3:2"
         },
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Manchester City",
           "fp": "3:3"
         },
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Liverpool",
           "fp": "3:4"
         },
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Arsenal",
           "fp": "4:1"
         },
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Tottenham Hotspur",
           "fp": "4:2"
         },
         {
-          "club": "ClubNameToAccessLogo",
+          "club": "Leicester City",
           "fp": "5:1"
         },
         {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
+          "club": "Manchester United",
+          "fp": "5:2"
         }
       ],
-      "name": "Moroco",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Nigeria",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Senegal",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Tunisia",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Australia",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "IR Iran",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Japan",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Japan",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Japan",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Japan",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Japan",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Japan",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Japan",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Japan",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Japan",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Japan",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Japan",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Japan",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Japan",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Japan",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Japan",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Japan",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Colombia",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Brazil",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Argentina",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Panama",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Mexico",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Costa Rica",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Switzerland",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Saudi Arabia",
-      "team_logo": "assets/LogoWC.png"
-    },
-    {
-      "formation": [
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "1:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "2:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:3"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "3:4"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "4:2"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        },
-        {
-          "club": "ClubNameToAccessLogo",
-          "fp": "5:1"
-        }
-      ],
-      "name": "Korea Republic",
-      "team_logo": "assets/LogoWC.png"
+      "point": 100
     }
   ]
 }
