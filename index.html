@@ -75,11 +75,12 @@ function getUserInfo(){
 
 	var token = getQueryVariable('access_token');
 	var user_id = getQueryVariable('user_id');
-	var base_url = "http://code.ttab.me:51167";
+	//var base_url = "http://code.ttab.me:51167";
+	var base_url = "https://api.ttab.me";
 
 	//console.log(token);
 	if(!token)
-		window.location = 'https://www.facebook.com/footballx.us/';
+		window.location = 'https://footballx.live/sign_in';
 	// "/v2/xuser/2375/refesh"
 	var settings = {
 	  "async": true,
@@ -911,8 +912,8 @@ Card.prototype.draw = function(originX,originY){
 				 this.w*this.scale,this.h*this.scale);
 	ctx.globalAlpha = 1;
 
-	drawImage(this.name,originX+this.x,originY+this.y-35,
-				 (180)*this.scale,(194)*this.scale);
+	drawImage(this.name,originX+this.x,originY+this.y-30,
+				 (190)*this.scale,(190)*this.scale);
 	var size = this.name.length<11?50:40;
 	drawText(this.name,this.x+originX, originY+this.y+110*this.scale,'#012153',size*this.scale);
 }
