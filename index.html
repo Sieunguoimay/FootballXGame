@@ -19,7 +19,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
-<body style="background-image:url('https://juegosrev.com/wp-content/uploads/2017/06/Wallpapers-Tech-Gallery-73-Plus-PIC-WPW3010900.jpg')">
+<body style="background-image:url('https://stmed.net/sites/default/files/hexagon-wallpapers-25236-6538674.jpg')">
 
 
 
@@ -95,11 +95,13 @@ function getUserInfo(){
 	}
 
 	$.ajax(settings).done(function (response) {
-
-	  console.log(response.user.id+" "+response.user.nickname);
+		//console.log(response.user.username);	
+	  	//console.log(response.user.id + response.user.nickname);
 	  user.id = response.user.id;
 	  user.name = response.user.nickname;
-
+	  if(response.user.username){
+	  	user.name = response.user.username;
+	  }
 	});
 
 }
@@ -221,7 +223,7 @@ var timeAddingAmount = 10;
 var NUMBER_OF_POS = 11;
 var ZERO_NINE = 0.7;
 var SCORE_TO_VIEW_ANSWER = 50;
-var CLUB_LOGO_SIZE = 150;
+var CLUB_LOGO_SIZE = 170;
 var scoreOfThisMatch = 0;
 var level = 1;
 var MaxLevel = 20;
@@ -354,12 +356,12 @@ var teams = {
 		//drawText(this._teams[this.level-1].positions[position],x,y,'rgba(0,0,0)',50+this.breadth);
 		//drawImage(this._teams[this.level-1].positions[position],x,y,);
 		var img = this._teams[level].positions[position];
-		var w = CLUB_LOGO_SIZE;
+		var h = CLUB_LOGO_SIZE;
 		//console.log(img + " " + position);
 		ctx.shadowColor = '#fff';
 		ctx.shadowBlur = 50;
 		if(images[img]){
-			var h = w*(images[img].height/images[img].width);
+			var w = h*(images[img].width/images[img].height);
 			drawImage(img,x,y-h/4,w+this.breadth,h+this.breadth);
 		}
 		ctx.shadowBlur = 0;
@@ -795,6 +797,8 @@ function Button(image,x,y,flip=false,breadthEnabled=false){
 Button.prototype.isTriggered = function(){
 	if(this.trigger){
 		this.trigger = false;
+		if(currentState!=states.Game)
+			sounds["Button"].play();
 		return true;			
 	}
 }
@@ -1299,6 +1303,10 @@ PromptScene.prototype.update = function(){
 				this.paid = true;
 				score.add(-SCORE_TO_VIEW_ANSWER);
 
+				//align the 2 buttons to the center again
+				this.OKButtons[0].x = WIDTH/2+150;
+				this.OKButtons[2].x = WIDTH/2-150;
+
 			}
 		}
 	}
@@ -1523,7 +1531,7 @@ Leaderboard.prototype.loadScore = function(){
 
 	this.bars = [];
 
-	for(var i = 0; i<Math.min(loaded_score_data.length,7); i++)
+	for(var i = 0; i<Math.min(loaded_score_data.length,10); i++)
 		this.bars.push({
 			name:loaded_score_data[i].name,
 			score:loaded_score_data[i].score,
@@ -1574,6 +1582,7 @@ Leaderboard.prototype.show = function(){
 	this.showup = true;
 	this.prevState = currentState;
 	currentState = states.Prompt;
+	sounds['Leaderboard'].play();
 }
 Leaderboard.prototype.onmousemove = function(x,y){
 	PromptScene.prototype.onmousemove.call(this,x,y);
@@ -1612,8 +1621,11 @@ Leaderboard.prototype.draw = function(){
 
 			for(var i =0; i<this.bars.length;i++)
 				this.bars[i].draw();
+
+
 			ctx.shadowColor = '#fff';
 			ctx.shadowBlur = 50;
+
 			drawText('RANK: '+this.rank,40,1200,"#2d0a0a",50,'left');
 			drawText('SCORE: '+user.score,40,1260,"#2d0a0a",50,'left');
 			//drawText(this.rank,180,1220+20,'#2d0a0a',150);
@@ -1621,6 +1633,17 @@ Leaderboard.prototype.draw = function(){
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 function TipScene(){
@@ -1867,7 +1890,8 @@ function sound(src) {
     document.body.appendChild(this.sound);
 
     this.play = function(){
-        this.sound.play();
+    	if(this.sound)
+	        this.sound.play();
     }
     this.stop = function(){
         this.sound.pause();
@@ -1909,6 +1933,9 @@ function loadAsset(){
 	loadSound('CoinFlip');
 	loadSound('CorrectAnswer'); 
 	loadSound('WrongAnswer'); 
+	loadSound('TimeUp'); 
+	loadSound('Leaderboard'); 
+	loadSound('Button'); 
 
 	totalResources = 26 + gamedata.clubs.length;
 	//load assets from server
@@ -2095,7 +2122,7 @@ function nextLevel(reason){
 		scoreOfThisMatch = 0;
 		promptScenes["WrongAnswer"].textDisplay = "TIME'S UP";
 		promptScenes["WrongAnswer"].show(reason);
-		sounds['WrongAnswer'].play();
+		sounds['TimeUp'].play();
 	}else if(reason === reasons.Correct){
 		promptScenes["CorrectAnswer"].show();
 		sounds['CorrectAnswer'].play();
