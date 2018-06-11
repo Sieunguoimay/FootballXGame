@@ -18,8 +18,8 @@
 	<script src="https://cdn.firebase.com/js/client/2.3.0/firebase.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body style="background:#333">
 
+<body style="background-image:url('https://juegosrev.com/wp-content/uploads/2017/06/Wallpapers-Tech-Gallery-73-Plus-PIC-WPW3010900.jpg')">
 
 
 
@@ -31,6 +31,7 @@
 
 
 function getQueryVariable(variable){
+	
 	var query = window.location.search.substring(1);
 	var vars = query.split("&");
 	for (var i=0;i<vars.length;i++) {
@@ -39,6 +40,16 @@ function getQueryVariable(variable){
 	}
 	return(false);
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -53,46 +64,62 @@ var debugMode = false;
 //user name to display
 var USER_NAME = "Anonymous";
 //keep the ID for later use
-var USER_ID = Math.floor(Math.random()*5);
+var USER_ID = Math.floor(Math.random()*10);
 
 var user = {name:USER_NAME,id:USER_ID,score:0,time:0,count:0};
 
-function getUserInfo(){
-	//please give me the user_name and user_id from your website
+//please give me the user_name and user_id from your website
 	//otherwise it will be default.
 
+function getUserInfo(){
 
-var token = getQueryVariable('access_token');
-var user_id = getQueryVariable('user_id');
-var base_url = "http://code.ttab.me:51167";
+	var token = getQueryVariable('access_token');
+	var user_id = getQueryVariable('user_id');
+	var base_url = "http://code.ttab.me:51167";
 
-console.log(token);
+	//console.log(token);
+	if(!token)
+		window.location = 'https://www.facebook.com/footballx.us/';
+	// "/v2/xuser/2375/refesh"
+	var settings = {
+	  "async": true,
+	  "crossDomain": true,
+	  "url": `${base_url}/v2/xuser/${user_id}/refesh`,
+	  "method": "GET",
+	  "headers": {
+	    "Authorization": `Bearer ${token}`,
+	    "Cache-Control": "no-cache",
+	    "Postman-Token": "2510b186-a5c7-46cc-a551-a8008c30b598"
+	  }
+	}
 
-// "/v2/xuser/2375/refesh"
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": `${base_url}/v2/xuser/${user_id}/refesh`,
-  "method": "GET",
-  "headers": {
-    "Authorization": `Bearer ${token}`,
-    "Cache-Control": "no-cache",
-    "Postman-Token": "2510b186-a5c7-46cc-a551-a8008c30b598"
-  }
+	$.ajax(settings).done(function (response) {
+
+	  console.log(response.user.id+" "+response.user.nickname);
+	  user.id = response.user.id;
+	  user.name = response.user.nickname;
+
+	});
+
 }
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
-
-}
-
-
-var myFBref = new Firebase("https://footballxgame.firebaseio.com/");
 
 
 //work with the leaderboard here.
+
+
+
+
+
+
+
+
+
+
 var loaded_score_data = [];
+
+
+//var myFBref = new Firebase("https://footballxgame.firebaseio.com/");
+var myFBref = new Firebase("https://nationalteam-6115099.firebaseio.com/");
 
 function loadLeaderboard(){
 	//give me the leaderboard data
@@ -101,15 +128,11 @@ function loadLeaderboard(){
 	var ref = myFBref.ref();
 	ref.on('value',gotData,errData);
 	function gotData(data){
-
 		loaded_score_data = [];
-
-		var loaded_data = data.val();
-
-		for(var i = 0; i<loaded_data.length; i++)
-			loaded_score_data.push(loaded_data[i]);
-		promptScenes["Leaderboard"].loadScore();
-
+		if(data.val()){
+			Object.assign(loaded_score_data,data.val());
+			promptScenes["Leaderboard"].loadScore();
+		}
 		getUserInfo();
 	}
 	function errData(err){
@@ -126,7 +149,14 @@ function sendScore(){
 	myFBref.set(loaded_score_data);
 	//ignore this line
 	//console.log("Sent Player Score");
+	console.log(loaded_score_data);
 }
+
+
+
+
+
+
 
 
 
@@ -188,7 +218,7 @@ function pointInRect(px, py, rx, ry, rw, rh){
 var mX, mY;
 var timeAddingAmount = 10;
 var NUMBER_OF_POS = 11;
-var ZERO_NINE = 0.9;
+var ZERO_NINE = 0.7;
 var SCORE_TO_VIEW_ANSWER = 50;
 var CLUB_LOGO_SIZE = 150;
 var scoreOfThisMatch = 0;
@@ -205,43 +235,99 @@ var teams = {
 	level:1,
 	breadthLimit:10,
 	load:function(JSONteams){
-		//this is where we select team for each level
-		//the idea is : team selected in the order of popularity
-		//fetch up 20 teams from the 32 teams of JSONTeams
-		//the at vantage is that these are the order of level
-		//to be played according to
-		//the reason for not storing both the logos here and 32 teams
-		//is that . the answer bar display the teams that is in 32 teams, not just 20
-		//and that after each level, the random 20 teams is generated again
-		MaxLevel = JSONteams.length;
-		for(var i = 0; i<JSONteams.length; i++){
+		//select 20 teams to play for one load time
+		this._teams = [];
+		var allTeams = [];
+		Object.assign(allTeams,JSONteams);
+		MaxLevel = Math.min(allTeams.length,20);
+
+
+		let findTeamIndex = function(name){
+			for(var i = 0; i<allTeams.length; i++)
+				if(allTeams[i].name===name)
+					return i;
+		}
+
+
+		var difficultLevels = {
+				l1:["England","France","Germany","Brazil","Argentina","Spain"],
+				l2:["Belgium","Russia","Arab Saudi","South Korea","Japan,Portugal"],
+				l3:["Egypt","Senegal","Morocco","Uruguay","Iran"],
+				l4:["Mexico","Australia","Iceland","Peru","Denmark"],
+				l5:["Croatia","Nigeria","Switzerland","Costa Rica","Poland"],
+				l6:["Panama","Tunisia","Colombia","Serbia","Sweeden"]
+			};
+
+
+		for(var i = 0; i<MaxLevel; i++){
 
 			//generate unique number for one team
-			var uniqueIndex = i;
-			//uniqueIndex = Math.floor(Math.random()*JSONteams.length);
 
-
-			var temp=[];
-			for(var j  = 0; j<JSONteams[uniqueIndex].formation.length;j++){
-				var pos = JSONteams[uniqueIndex].formation[j].fp.split(':');
-				var order = parseInt(pos[0])*10+parseInt(pos[1]);
-				temp.push({club:JSONteams[uniqueIndex].formation[j].club,order:order});
+			//choose the teams by generate the index.
+			var uniqueIndex;// = Math.floor(Math.random()*allTeams.length);
+			if(i<6){//difficult level 1
+				var indexInDL = Math.floor(Math.random()*difficultLevels.l1.length);
+				uniqueIndex = findTeamIndex(difficultLevels.l1[indexInDL]);
+				difficultLevels.l1.splice(indexInDL,1);
+			}else if(i<8){
+				var indexInDL = Math.floor(Math.random()*difficultLevels.l2.length);
+				uniqueIndex = findTeamIndex(difficultLevels.l2[indexInDL]);
+				difficultLevels.l2.splice(indexInDL,1);			
+			}else if(i<11){
+				var indexInDL = Math.floor(Math.random()*difficultLevels.l3.length);
+				uniqueIndex = findTeamIndex(difficultLevels.l3[indexInDL]);
+				difficultLevels.l3.splice(indexInDL,1);
+			}else if(i<14){
+				var indexInDL = Math.floor(Math.random()*difficultLevels.l4.length);
+				uniqueIndex = findTeamIndex(difficultLevels.l4[indexInDL]);
+				difficultLevels.l4.splice(indexInDL,1);
+			}else if(i<17){
+				var indexInDL = Math.floor(Math.random()*difficultLevels.l5.length);
+				uniqueIndex = findTeamIndex(difficultLevels.l5[indexInDL]);
+				difficultLevels.l5.splice(indexInDL,1);
+			}else{
+				var indexInDL = Math.floor(Math.random()*difficultLevels.l6.length);
+				uniqueIndex = findTeamIndex(difficultLevels.l6[indexInDL]);
+				difficultLevels.l6.splice(indexInDL,1);
 			}
-			temp.sort(function(a,b){return a.order-b.order});
+			console.log(uniqueIndex+" "+allTeams[uniqueIndex].name);
+
+			var formation={}
+			Object.assign(formation,allTeams[uniqueIndex].formation);
 
 			var ps = [];
-			for(var j  = 0; j<temp.length;j++){
-				ps.push(temp[j].club);
+			//1 goalkeeper
+			var gkIndex = Math.floor(Math.random()*formation.gk.length);
+			ps.push(formation.gk[gkIndex]);
+
+			//4 defenders
+			for(var j = 0; j<4; j++){
+				var dfIndex = Math.floor(Math.random()*formation.df.length);
+				ps.push(formation.df[dfIndex]);
+				formation.df.splice(dfIndex,1);
 			}
+			//4 midfielders
+			for(var j = 0; j<4; j++){
+				var mfIndex = Math.floor(Math.random()*formation.mf.length);
+				ps.push(formation.mf[mfIndex]);
+				formation.mf.splice(mfIndex,1);
+			}
+
+			//2 stickers
+			for(var j = 0; j<2; j++){
+				var skIndex = Math.floor(Math.random()*formation.sk.length);
+				ps.push(formation.sk[skIndex]);
+				formation.sk.splice(skIndex,1);
+			}
+
+
 			this._teams.push({
-				name:JSONteams[uniqueIndex].answer,
+				name:allTeams[uniqueIndex].name,
 				positions:ps
 			});
 
-			//JSONteams.splice(uniqueIndex,1);
-		}
-		
-		//console.log(this._teams);
+			allTeams.splice(uniqueIndex,1);
+		}		
 	},
 	update:function(){
 		this.breadth = this.breadthLimit*Math.cos(3*frame*3.141592/180.0);		
@@ -317,12 +403,14 @@ var hiddenpositions={
 	hintPos:[],
 	clicktoflips:[],
 	hintNum:2,
+	hintCount:20,
 	tipCount:20,
 	init:function(){
 		this.breadth = 0;
 		this.numberOpened = 0;
 		this.positions = [];
 		this.tipCount = 20;
+		this.hintCount=20;
 		this.hintPos = [];
 		this.hintNum = (level<5?2:1);
 		this.breadthLimit=10;
@@ -360,8 +448,6 @@ var hiddenpositions={
 				opened:false,
 				isHint:h
 			});}
-
-
 	},
 	update:function(){
 		this.breadth = this.breadthLimit*Math.cos(3*frame*3.141592/180.0);
@@ -369,6 +455,22 @@ var hiddenpositions={
 			this.clicktoflips[i].setPos(this.positions[this.clicktoflips[i]._id].x,this.positions[this.clicktoflips[i]._id].y-this.breadth - 50,this.breadth,(50-this.tipCount)/50);
 
 			this.clicktoflips[i].update();
+		}
+
+		if(this.hintCount>0)
+			this.hintCount--;
+		if(level>0){
+			for(var i = 0; i<this.hintPos.length;i++){
+				if(this.hintCount>0){
+					break;
+				}
+				else{
+					this.autoopen(this.hintPos[i]);
+					this.hintPos.splice(i,1);
+					this.hintCount = 45	;
+					break;
+				}
+			}
 		}
 	},
 	draw:function(){
@@ -429,10 +531,14 @@ var hiddenpositions={
 		}
 		this.positions[index].opened=true;
 		this.numberOpened++;
-		scoreOfThisMatch-=(this.numberOpened===11)?5:10;
-		varprizedScores.put(this.positions[index].x,this.positions[index].y);
+		if(currentState===states.Game){
+			scoreOfThisMatch-=(this.numberOpened===11)?5:10;
+			varprizedScores.put(this.positions[index].x,this.positions[index].y);
+		}
+		sounds['CoinFlip'].play();
 	},
 	open:function(x,y){
+		if(currentState===states.Game||level<1)
 		for(var i = 0; i<this.positions.length;i++){
 			if(!this.positions[i].opened)
 			if(pointInRect(x,y,this.positions[i].x,this.positions[i].y,
@@ -442,6 +548,7 @@ var hiddenpositions={
 						if(this.positions[i].isHint){
 							this.positions[i].opened=true;
 							this.numberOpened++;
+
 
 							for(var j  = 0; j<this.clicktoflips.length;j++)
 								if(this.clicktoflips[j]._id === i){
@@ -461,7 +568,7 @@ var hiddenpositions={
 
 	},
 	hint:function(){
-		if(this.numberOpened===this.hintNum){
+		if(this.numberOpened===this.hintNum&&this.hintCount===0){
 			currentState = states.Game;
 			displayLevel.show('START',35);
 			clock.start();
@@ -1069,7 +1176,7 @@ var displayLevel = {
 		ctx.globalAlpha = this.alpha;
 		//ctx.fillStyle = '#112';
 		//ctx.fillRect(200,200,WIDTH-400,HEIGHT-400);
-		if(this.txt === 'Level'){
+		if(this.txt === 'Stage'){
 			drawText(this.txt,WIDTH/2,HEIGHT/2-100*this.scale,TEXT_COLOR,100*this.scale);
 			drawText(level+1,WIDTH/2,HEIGHT/2+100*this.scale,TEXT_COLOR,200*this.scale);
 		}else{
@@ -1082,11 +1189,12 @@ var displayLevel = {
 
 
 //scene with a button
-function PromptScene(image,button = new Button2("OKButton",1416,1220)){
+function PromptScene(image,button = new Button2("OKButton",WIDTH/2+150,1220)){//1416,1220
 	this.image = image;
 	this.OKButtons = [];
 	this.OKButtons.push(button);
-	this.OKButtons.push(new Button2('ShowAnswerButton',1200,1220));
+	this.OKButtons.push(new Button2('ShowAnswerButton',WIDTH/2,1220));
+	this.OKButtons.push(new Button2('EndGameButton',WIDTH/2-150,1220));
 	this.showup = false;
 
 	this.offsetW = -500;
@@ -1113,6 +1221,15 @@ PromptScene.prototype.show = function(){
 	this.offsetW = -500;
 	this.offsetH = -140;
 	this.count = 50;
+
+
+	if(this._id === 'CorrectAnswer'||(this._id === 'WrongAnswer'&&!this.showAnswer.showup)){
+		this.OKButtons[0].x = WIDTH/2+150;
+		this.OKButtons[2].x = WIDTH/2-150;
+	}else if(this._id === 'WrongAnswer'&&this.showAnswer.showup){
+		this.OKButtons[0].x = WIDTH/2+250;
+		this.OKButtons[2].x = WIDTH/2-250;		
+	}
 }
 PromptScene.prototype.onpress = function(x,y){
 	if(this.showup)
@@ -1139,7 +1256,7 @@ PromptScene.prototype.onrelease = function(){
 }
 PromptScene.prototype.update = function(){
 	if(this.showup){
-		if(level===MaxLevel-1){
+		if(level===MaxLevel-1||this.OKButtons[2].isTriggered()){
 			this.count--;
 			if(this.count<=0&&score.added()){
 				promptScenes["GameOver"].show(this._id);
@@ -1197,6 +1314,7 @@ PromptScene.prototype.draw = function(){
 			}
 			if(score.added()&&level!=MaxLevel-1){
 				this.OKButtons[0].draw();
+				this.OKButtons[2].draw();
 			}
 
 
@@ -1207,9 +1325,11 @@ PromptScene.prototype.draw = function(){
 			drawText(this.textDisplay,WIDTH/2, HEIGHT/3+230,TEXT_COLOR);
 			if(score.added()&&level!=MaxLevel-1){
 				this.OKButtons[0].draw();
+				this.OKButtons[2].draw();
 
-				if(this.showAnswer.showup)
+				if(this.showAnswer.showup){
 					this.OKButtons[1].draw();
+				}
 
 				this.showAnswer.update();
 				this.showAnswer.draw(-SCORE_TO_VIEW_ANSWER+' POINTS');
@@ -1224,9 +1344,8 @@ PromptScene.prototype.draw = function(){
 
 
 function GameOver(image){
-	PromptScene.call(this,image, new Button2("OKButton",1416,1220));
-	//this.replayButton = new Button2("ReplayButton",1416,1220);
-	//this.shareButton = new Button2("ShareButton",1416,1220);
+	PromptScene.call(this,image, new Button2("OKButton",WIDTH/2,1220));
+
 }
 GameOver.prototype = Object.create(PromptScene.prototype);
 GameOver.prototype.constructor = GameOver;
@@ -1242,6 +1361,12 @@ GameOver.prototype.show = function(id){
 	this.showAnswer.showup = (score._score>SCORE_TO_VIEW_ANSWER&&this._id === 'WrongAnswer');
 
 	this.paid = false
+
+
+	if(this._id === 'WrongAnswer'&&this.showAnswer.showup){
+		this.OKButtons[0].x = WIDTH/2+150;
+		this.OKButtons[1].x = WIDTH/2-150;
+	}
 }
 GameOver.prototype.update = function(){
 	if(this.showup){
@@ -1301,7 +1426,11 @@ GameOver.prototype.draw = function(){
 		drawCover(ZERO_NINE);
 		var x = WIDTH/2;
 		var y = HEIGHT/2-100;
+		ctx.shadowColor = '#fff';
+		ctx.shadowBlur = 500;
 		drawImage('GameOver',x,y);
+		ctx.shadowBlur = 0;
+
 		var w = images['GameOver'].width;
 		var h = images['GameOver'].height;
 		x -= w/2;
@@ -1323,7 +1452,7 @@ function Leaderboard(){
 	PromptScene.call(this,"Leaderboard Background",
 		new Button('HomeButton',1416,1220,false,true));
 	this.OKButtons.pop();
-	this.OKButtons.push(new Button('ShareButton',1416,1000,false,true));
+	this.OKButtons[1] = new Button('ShareButton',1416,1000,false,true);
 
 	this._id = 'Leaderboard';
 	this.firstTime = true;
@@ -1359,8 +1488,10 @@ Leaderboard.prototype.loadScore = function(){
 			break;
 		}
 
-	if(!existed)
-		loaded_score_data.push(user);
+	if(!existed){
+		if(user.score>0)
+			loaded_score_data.push(user);
+	}
 
 	loaded_score_data.sort(function(a,b){
 		return (b.score - a.score);
@@ -1378,17 +1509,41 @@ Leaderboard.prototype.loadScore = function(){
 		this.bars.push({
 			name:loaded_score_data[i].name,
 			score:loaded_score_data[i].score,
+			time:loaded_score_data[i].time,
 			_id:i,
 			x:404,y:440,w:781,h:108,
 			s:40,
 			draw:function(){
-				var x1 = 531;
-				var x2 = 1151;
+				if(this._id<3){
+					var x1 = 531;
+					var x2 = 980;
+					var x3 = 1151;
+					var y1 = 373;
+					var offsetY = 125;
+					var m = Math.floor(this.time/60);
+					var s = this.time%60;
 
-				var y1 = 510;
-				var offsetY = 125;
-				drawText(this.name,x1,y1+offsetY*this._id,this._id<3?'#fff':'#2d0a0a',this.s,'left');
-				drawText(this.score,x2,y1+offsetY*this._id,this._id<3?'#fff':'#2d0a0a',this.s,'right');
+					var t = (m<10?"0":"")+m+":"+(s<10?"0":"")+s;
+
+
+					drawText(this.name,x1,y1+offsetY*this._id,this._id<3?'#fff':'#2d0a0a',this.s,'left');
+					drawText(t,x2,y1+offsetY*this._id,this._id<3?'#fff':'#2d0a0a',this.s,'right');
+					drawText(this.score,x3,y1+offsetY*this._id,this._id<3?'#fff':'#2d0a0a',this.s,'right');
+				}else{
+					var index = this._id-3;
+					var x1 = 531;
+					var x2 = 980;
+					var x3 = 1151;
+					var y1 = 740;
+					var offsetY = 90;
+					var m = Math.floor(this.time/60);
+					var s = this.time%60;
+					var t = (m<10?"0":"")+m+":"+(s<10?"0":"")+s;
+
+					drawText(this.name,x1,y1+offsetY*index,'#2d0a0a',this.s,'left');
+					drawText(t,x2,y1+offsetY*index,'#2d0a0a',this.s,'right');
+					drawText(this.score,x3,y1+offsetY*index,'#2d0a0a',this.s,'right');
+				}
 			}
 			,onmousemove(x,y){
 				if(pointInRect(x,y,this.x+this.w/2,this.y+this.h/2+125*this._id,this.w,this.h)){
@@ -1404,8 +1559,8 @@ Leaderboard.prototype.show = function(){
 }
 Leaderboard.prototype.onmousemove = function(x,y){
 	PromptScene.prototype.onmousemove.call(this,x,y);
-	for(var i =0; i<this.bars.length;i++)
-		this.bars[i].onmousemove(x,y);
+	//for(var i =0; i<this.bars.length;i++)
+	//	this.bars[i].onmousemove(x,y);
 }
 Leaderboard.prototype.update = function(){
 	if(this.showup){
@@ -1439,15 +1594,12 @@ Leaderboard.prototype.draw = function(){
 
 			for(var i =0; i<this.bars.length;i++)
 				this.bars[i].draw();
-
-			ctx.beginPath();
-			ctx.strokeStyle = "#494d4e";
-			ctx.arc(180, 1220, 100, 0, 2 * Math.PI);
-			ctx.fillStyle = "#494d4e";
-			ctx.fill();
-			ctx.stroke();
-			drawText('YOUR RANK',180,1260+20,'#fff',30);
-			drawText(this.rank,180,1220+20,'#fff',150);
+			ctx.shadowColor = '#fff';
+			ctx.shadowBlur = 50;
+			drawText('RANK: '+this.rank,40,1200,"#2d0a0a",50,'left');
+			drawText('SCORE: '+user.score,40,1260,"#2d0a0a",50,'left');
+			//drawText(this.rank,180,1220+20,'#2d0a0a',150);
+			ctx.shadowBlur = 0;
 		}
 	}
 }
@@ -1581,10 +1733,11 @@ var splash = {
 
 		if(this.playButton.isTriggered()){
 			currentState = states.Hint;
-			displayLevel.show('Level');
+			displayLevel.show('Stage');
 		}
 		if(this.leaderboardButton.isTriggered()){
 
+			//promptScenes["Leaderboard"].loadScore();
 			promptScenes["Leaderboard"].show();
 		}
 		if(this.shareButton.isTriggered())
@@ -1728,19 +1881,18 @@ function loadImage(name,src = ""){
 }
 function loadAsset(){
 
-	var tempdata = [];
-	for(var i = 0; i<gamedata.levels.length;i++){
-		tempdata.push(gamedata.levels[i]);
-	}
+/*	var tempdata = [];
+	for(var i = 0; i<gamedata.teams.length;i++){
+		tempdata.push(gamedata.teams[i]);
+	}*/
 	//console.log(tempdata.length+" length "+gamedata.levels.length);
-	teams.load(tempdata);
 
 	loadSound('MainMusic');
 	loadSound('CoinFlip');
 	loadSound('CorrectAnswer'); 
 	loadSound('WrongAnswer'); 
 
-	totalResources = 25 + gamedata.clubs.length;
+	totalResources = 26 + gamedata.clubs.length;
 	//load assets from server
 	loadImage('Background');
 	loadImage('BackgroundMenu');
@@ -1762,6 +1914,7 @@ function loadAsset(){
 	loadImage('Tip Button');
 	loadImage('ShareButton');
 	loadImage('HomeButton');//20
+	loadImage('EndGameButton');//20
 	loadImage('GameOver');
 	loadImage('TipBar');
 	loadImage('ShowAnswerButton');
@@ -1822,6 +1975,7 @@ function main(){
 			ctx.clearRect(0,0,WIDTH,HEIGHT);
 			ctx.drawImage(progressBg,WIDTH/2-progressBg.width/2,HEIGHT/2-progressBg.height/2);
 
+
 			var w = WIDTH*2/3;
 			var x = WIDTH/2-w/2,y = HEIGHT/2+50;
 
@@ -1833,6 +1987,8 @@ function main(){
 			ctx.shadowBlur = 0;			
 			ctx.fillStyle = TEXT_COLOR;
 			ctx.fillRect(x,y,al*w,100);
+			if(user.name!='Anonymous')
+				drawText('Welcome '+ user.name,WIDTH/2,y+60,'#222',50);
 		}
 
 			if(al>=1.5){
@@ -1864,7 +2020,7 @@ function main(){
 
 function init(l){
 	level = l;
-	console.log(teams._teams);
+	//console.log(teams._teams);
 	frame = 0;
 	hiddenpositions.init();
 	clock.init(30);
@@ -1872,10 +2028,12 @@ function init(l){
 
 
 	if(firstTime){
+		teams.load(gamedata.teams);
+		console.log(teams._teams);
 		score._score = 0;
 		score._playtime = 0;
-
 		loadLeaderboard();//OK babe
+
 
 		currentState = states.Splash;
 		firstTime = false;
@@ -1890,11 +2048,11 @@ function init(l){
 
 	}else{
 		currentState = states.Hint;
-		displayLevel.show('Level');
+		displayLevel.show('Stage');
 		answerBar.selectTen();
 	}
 	scoreOfThisMatch = 100;
-
+	sounds['MainMusic'].play();
 }
 function run(){
 	init(0);
@@ -1950,7 +2108,6 @@ function update(){
 		displayLevel.update();
 	}
 	if(currentState === states.Splash){
-		sounds['MainMusic'].play();
 		splash.update();
 	}else
 		sounds['MainMusic'].stop();
@@ -1987,7 +2144,8 @@ function render(){
 		hiddenpositions.draw();
 		clock.draw();
 		score.draw();
-		answerBar.draw();
+		if(currentState != states.Prompt)	
+			answerBar.draw();
 	}
 	if(currentState === states.Prompt){
 		promptScenes["CorrectAnswer"].draw();
@@ -2014,8 +2172,8 @@ function render(){
 	//	promptScenes["GameOver"].draw();
 	//}
 	varprizedScores.draw();
-}
 
+}
 
 
 
@@ -2070,7 +2228,7 @@ function drawText(text,x,y,color='#fff',size='100',align = 'center'){
 
 function drawCover(alpha){
 	ctx.globalAlpha = alpha;
-	ctx.fillStyle = 'rgb(21,30,61)';
+	ctx.fillStyle = '#000';//'rgb(21,30,61)';
 	ctx.fillRect(0,0,WIDTH, HEIGHT);
 	ctx.globalAlpha = 1;
 }
@@ -2106,7 +2264,7 @@ function drawRectWithHole(x1,y1,w1,h1,x2,y2,w2,h2,color,alpha){
 
 }
 function drawCoverWithHole(x,y,w,h,alpha=0.7){
-	drawRectWithHole(0,0,WIDTH,HEIGHT,x,y,w,h,'rgb(21,30,61)',alpha);
+	drawRectWithHole(0,0,WIDTH,HEIGHT,x,y,w,h,'#000',alpha);
 }
 function share(){
 

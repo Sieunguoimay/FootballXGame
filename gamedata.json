@@ -191,106 +191,61 @@
       "type": 2
     }
   ],
-  "levels": [
+
+  "teams": [
     {
-      "answer": "England",
-      "formation": [
-        {
-          "club": "Burnley",
-          "fp": "1:1"
-        },
-        {
-          "club": "Chelsea",
-          "fp": "2:1"
-        },
-        {
-          "club": "Tottenham Hotspur",
-          "fp": "2:2"
-        },
-        {
-          "club": "Manchester City",
-          "fp": "3:1"
-        },
-        {
-          "club": "Manchester United",
-          "fp": "3:2"
-        },
-        {
-          "club": "Manchester City",
-          "fp": "3:3"
-        },
-        {
-          "club": "Liverpool",
-          "fp": "3:4"
-        },
-        {
-          "club": "Arsenal",
-          "fp": "4:1"
-        },
-        {
-          "club": "Tottenham Hotspur",
-          "fp": "4:2"
-        },
-        {
-          "club": "Leicester City",
-          "fp": "5:1"
-        },
-        {
-          "club": "Manchester United",
-          "fp": "5:2"
-        }
-      ],
-      "point": 100
+      "name": "England",
+      "formation":{
+      	"gk":["Burnley","Stoke City","Everton"],
+      	"df":["Chelsea","Tottenham Hotspur","Manchester City","Manchester United","Tottenham Hotspur","Leicester City","Manchester City","Liverpool"],
+      	"mf":["Manchester United","Manchester City","Liverpool","Manchester City","Manchester United","Tottenham Hotspur","Tottenham Hotspur","Chelsea"],
+      	"sk":["Arsenal","Tottenham Hotspur","Leicester City","Manchester United"]
+      }
     },
     {
-      "answer": "Germany",
-      "formation": [
+      "name": "France",
+      "formation":{
+      	"gk":["Burnley","Stoke City","Everton"],
+      	"df":["Chelsea","Tottenham Hotspur","Manchester City","Manchester United","Tottenham Hotspur","Leicester City","Manchester City","Liverpool"],
+      	"mf":["Manchester United","Manchester City","Liverpool","Manchester City","Manchester United","Tottenham Hotspur","Tottenham Hotspur","Chelsea"],
+      	"sk":["Arsenal","Tottenham Hotspur","Leicester City","Manchester United"]
+      }
+    },
+    {
+      "name": "Germany",
+      "formation":{
+      	"gk":["Burnley","Stoke City","Everton"],
+      	"df":["Chelsea","Tottenham Hotspur","Manchester City","Manchester United","Tottenham Hotspur","Leicester City","Manchester City","Liverpool"],
+      	"mf":["Manchester United","Manchester City","Liverpool","Manchester City","Manchester United","Tottenham Hotspur","Tottenham Hotspur","Chelsea"],
+      	"sk":["Arsenal","Tottenham Hotspur","Leicester City","Manchester United"]
+      }
+    },
         {
-          "club": "Burnley",
-          "fp": "1:1"
-        },
+      "name": "Brazil",
+      "formation":{
+      	"gk":["Burnley","Stoke City","Everton"],
+      	"df":["Chelsea","Tottenham Hotspur","Manchester City","Manchester United","Tottenham Hotspur","Leicester City","Manchester City","Liverpool"],
+      	"mf":["Manchester United","Manchester City","Liverpool","Manchester City","Manchester United","Tottenham Hotspur","Tottenham Hotspur","Chelsea"],
+      	"sk":["Arsenal","Tottenham Hotspur","Leicester City","Manchester United"]
+      }
+    },
         {
-          "club": "Chelsea",
-          "fp": "2:1"
-        },
-        {
-          "club": "Tottenham Hotspur",
-          "fp": "2:2"
-        },
-        {
-          "club": "Manchester City",
-          "fp": "3:1"
-        },
-        {
-          "club": "Manchester United",
-          "fp": "3:2"
-        },
-        {
-          "club": "Manchester City",
-          "fp": "3:3"
-        },
-        {
-          "club": "Liverpool",
-          "fp": "3:4"
-        },
-        {
-          "club": "Arsenal",
-          "fp": "4:1"
-        },
-        {
-          "club": "Tottenham Hotspur",
-          "fp": "4:2"
-        },
-        {
-          "club": "Leicester City",
-          "fp": "5:1"
-        },
-        {
-          "club": "Manchester United",
-          "fp": "5:2"
-        }
-      ],
-      "point": 100
+      "name": "Argentina",
+      "formation":{
+      	"gk":["Burnley","Stoke City","Everton"],
+      	"df":["Chelsea","Tottenham Hotspur","Manchester City","Manchester United","Tottenham Hotspur","Leicester City","Manchester City","Liverpool"],
+      	"mf":["Manchester United","Manchester City","Liverpool","Manchester City","Manchester United","Tottenham Hotspur","Tottenham Hotspur","Chelsea"],
+      	"sk":["Arsenal","Tottenham Hotspur","Leicester City","Manchester United"]
+      }
+    },
+      {
+      "name": "Spain",
+      "formation":{
+      	"gk":["Burnley","Stoke City","Everton"],
+      	"df":["Chelsea","Tottenham Hotspur","Manchester City","Manchester United","Tottenham Hotspur","Leicester City","Manchester City","Liverpool"],
+      	"mf":["Manchester United","Manchester City","Liverpool","Manchester City","Manchester United","Tottenham Hotspur","Tottenham Hotspur","Chelsea"],
+      	"sk":["Arsenal","Tottenham Hotspur","Leicester City","Manchester United"]
+      }
     }
   ]
 }
