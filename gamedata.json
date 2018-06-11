@@ -1,6 +1,6 @@
 {
   "clubs": [
-  	    {
+    {
       "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/argentina.png",
       "name": "Argentina",
       "type": 1
@@ -1706,8 +1706,6 @@
       "type": 2
     }
   ],
-
-
   "teams": [
     {
       "formation": {
@@ -1742,6 +1740,7 @@
           "Arsenal Tula"
         ]
       },
+      "id": 0,
       "name": "Russia"
     },
     {
@@ -1777,6 +1776,7 @@
           "Atromitos"
         ]
       },
+      "id": 0,
       "name": "Egypt"
     },
     {
@@ -1809,6 +1809,7 @@
           "Paris Saint-Germain"
         ]
       },
+      "id": 0,
       "name": "Uruguay"
     },
     {
@@ -1844,6 +1845,7 @@
           "Nottingham Forest"
         ]
       },
+      "id": 0,
       "name": "Iran"
     },
     {
@@ -1878,6 +1880,7 @@
           "FC St. Pauli"
         ]
       },
+      "id": 0,
       "name": "Morocco"
     },
     {
@@ -1913,6 +1916,7 @@
           "Beşiktaş"
         ]
       },
+      "id": 0,
       "name": "Portugal"
     },
     {
@@ -1948,6 +1952,7 @@
           "Manchester City"
         ]
       },
+      "id": 0,
       "name": "Spain"
     },
     {
@@ -1982,6 +1987,7 @@
           "Newcastle Jets"
         ]
       },
+      "id": 0,
       "name": "Australia"
     },
     {
@@ -2016,6 +2022,7 @@
           "Celta Vigo"
         ]
       },
+      "id": 0,
       "name": "Denmark"
     },
     {
@@ -2051,6 +2058,7 @@
           "Marseille"
         ]
       },
+      "id": 0,
       "name": "France"
     },
     {
@@ -2086,6 +2094,7 @@
           "AaB"
         ]
       },
+      "id": 0,
       "name": "Peru"
     },
     {
@@ -2121,6 +2130,7 @@
           "Juventus"
         ]
       },
+      "id": 0,
       "name": "Argentina"
     },
     {
@@ -2156,6 +2166,7 @@
           "Schalke 04"
         ]
       },
+      "id": 0,
       "name": "Croatia"
     },
     {
@@ -2191,6 +2202,7 @@
           "Reading"
         ]
       },
+      "id": 0,
       "name": "Iceland"
     },
     {
@@ -2226,6 +2238,7 @@
           "Arsenal"
         ]
       },
+      "id": 0,
       "name": "Nigeria"
     },
     {
@@ -2261,6 +2274,7 @@
           "Shakhtar Donetsk"
         ]
       },
+      "id": 0,
       "name": "Brazil"
     },
     {
@@ -2296,6 +2310,7 @@
           "Los Angeles FC"
         ]
       },
+      "id": 0,
       "name": "Costa Rica"
     },
     {
@@ -2331,6 +2346,7 @@
           "Eintracht Frankfurt"
         ]
       },
+      "id": 0,
       "name": "Serbia"
     },
     {
@@ -2366,6 +2382,7 @@
           "Borussia Mönchengladbach"
         ]
       },
+      "id": 0,
       "name": "Switzerland"
     },
     {
@@ -2401,6 +2418,7 @@
           "VfB Stuttgart"
         ]
       },
+      "id": 0,
       "name": "Germany"
     },
     {
@@ -2436,6 +2454,7 @@
           "PSV Eindhoven"
         ]
       },
+      "id": 0,
       "name": "Mexico"
     },
     {
@@ -2471,6 +2490,7 @@
           "Red Bull Salzburg"
         ]
       },
+      "id": 0,
       "name": "South Korea"
     },
     {
@@ -2506,6 +2526,7 @@
           "Waasland-Beveren"
         ]
       },
+      "id": 0,
       "name": "Sweden"
     },
     {
@@ -2540,6 +2561,7 @@
           "Borussia Dortmund"
         ]
       },
+      "id": 0,
       "name": "Belgium"
     },
     {
@@ -2575,6 +2597,7 @@
           "Manchester United"
         ]
       },
+      "id": 0,
       "name": "England"
     },
     {
@@ -2610,6 +2633,7 @@
           "Sport Boys"
         ]
       },
+      "id": 0,
       "name": "Panama"
     },
     {
@@ -2645,6 +2669,7 @@
           "Dijon"
         ]
       },
+      "id": 0,
       "name": "Tunisia"
     },
     {
@@ -2680,6 +2705,7 @@
           "Brighton & Hove Albion"
         ]
       },
+      "id": 0,
       "name": "Colombia"
     },
     {
@@ -2715,6 +2741,7 @@
           "1. FC Köln"
         ]
       },
+      "id": 0,
       "name": "Japan"
     },
     {
@@ -2750,6 +2777,7 @@
           "Sampdoria"
         ]
       },
+      "id": 0,
       "name": "Poland"
     },
     {
@@ -2785,6 +2813,7 @@
           "Monaco"
         ]
       },
+      "id": 0,
       "name": "Senegal"
     },
     {
@@ -2821,6 +2850,7 @@
           "Levante"
         ]
       },
+      "id": 0,
       "name": "Saudi Arabia"
     }
   ]

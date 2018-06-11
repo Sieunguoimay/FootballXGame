@@ -19,6 +19,8 @@
 	</style>
 	<script src="https://cdn.firebase.com/js/client/2.3.0/firebase.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
 </head>
 
 <body style="background-image:url('https://stmed.net/sites/default/files/hexagon-wallpapers-25236-6538674.jpg')">
@@ -27,10 +29,6 @@
 
 <canvas id="canvas" ></canvas>
 <script type="text/javascript">
-
-
-
-
 
 function getQueryVariable(variable){
 	
@@ -106,6 +104,13 @@ function getUserInfo(){
 	  }
 	});
 
+}
+
+
+
+function openLinkToSquad(team_id){
+	var base_url = 'https://footbalx.live/';
+	window.open(base_url+team_id);
 }
 
 
@@ -224,7 +229,9 @@ var mX, mY;
 var timeAddingAmount = 10;
 var NUMBER_OF_POS = 11;
 var ZERO_NINE = 0.7;
-var SCORE_TO_VIEW_ANSWER = 50;
+var SCORE_TO_VIEW_CLUB_LOGO = 10;
+var SCORE_TO_VIEW_CLUB_NAME = 5;
+var SCORE_TO_VIEW_ANSWER = 25;
 var CLUB_LOGO_SIZE = 170;
 var scoreOfThisMatch = 0;
 var level = 1;
@@ -244,7 +251,7 @@ var teams = {
 		this._teams = [];
 		var allTeams = [];
 		Object.assign(allTeams,JSONteams);
-		MaxLevel = Math.min(allTeams.length,20);
+		MaxLevel = Math.min(allTeams.length,10);
 
 
 		let findTeamIndex = function(name){
@@ -273,11 +280,11 @@ var teams = {
 				var indexInDL = Math.floor(Math.random()*difficultLevels.l1.length);
 				uniqueIndex = findTeamIndex(difficultLevels.l1[indexInDL]);
 				difficultLevels.l1.splice(indexInDL,1);
-			}else if(i<8){
+			}else if(i<7){
 				var indexInDL = Math.floor(Math.random()*difficultLevels.l2.length);
 				uniqueIndex = findTeamIndex(difficultLevels.l2[indexInDL]);
 				difficultLevels.l2.splice(indexInDL,1);			
-			}else if(i<11){
+			}else if(i<10){
 				var indexInDL = Math.floor(Math.random()*difficultLevels.l3.length);
 				uniqueIndex = findTeamIndex(difficultLevels.l3[indexInDL]);
 				difficultLevels.l3.splice(indexInDL,1);
@@ -342,7 +349,8 @@ var teams = {
 
 			this._teams.push({
 				name:allTeams[uniqueIndex].name,
-				positions:ps
+				positions:ps,
+				id:allTeams[uniqueIndex].id
 			});
 
 			allTeams.splice(uniqueIndex,1);
@@ -433,6 +441,8 @@ var hiddenpositions={
 		this.hintPos = [];
 		this.hintNum = (level<5?2:1);
 		this.breadthLimit=10;
+		this.lastOpenIndices = [];
+		this.seeClubNameButton=new Button2('EmptyButton',WIDTH/2,998);
 		for(var i = 0; i<this.hintNum; i++){
 			var randPos;
 			var valid = false;
@@ -465,7 +475,8 @@ var hiddenpositions={
 				height:108,
 				_mouseover:false,
 				opened:false,
-				isHint:h
+				isHint:h,
+				showClubName:false
 			});}
 	},
 	update:function(){
@@ -475,7 +486,22 @@ var hiddenpositions={
 
 			this.clicktoflips[i].update();
 		}
+		this.seeClubNameButton.update();
 
+		if(this.seeClubNameButton.isTriggered()){
+			if(scoreOfThisMatch>0){
+				if(this.lastOpenIndices.length>0){
+					scoreOfThisMatch-=SCORE_TO_VIEW_CLUB_NAME;
+					varprizedScores.put(this.seeClubNameButton.x,this.seeClubNameButton.y-100,-SCORE_TO_VIEW_CLUB_NAME);
+					this.positions[this.lastOpenIndices[this.lastOpenIndices.length-1]].showClubName = true;
+					this.lastOpenIndices.pop();
+				}
+			}else{
+				score.color = '#e00';
+			}
+		}else{
+				score.color = TEXT_COLOR;			
+		}
 		if(this.hintCount>0)
 			this.hintCount--;
 		if(level>0){
@@ -528,6 +554,12 @@ var hiddenpositions={
 				}
 			}else{
 				teams.draw(i,this.positions[i].x,this.positions[i].y);
+				if(this.positions[i].showClubName){
+					ctx.shadowColor ='#000';
+					ctx.shadowBlur=10;
+					drawText(teams._teams[level].positions[i],this.positions[i].x,this.positions[i].y+80,'#fff',35);
+					ctx.shadowBlur=0;
+				}
 			}
 		}
 		for(var i = 0; i<this.clicktoflips.length; i++)
@@ -541,7 +573,9 @@ var hiddenpositions={
 		for(var i = 0; i<this.positions.length;i++){
 			this.positions[i]._mouseover=(pointInRect(x,y,this.positions[i].x,this.positions[i].y,
 				this.positions[i].width+this.breadth,this.positions[i].height+this.breadth));
-		}},
+		}
+
+	},
 	autoopen:function(index=-1){
 		if(index<0){
 			do{
@@ -551,13 +585,15 @@ var hiddenpositions={
 		this.positions[index].opened=true;
 		this.numberOpened++;
 		if(currentState===states.Game){
-			scoreOfThisMatch-=(this.numberOpened===11)?5:10;
+			scoreOfThisMatch-=(this.numberOpened===this.positions.length&&level>5)?(SCORE_TO_VIEW_CLUB_LOGO/2):SCORE_TO_VIEW_CLUB_LOGO;
 			varprizedScores.put(this.positions[index].x,this.positions[index].y);
 		}
 		sounds['CoinFlip'].play();
+		this.lastOpenIndices.push(index);
 	},
 	open:function(x,y){
-		if(currentState===states.Game||level<1)
+
+		if((currentState===states.Game||level<1)&&scoreOfThisMatch>=SCORE_TO_VIEW_CLUB_LOGO)
 		for(var i = 0; i<this.positions.length;i++){
 			if(!this.positions[i].opened)
 			if(pointInRect(x,y,this.positions[i].x,this.positions[i].y,
@@ -567,6 +603,7 @@ var hiddenpositions={
 						if(this.positions[i].isHint){
 							this.positions[i].opened=true;
 							this.numberOpened++;
+							this.lastOpenIndices.push(i);
 
 
 							for(var j  = 0; j<this.clicktoflips.length;j++)
@@ -690,6 +727,7 @@ var score = {
 	delta:0,
 	x:197, y:998, w:75,
 	chasingScore:0,
+	color:TEXT_COLOR,
 	drawScoreOfThisMatch:function(){
 		if(Math.abs(scoreOfThisMatch-this.chasingScore)>0.005)
 			this.chasingScore+=(scoreOfThisMatch-this.chasingScore)*0.2;
@@ -697,7 +735,7 @@ var score = {
 		ctx.shadowColor = '#000';
 		ctx.shadowBlur = 50;
 		drawText("POINTS",1444,210,TEXT_COLOR,40);
-		drawText(a+(a===99?1:0),1444,168,TEXT_COLOR,120);
+		drawText(a+(a===99?1:0),1444,168,this.color,120);
 		ctx.shadowBlur = 0;
 	},
 	init:function(){
@@ -740,6 +778,9 @@ var score = {
 		drawText('SCORE: '+this._score,this.x+200,this.y+12,TEXT_COLOR,40+this.delta*0.5);
 	}
 };
+
+
+
 function VaporizedScore(x, y, amount = '-10'){
 	this.x = x;
 	this.y = y;
@@ -758,6 +799,11 @@ function VaporizedScore(x, y, amount = '-10'){
 		drawText(this.amount,this.x,this.y,'rgba(255,255,255,'+this.alpha+')',100-this.alpha*20);
 	}
 }
+
+
+
+
+
 var varprizedScores = {
 	container:[],
 	put:function(x,y,a='-10'){
@@ -776,6 +822,7 @@ var varprizedScores = {
 			this.container[i].draw();
 	}
 };
+
 
 
 
@@ -801,7 +848,7 @@ Button.prototype.isTriggered = function(){
 		this.trigger = false;
 		if(currentState!=states.Game)
 			sounds["Button"].play();
-		return true;			
+		return true;
 	}
 }
 Button.prototype.press = function(x,y){
@@ -859,10 +906,11 @@ Button.prototype.draw = function(){
 
 
 
-function Button2(image, x,y, flip){
+function Button2(image, x,y, flip,txt = ""){
 	Button.call(this,image, x,y,flip);
 	this.MaxBlur = 100;
 	this.targetBlur = 0;
+	this.txt = txt;
 }
 Button2.prototype = Object.create(Button.prototype);
 Button2.prototype.constructor = Button2;
@@ -883,9 +931,9 @@ Button2.prototype.draw = function(){
 	this.w = images[this.image].width;
 	this.h = images[this.image].height;
 
-	drawImage(this.image,this.x, this.y,this.w,
+	drawImage(this.image,this.x, this.y-10,this.w,
 		this.h,this.flip);
-
+	drawText(this.txt,this.x+10, this.y+this.h/2+20,'#000',50);
 	ctx.shadowBlur = 0;
 }
 
@@ -1210,12 +1258,12 @@ var displayLevel = {
 
 
 //scene with a button
-function PromptScene(image,button = new Button2("OKButton",WIDTH/2+150,1220)){//1416,1220
+function PromptScene(image,button = new Button2("OKButton",WIDTH/2+150,1220,false,"Continue")){//1416,1220
 	this.image = image;
 	this.OKButtons = [];
 	this.OKButtons.push(button);
-	this.OKButtons.push(new Button2('ShowAnswerButton',WIDTH/2,1220));
-	this.OKButtons.push(new Button2('EndGameButton',WIDTH/2-150,1220));
+	this.OKButtons.push(new Button2('ShowAnswerButton',WIDTH/2,1220,false,"See Answer"));
+	this.OKButtons.push(new Button2('EndGameButton',WIDTH/2-150,1220,false,"End Game"));
 	this.showup = false;
 
 	this.offsetW = -500;
@@ -1228,6 +1276,9 @@ function PromptScene(image,button = new Button2("OKButton",WIDTH/2+150,1220)){//
 	this.showAnswer.image = 'ShowAnswerBar';
 	this.showAnswer.showup = true;
 
+	this.seeSquadButton = new Button2('EmptyButton',WIDTH/2,HEIGHT/2+150);
+
+
 	this.paid = false
 	this.textDisplay = "NO NO NO!";
 }
@@ -1236,7 +1287,7 @@ PromptScene.prototype.show = function(){
 	this.prevState = currentState;
 	currentState = states.Prompt;
 
-	this.showAnswer.showup = (score._score>SCORE_TO_VIEW_ANSWER);
+	this.showAnswer.showup = (score._score>=SCORE_TO_VIEW_ANSWER);
 
 	this.paid = false
 	this.offsetW = -500;
@@ -1253,9 +1304,12 @@ PromptScene.prototype.show = function(){
 	}
 }
 PromptScene.prototype.onpress = function(x,y){
-	if(this.showup)
+	if(this.showup){
 		for(var i = 0; i<this.OKButtons.length; i++)
 			this.OKButtons[i].press(x,y);
+		if(this.paid)
+			this.seeSquadButton.press(x,y);
+	}
 }
 PromptScene.prototype.onmousemove = function(x,y){
 	if(this.showup){
@@ -1267,13 +1321,18 @@ PromptScene.prototype.onmousemove = function(x,y){
 				this.OKButtons[i].hover(x,y);
 		}
 
+		if(this.paid)
+			this.seeSquadButton.hover(x,y);
 		
 	}
 }
 PromptScene.prototype.onrelease = function(){
-	if(this.showup)
+	if(this.showup){
 		for(var i = 0; i<this.OKButtons.length; i++)
-		this.OKButtons[i].release();
+			this.OKButtons[i].release();
+		if(this.paid)
+			this.seeSquadButton.release();
+	}
 }
 PromptScene.prototype.update = function(){
 	if(this.showup){
@@ -1294,6 +1353,8 @@ PromptScene.prototype.update = function(){
 
 			for(var i = 0; i<this.OKButtons.length; i++)
 				this.OKButtons[i].update();
+			this.seeSquadButton.update();
+
 			if(this.OKButtons[0].isTriggered()){
 				this.showup = false;
 				currentState = this.prevState;
@@ -1309,6 +1370,11 @@ PromptScene.prototype.update = function(){
 				this.OKButtons[0].x = WIDTH/2+150;
 				this.OKButtons[2].x = WIDTH/2-150;
 
+			}
+			if(this.paid){
+				if(this.seeSquadButton.isTriggered()){
+					openLinkToSquad(teams._teams[level].id);
+				}
 			}
 		}
 	}
@@ -1339,6 +1405,8 @@ PromptScene.prototype.draw = function(){
 				drawImage(teams._teams[level].name,WIDTH/2, HEIGHT/3);
 				drawText(teams._teams[level].name,WIDTH/2, HEIGHT/3+270,TEXT_COLOR);			
 				ctx.shadowBlur = 0;
+				this.seeSquadButton.draw();
+				drawText('See Squad',this.seeSquadButton.x,this.seeSquadButton.y,'#222',50);
 			}
 			if(score.added()&&level!=MaxLevel-1){
 				this.OKButtons[0].draw();
@@ -1363,6 +1431,7 @@ PromptScene.prototype.draw = function(){
 				this.showAnswer.draw(-SCORE_TO_VIEW_ANSWER+' POINTS');
 			}
 		}
+		drawText(level+1+'/'+MaxLevel,200,1250,'#000',50);
 
 	}
 }
@@ -1372,7 +1441,7 @@ PromptScene.prototype.draw = function(){
 
 
 function GameOver(image){
-	PromptScene.call(this,image, new Button2("OKButton",WIDTH/2,1220));
+	PromptScene.call(this,image, new Button2("OKButton",WIDTH/2,1220,false,"Next"));
 
 }
 GameOver.prototype = Object.create(PromptScene.prototype);
@@ -1386,7 +1455,7 @@ GameOver.prototype.show = function(id){
 
 	loadLeaderboard();
 
-	this.showAnswer.showup = (score._score>SCORE_TO_VIEW_ANSWER&&this._id === 'WrongAnswer');
+	this.showAnswer.showup = (score._score>=SCORE_TO_VIEW_ANSWER&&this._id === 'WrongAnswer');
 
 	this.paid = false
 
@@ -1450,6 +1519,7 @@ GameOver.prototype.draw = function(){
 		drawImage(teams._teams[level].name,WIDTH/2, HEIGHT/3);
 		drawText(teams._teams[level].name,WIDTH/2, HEIGHT/3+270,TEXT_COLOR);			
 
+		this.seeSquadButton.draw();
 	}else{
 		drawCover(ZERO_NINE);
 		var x = WIDTH/2;
@@ -1471,7 +1541,7 @@ GameOver.prototype.draw = function(){
 		this.showAnswer.update();
 		this.showAnswer.draw(-SCORE_TO_VIEW_ANSWER+' POINTS');
 	}
-
+	drawText(level+1+'/'+MaxLevel,100,1220,'#222',50);
 }
 
 
@@ -1824,6 +1894,7 @@ function onpress(evt){
 			hiddenpositions.open(mX, mY);
 			break;
 		case states.Game:
+			hiddenpositions.seeClubNameButton.press(mX,mY);
 			if(hiddenpositions.open(mX, mY)){
 				clock.init(Math.min(30,clock.count+Math.max(12 - hiddenpositions.numberOpened,5)));
 				clock.start();
@@ -1851,6 +1922,9 @@ function onrelease(evt){
 	if(currentState === states.Score){
 		promptScenes["GameOver"].onrelease();
 	}
+	if(currentState === states.Game){
+		hiddenpositions.seeClubNameButton.release();
+	}
 }
 function onmousemove(evt){
 	mX = evt.offsetX*WIDTH/CANVAS_WIDTH;
@@ -1871,6 +1945,9 @@ function onmousemove(evt){
 	}
 	if(currentState === states.Score){
 		promptScenes["GameOver"].onmousemove(mX,mY);
+	}
+	if(currentState === states.Game){
+		hiddenpositions.seeClubNameButton.hover(mX,mY);
 	}
 }
 function onwheel(e){
@@ -1961,6 +2038,7 @@ function loadAsset(){
 	loadImage('Tip Button');
 	loadImage('ShareButton');
 	loadImage('HomeButton');//20
+	loadImage('EmptyButton');
 	loadImage('EndGameButton');//20
 	loadImage('GameOver');
 	loadImage('TipBar');
@@ -2002,14 +2080,26 @@ function main(){
 	window.addEventListener('resize',function(){resizeCanvas();});
 	/////////////////////////////////////////////
 	var evt = "touchstart";
-	if(CANVAS_WIDTH>700){
+
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	    // is mobile..
+	    console.log("MObile");
+	}else{
+	    console.log("PC");
 		evt = "mousedown";
 		document.addEventListener('mousemove',onmousemove);
 		document.addEventListener('mouseup',onrelease);
 	}
+
+
+/*
+	if(CANVAS_WIDTH>700){
+		evt = "mousedown";
+		document.addEventListener('mousemove',onmousemove);
+		document.addEventListener('mouseup',onrelease);
+	}*/
 	document.addEventListener(evt,onpress);
-	document.addEventListener('mousewheel',onwheel, false
-	);
+	document.addEventListener('mousewheel',onwheel, false);
 
 
 
@@ -2103,11 +2193,20 @@ function init(l){
 }
 function run(){
 	init(0);
+	var fps = 30;
+	var currentTime = 0, lastTime = 0;
 	var loop = function(){
 		if(progressBarDone){
+			currentTime = new Date().getTime();
+			if(1000/fps>currentTime-lastTime)
+				sleep(1000/fps-(currentTime-lastTime))
+			lastTime = currentTime;
+
+
 			update();
 			ctx.clearRect(0,0,WIDTH,HEIGHT);
 			render();
+
 		}
 		window.requestAnimationFrame(loop,cvs);
 	}	
@@ -2164,7 +2263,7 @@ function update(){
 	if(currentState === states.Game){
 		clock.update();
 		if(clock.count === 0){
-			if(hiddenpositions.numberOpened<NUMBER_OF_POS){
+			if(hiddenpositions.numberOpened<NUMBER_OF_POS&&scoreOfThisMatch>0){
 				hiddenpositions.autoopen();
 				clock.init(Math.max(12 - hiddenpositions.numberOpened,5));
 				clock.start();
@@ -2191,7 +2290,7 @@ function render(){
 		hiddenpositions.draw();
 		clock.draw();
 		score.draw();
-		if(currentState != states.Prompt)	
+		if(currentState != states.Prompt&&currentState!=states.Score)	
 			answerBar.draw();
 	}
 	if(currentState === states.Prompt){
@@ -2211,7 +2310,10 @@ function render(){
 		}else
 				score.drawScoreOfThisMatch();
 	}
-
+	if(currentState === states.Game){
+		hiddenpositions.seeClubNameButton.draw();
+		drawText('Club Name',hiddenpositions.seeClubNameButton.x,hiddenpositions.seeClubNameButton.y,'#000',50);
+	}
 	if(currentState === states.Level){
 		displayLevel.draw();
 	}
@@ -2324,7 +2426,14 @@ function share(){
 		'_blank',"SHARE");
 }
 
-
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
 
 
 </script>
