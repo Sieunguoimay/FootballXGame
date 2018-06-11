@@ -21,5 +21,13 @@ http://code.ttab.me:4646/#/xuser/xuserAuth
 my url:
 	http://localhost/FootballXGameProject/WhichTeamIsThis/index.html?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyMzc1LCJyb2xlIjowLCJ0eXBlX3VzZXIiOjAsImV4cCI6MTUyODg5NjUyNX0.hUo_4d0ueJzbjjWHrTa320qmVkj6Erw7YXaABnmbdoI&user_id=2375
 
-- them 1 cai chi level 1/20 hay 15/20 at correct answer
-- them 1 button quit game
+//- them 1 cai chi level 1/20 hay 15/20 at correct answer
+//- them 1 button quit game
+
+
+- change background
+- choose your answer
+- Tip scene
+//- disable button on answerbar
+-at gameover, the position of 1/20 is not correct
+-at gameover, the button next is not at right place after the show answer is selected

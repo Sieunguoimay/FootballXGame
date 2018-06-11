@@ -15,6 +15,16 @@
 		#canvas{
 			display:block;
 			margin:auto;
+			position:absolute;
+			left: 0;
+			right: 0;
+		}
+		#canvasBg{
+			display:block;
+			margin:auto;
+			position:absolute;
+			left: 0;
+			right: 0;
 		}
 	</style>
 	<script src="https://cdn.firebase.com/js/client/2.3.0/firebase.js"></script>
@@ -23,10 +33,11 @@
 
 </head>
 
-<body style="background-image:url('https://stmed.net/sites/default/files/hexagon-wallpapers-25236-6538674.jpg')">
+<body style="background-color:#117864">
 
 
 
+<canvas id="canvasBg"></canvas>
 <canvas id="canvas" ></canvas>
 <script type="text/javascript">
 
@@ -204,6 +215,9 @@ loadGameAssetsFromServer();
 var TEXT_COLOR = '#fdd17d';
 var CLEAR_COLOR = '#000';
 
+
+var cvsBg = document.getElementById("canvasBg");
+var ctxBg = cvsBg.getContext("2d");
 
 var cvs = document.getElementById("canvas");
 var ctx = cvs.getContext("2d");
@@ -495,6 +509,7 @@ var hiddenpositions={
 					varprizedScores.put(this.seeClubNameButton.x,this.seeClubNameButton.y-100,-SCORE_TO_VIEW_CLUB_NAME);
 					this.positions[this.lastOpenIndices[this.lastOpenIndices.length-1]].showClubName = true;
 					this.lastOpenIndices.pop();
+					sounds["Button"].play();
 				}
 			}else{
 				score.color = '#e00';
@@ -842,8 +857,17 @@ function Button(image,x,y,flip=false,breadthEnabled=false){
 	this.breadthEnabled = breadthEnabled;
 	this.breadth = 0;
 	this.breadthLimit = 10;
+	this.disabled = false;
 }
+Button.prototype.disable = function(){
+	this.disabled = true;
+}
+Button.prototype.enable = function(){
+	this.disabled = false;
+}
+
 Button.prototype.isTriggered = function(){
+	if(!this.disabled)
 	if(this.trigger){
 		this.trigger = false;
 		if(currentState!=states.Game)
@@ -852,27 +876,35 @@ Button.prototype.isTriggered = function(){
 	}
 }
 Button.prototype.press = function(x,y){
-	if(this.state === this.states.HOVER)
-		this.state = this.states.CLICK;
-	else if(pointInRect(x,y,this.x, this.y, this.w*this.scale,this.h*this.scale))
-		this.state = this.states.CLICK;
+	if(!this.disabled){
+
+		if(this.state === this.states.HOVER)
+			this.state = this.states.CLICK;
+		else if(pointInRect(x,y,this.x, this.y, this.w*this.scale,this.h*this.scale))
+			this.state = this.states.CLICK;
+	}
 }
 Button.prototype.release = function(){
+	if(!this.disabled){
 	if(this.state === this.states.CLICK)
 		this.trigger = true;
 	this.state = this.states.NORMAL;
+	}
 }
 Button.prototype.hover = function(x,y){
-	if(pointInRect(x,y,this.x, this.y, this.w*this.scale,this.h*this.scale)){
-		if(this.state === this.states.NORMAL){
-			this.state = this.states.HOVER;
-			return true;
-		}
-	}else
-		this.state = this.states.NORMAL;
+	if(!this.disabled){
+		if(pointInRect(x,y,this.x, this.y, this.w*this.scale,this.h*this.scale)){
+			if(this.state === this.states.NORMAL){
+				this.state = this.states.HOVER;
+				return true;
+			}
+		}else
+			this.state = this.states.NORMAL;
+	}
 	return false;
 }
 Button.prototype.update = function(){
+	if(!this.disabled){
 	if(this.breadthEnabled)
 			this.breadth = this.breadthLimit*Math.cos(3*frame*3.141592/180.0);
 
@@ -884,10 +916,14 @@ Button.prototype.update = function(){
 	if(Math.abs(this.scaleTarget-this.scale)>0.00005){
 		this.scale+=(this.scaleTarget-this.scale)*0.1;
 	}
-
+	}
 }
 
 Button.prototype.draw = function(){
+	if(this.disabled)
+		ctx.globalAlpha = 0.5;
+	else
+		ctx.globalAlpha = 1;
 	this.w = images[this.image].width;
 	this.h = images[this.image].height;
 		ctx.shadowColor = '#000';
@@ -895,6 +931,7 @@ Button.prototype.draw = function(){
 	drawImage(this.image,this.x, this.y,this.w*this.scale+this.breadth,
 		this.h*this.scale+this.breadth,this.flip);
 		ctx.shadowBlur = 0;
+	ctx.globalAlpha = 1;
 }
 
 
@@ -1179,16 +1216,23 @@ var answerBar = {
 					this.wheelDelta = 0;
 				}
 			}
+			if(this.leftmostCard===0)
+				this.buttons[0].disable();
+			if(this.leftmostCard+this.displayPos.length===this.cards.length)
+					this.buttons[1].disable();
+
 			if(this.buttons[0].isTriggered()){//move to the left
 				if(this.leftmostCard>0){
 					this.leftmostCard--;
 					this.rearange();
+					this.buttons[1].enable();
 				}
 			}
 			if(this.buttons[1].isTriggered()){//move to the right
 				if(this.leftmostCard+this.displayPos.length<this.cards.length){
 					this.leftmostCard++;
 					this.rearange();
+					this.buttons[0].enable();
 				}
 			}
 		}
@@ -1236,26 +1280,29 @@ var displayLevel = {
 	//(TEST) YOUR's WORLDCUP IQ, 
 
 	draw:function(){
-		//var color = 'rgba(255,152,69,'+alpha+')';
-		drawCover(this.alpha*ZERO_NINE*0.6);
-		ctx.shadowColor = '#000';
-		ctx.shadowBlur = 100;
-
-		//draw what ever here
-		ctx.globalAlpha = this.alpha;
-		//ctx.fillStyle = '#112';
-		//ctx.fillRect(200,200,WIDTH-400,HEIGHT-400);
-		if(this.txt === 'Stage'){
-			drawText(this.txt,WIDTH/2,HEIGHT/2-100*this.scale,TEXT_COLOR,100*this.scale);
-			drawText(level+1,WIDTH/2,HEIGHT/2+100*this.scale,TEXT_COLOR,200*this.scale);
+		if(this.txt ==='Choose Your Answer Here'){
+			drawCoverWithHole(100,100,100,100);
 		}else{
-			drawText(this.txt,WIDTH/2,HEIGHT/2,TEXT_COLOR,100*this.scale);
+			//var color = 'rgba(255,152,69,'+alpha+')';
+			drawCover(this.alpha*ZERO_NINE*0.6);
+			ctx.shadowColor = '#000';
+			ctx.shadowBlur = 100;
+
+			//draw what ever here
+			ctx.globalAlpha = this.alpha;
+			//ctx.fillStyle = '#112';
+			//ctx.fillRect(200,200,WIDTH-400,HEIGHT-400);
+			if(this.txt === 'Stage'){
+				drawText(this.txt,WIDTH/2,HEIGHT/2-100*this.scale,TEXT_COLOR,100*this.scale);
+				drawText(level+1,WIDTH/2,HEIGHT/2+100*this.scale,TEXT_COLOR,200*this.scale);
+			}else{
+				drawText(this.txt,WIDTH/2,HEIGHT/2,TEXT_COLOR,100*this.scale);
+			}
+			ctx.globalAlpha = 1;
+			ctx.shadowBlur = 0;
 		}
-		ctx.globalAlpha = 1;
-		ctx.shadowBlur = 0;
 	}
 };
-
 
 //scene with a button
 function PromptScene(image,button = new Button2("OKButton",WIDTH/2+150,1220,false,"Continue")){//1416,1220
@@ -1859,7 +1906,7 @@ var splash = {
 			promptScenes["TipScene"].show();
 	}
 	,draw:function(){
-		drawImage("BackgroundMenu",WIDTH/2,HEIGHT/2);
+		//drawImage("BackgroundMenu",WIDTH/2,HEIGHT/2);
 
 		this.displayButton1.draw();
 		this.displayButton2.draw();
@@ -2068,36 +2115,32 @@ function main(){
 
 		cvs.width = WIDTH;
 		cvs.height = HEIGHT;
+		cvsBg.width = WIDTH;
+		cvsBg.height = HEIGHT;
+
 		ctx.font = '30px game_font';
 		ctx.mozImageSmoothingEnabled = false;
 		ctx.msImageSmoothingEnabled = false;
 		ctx.imageSmoothingEnabled = false;
 
+		ctxBg.mozImageSmoothingEnabled = false;
+		ctxBg.msImageSmoothingEnabled = false;
+		ctxBg.imageSmoothingEnabled = false;
 
 		cvs.style.width = ''+CANVAS_WIDTH+'px';
-		cvs.style.height = ''+CANVAS_HEIHGT+'px';}
+		cvs.style.height = ''+CANVAS_HEIHGT+'px';
+		cvsBg.style.width = ''+CANVAS_WIDTH+'px';
+		cvsBg.style.height = ''+CANVAS_HEIHGT+'px';
+	}
 	resizeCanvas();
 	window.addEventListener('resize',function(){resizeCanvas();});
 	/////////////////////////////////////////////
 	var evt = "touchstart";
-
-	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-	    // is mobile..
-	    console.log("MObile");
-	}else{
-	    console.log("PC");
-		evt = "mousedown";
-		document.addEventListener('mousemove',onmousemove);
-		document.addEventListener('mouseup',onrelease);
-	}
-
-
-/*
 	if(CANVAS_WIDTH>700){
 		evt = "mousedown";
 		document.addEventListener('mousemove',onmousemove);
 		document.addEventListener('mouseup',onrelease);
-	}*/
+	}
 	document.addEventListener(evt,onpress);
 	document.addEventListener('mousewheel',onwheel, false);
 
@@ -2191,10 +2234,35 @@ function init(l){
 	scoreOfThisMatch = 100;
 	sounds['MainMusic'].play();
 }
+
+var drawTrigger = false;
+var stateDetecter = -1;
+function drawBg(state){
+	if(stateDetecter!=state){
+		drawTrigger = true;		
+		stateDetecter = state;
+	}else
+		drawTrigger = false;
+
+	if(drawTrigger){		
+		if(state===states.Splash){
+			ctxBg.clearRect(0,0,WIDTH,HEIGHT);
+			drawImage2('BackgroundMenu',WIDTH/2,HEIGHT/2);
+		}
+		if(state === states.Game||state === states.Hint||state === states.Score||state === states.Level||
+			state === states.Prompt){
+			drawImage2('Background',WIDTH/2,HEIGHT/2);
+		}
+	}
+}
 function run(){
 	init(0);
 	var fps = 30;
 	var currentTime = 0, lastTime = 0;
+
+
+
+
 	var loop = function(){
 		if(progressBarDone){
 			currentTime = new Date().getTime();
@@ -2205,6 +2273,7 @@ function run(){
 
 			update();
 			ctx.clearRect(0,0,WIDTH,HEIGHT);
+			drawBg(currentState);
 			render();
 
 		}
@@ -2280,13 +2349,13 @@ function update(){
 	varprizedScores.update();
 }
 function render(){
-	if(currentState === states.Splash||currentState === states.Prompt){
+	if(currentState === states.Splash){
 		splash.draw();
 	}
 
 	if(currentState != states.Splash)
 	{
-		drawImage('Background',WIDTH/2,HEIGHT/2);
+		//drawImage('Background',WIDTH/2,HEIGHT/2);
 		hiddenpositions.draw();
 		clock.draw();
 		score.draw();
@@ -2369,6 +2438,13 @@ function drawImage(name,x,y,w,h,flip = false){
 	}else
 		ctx.drawImage(images[name],x-w/2,y-h/2,w,h);
 }
+
+function drawImage2(name,x,y,w,h){
+	if(w==null) w = images[name].width;
+	if(h==null) h = images[name].height;
+	ctxBg.drawImage(images[name],x-w/2,y-h/2,w,h);
+}
+
 function drawText(text,x,y,color='#fff',size='100',align = 'center'){
 	ctx.fillStyle=color;
 	ctx.font = 'bold '+size+'px game_font';
