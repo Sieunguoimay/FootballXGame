@@ -1,6 +1,6 @@
 {
   "clubs": [
-    {
+  	    {
       "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/argentina.png",
       "name": "Argentina",
       "type": 1
@@ -161,91 +161,2667 @@
       "type": 1
     },
     {
-      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/BUR.png",
-      "name": "Burnley",
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/2/26/PFK_CSKA_Logo.svg/200px-PFK_CSKA_Logo.svg.png",
+      "name": "CSKA Moscow",
       "type": 2
     },
     {
-      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/CHE.png",
-      "name": "Chelsea",
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/2/25/FC_Zenit_1_star_2015_logo.png",
+      "name": "Zenit Saint Petersburg",
       "type": 2
     },
     {
-      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/TOT.png",
-      "name": "Tottenham Hotspur",
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d0/Club_Brugge_KV_logo.svg/253px-Club_Brugge_KV_logo.svg.png",
+      "name": "Club Brugge",
       "type": 2
     },
     {
-      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/Manchester_City_FC.png",
-      "name": "Manchester City",
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/2/22/FC_Spartak_Moscow_logo.png",
+      "name": "Spartak Moscow",
       "type": 2
     },
     {
-      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/LIV.png",
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/37/Akhmat_Grozny_logo.svg/218px-Akhmat_Grozny_logo.svg.png",
+      "name": "Akhmat Grozny",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/c/c3/FC_Rubin_Kazan.png",
+      "name": "Rubin Kazan",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/70/Villarreal_CF_logo.svg/193px-Villarreal_CF_logo.svg.png",
+      "name": "Villarreal",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/e/e7/FC_Krasnodar.png",
+      "name": "Krasnodar",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/9/95/FC_Lokomotiv_Moscow.png",
+      "name": "Lokomotiv Moscow",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/d/d0/FC_Arsenal_Tula_logo.png",
+      "name": "Arsenal Tula",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/9/96/Al_Taawon.png",
+      "name": "Al-Taawoun",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5c/Al_Ahly_Crest.svg/142px-Al_Ahly_Crest.svg.png",
+      "name": "Al Ahly",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/West_Bromwich_Albion.svg/200px-West_Bromwich_Albion.svg.png",
+      "name": "West Bromwich Albion",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/2/26/Aston_villa_logo16.png",
+      "name": "Aston Villa",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/f/fd/Al-Fateh_FC_logo.png",
+      "name": "Al-Fateh",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/e/ef/Zamalek_SC_logo.svg/191px-Zamalek_SC_logo.svg.png",
+      "name": "Zamalek",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/8/86/Los_Angeles_Football_Club.svg/176px-Los_Angeles_Football_Club.svg.png",
+      "name": "Los Angeles FC",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/4/43/Wigan_Athletic.svg/240px-Wigan_Athletic.svg.png",
+      "name": "Wigan Athletic",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/5/53/Arsenal_FC.svg/204px-Arsenal_FC.svg.png",
+      "name": "Arsenal",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/5/50/Kuopion_Palloseura.png",
+      "name": "KuPS",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/0/0d/Kasimpasa.png",
+      "name": "Kasımpaşa",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/179px-Liverpool_FC.svg.png",
       "name": "Liverpool",
       "type": 2
     },
     {
-      "club_logo": "https://s3-ap-southeast-1.amazonaws.com/football-x-data-download/club-icon/LEI.png",
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Ittihad-logo2016-i_rakkan.png/178px-Ittihad-logo2016-i_rakkan.png",
+      "name": "Al-Ittihad",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Stoke_City_FC.svg/207px-Stoke_City_FC.svg.png",
+      "name": "Stoke City",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/2/28/AlRaed_logo.png",
+      "name": "Al-Raed",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/e/e9/Atromitos.png",
+      "name": "Atromitos",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/31/Galatasaray_Star_Logo.svg/156px-Galatasaray_Star_Logo.svg.png",
+      "name": "Galatasaray",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Escudo_del_Club_Atl%C3%A9tico_Independiente.svg/231px-Escudo_del_Club_Atl%C3%A9tico_Independiente.svg.png",
+      "name": "Independiente",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/1/1a/ClubDeRegatasVascoDaGama.svg",
+      "name": "Vasco da Gama",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/f/f4/Atletico_Madrid_2017_logo.svg",
+      "name": "Atlético Madrid",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Escudo_del_Club_Atl%C3%A9tico_Pe%C3%B1arol.svg/179px-Escudo_del_Club_Atl%C3%A9tico_Pe%C3%B1arol.svg.png",
+      "name": "Peñarol",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/FC_Porto.svg/272px-FC_Porto.svg.png",
+      "name": "Porto",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e1/Sporting_Clube_de_Portugal_%28Logo%29.svg/179px-Sporting_Clube_de_Portugal_%28Logo%29.svg.png",
+      "name": "Sporting CP",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e4/SS_Lazio.svg/250px-SS_Lazio.svg.png",
+      "name": "Lazio",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ab/CFMonterrey2012_LargeVector.svg/164px-CFMonterrey2012_LargeVector.svg.png",
+      "name": "Monterrey",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Juventus_FC_2017_logo.svg/123px-Juventus_FC_2017_logo.svg.png",
+      "name": "Juventus",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Boca_Juniors_2012.svg/206px-Boca_Juniors_2012.svg.png",
+      "name": "Boca Juniors",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/f/f7/Sampdoria_badge.png",
+      "name": "Sampdoria",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/0/0b/Inter_Milan.svg",
+      "name": "Inter Milan",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/4/4e/Genoa_cfc.png",
+      "name": "Genoa",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/1/12/RC_Celta_de_Vigo_logo.svg/124px-RC_Celta_de_Vigo_logo.svg.png",
+      "name": "Celta Vigo",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/Paris_Saint-Germain_F.C..svg/240px-Paris_Saint-Germain_F.C..svg.png",
+      "name": "Paris Saint-Germain",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/a/ae/PersepolisFC_Logo_2017.png",
+      "name": "Persepolis",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/c/ca/Zob_Ahan_F.C._logo.png",
+      "name": "Zob Ahan",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/6/67/Club_Sport_Mar%C3%ADtimo.png",
+      "name": "Marítimo",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Olympiacos_FC_logo.svg/198px-Olympiacos_FC_logo.svg.png",
+      "name": "Olympiacos",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/8/8e/Esteghlal_FC_logo.png",
+      "name": "Esteghlal",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Al-Sadd_SC.svg/240px-Al-Sadd_SC.svg.png",
+      "name": "Al-Sadd",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/2/25/Padideh_shandiz_fc.png",
+      "name": "Padideh",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e3/K.V._Oostende_logo.svg/640px-K.V._Oostende_logo.svg.png",
+      "name": "Oostende",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/d/db/Saipa_FC_logo.png",
+      "name": "Saipa",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/37/Akhmat_Grozny_logo.svg/198px-Akhmat_Grozny_logo.svg.png",
+      "name": "Amkar Perm",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/AEK_Athens_FC_logo.svg/180px-AEK_Athens_FC_logo.svg.png",
+      "name": "AEK Athens",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/8/85/%C3%96stersunds_FK.png",
+      "name": "Östersund",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/d/da/Heerenveen.png",
+      "name": "Heerenveen",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/c/c0/Gharrafa.png",
+      "name": "Al-Gharafa",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/AZ_Alkmaar.svg/320px-AZ_Alkmaar.svg.png",
+      "name": "AZ",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d2/Nottingham_Forest_logo.svg/136px-Nottingham_Forest_logo.svg.png",
+      "name": "Nottingham Forest",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/9/90/For_article_Girona_FC.svg/181px-For_article_Girona_FC.svg.png",
+      "name": "Girona",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/0/07/CD_Numancia_logo.svg/210px-CD_Numancia_logo.svg.png",
+      "name": "Numancia",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/4/4b/IttihadRiadiTanger.png",
+      "name": "IR Tanger",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg",
+      "name": "Real Madrid",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ab/Lille_OSC_logo.svg/138px-Lille_OSC_logo.svg.png",
+      "name": "Lille",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/3/32/Ba%C5%9Fak%C5%9Fehir_FK_Logo.png",
+      "name": "İstanbul Başakşehir",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/f/fc/Wolverhampton_Wanderers.svg/276px-Wolverhampton_Wanderers.svg.png",
+      "name": "Wolverhampton Wanderers",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/39/Fenerbah%C3%A7e.svg/240px-Fenerbah%C3%A7e.svg.png",
+      "name": "Fenerbahçe",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/79/Ajax_Amsterdam.svg/238px-Ajax_Amsterdam.svg.png",
+      "name": "Ajax",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e3/Feyenoord_logo.svg/240px-Feyenoord_logo.svg.png",
+      "name": "Feyenoord",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/7/7f/Getafe_logo.png",
+      "name": "Getafe",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/4/40/Al_Jazira_Club.png",
+      "name": "Al-Jazira",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/SM_Caen_2016_logo.svg/174px-SM_Caen_2016_logo.svg.png",
+      "name": "Caen",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/0/02/Club_Deportivo_Legan%C3%A9s.png",
+      "name": "Leganés",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7c/Royal_Standard_de_Liege.svg/143px-Royal_Standard_de_Liege.svg.png",
+      "name": "Standard Liège",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/7/72/Renaissance_de_Berkane_logo.jpg",
+      "name": "RS Berkane",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/7/7c/YeniMalatyaspor.png",
+      "name": "Yeni Malatyaspor",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/M%C3%A1laga_CF.svg/212px-M%C3%A1laga_CF.svg.png",
+      "name": "Málaga",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/8/81/FC_St._Pauli_logo.svg/240px-FC_St._Pauli_logo.svg.png",
+      "name": "FC St. Pauli",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c6/Olympique_Lyonnais.svg/207px-Olympique_Lyonnais.svg.png",
+      "name": "Lyon",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/5/5b/G%C3%B6ztepe_logo.png",
+      "name": "Göztepe",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/4/43/Rangers_FC.svg/240px-Rangers_FC.svg.png",
+      "name": "Rangers",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/Besiktas_JK.svg/183px-Besiktas_JK.svg.png",
+      "name": "Beşiktaş",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Borussia_Dortmund_logo.svg/240px-Borussia_Dortmund_logo.svg.png",
+      "name": "Borussia Dortmund",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/1/19/Dalian_Yifang_FC_logo_2.png",
+      "name": "Dalian Yifang",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/d/d5/Sport_Lisboa_e_Benfica_Logo_Reduced_res.png",
+      "name": "Benfica",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/S.S.C._Napoli_logo.svg/240px-S.S.C._Napoli_logo.svg.png",
+      "name": "Napoli",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/FC_Southampton.svg/210px-FC_Southampton.svg.png",
+      "name": "Southampton",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/AS_Monaco_FC.svg/276px-AS_Monaco_FC.svg.png",
+      "name": "Monaco",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/West_Ham_United_FC_logo.svg/216px-West_Ham_United_FC_logo.svg.png",
+      "name": "West Ham United",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/240px-Manchester_City_FC_badge.svg.png",
+      "name": "Manchester City",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Leicester_City_crest.svg/240px-Leicester_City_crest.svg.png",
       "name": "Leicester City",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Logo_of_AC_Milan.svg/149px-Logo_of_AC_Milan.svg.png",
+      "name": "Milan",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/c/ce/Valenciacf.svg/191px-Valenciacf.svg.png",
+      "name": "Valencia",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/237px-Manchester_United_FC_crest.svg.png",
+      "name": "Manchester United",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/9/98/Club_Athletic_Bilbao_logo.svg/212px-Club_Athletic_Bilbao_logo.svg.png",
+      "name": "Athletic Bilbao",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/4/47/FC_Barcelona_%28crest%29.svg/237px-FC_Barcelona_%28crest%29.svg.png",
+      "name": "Barcelona",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Real_Sociedad_logo.svg/209px-Real_Sociedad_logo.svg.png",
+      "name": "Real Sociedad",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Chelsea_FC.svg/240px-Chelsea_FC.svg.png",
+      "name": "Chelsea",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg/240px-FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg.png",
+      "name": "Bayern Munich",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/f/fd/Brighton_%26_Hove_Albion_logo.svg/240px-Brighton_%26_Hove_Albion_logo.svg.png",
+      "name": "Brighton & Hove Albion",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/KRC_Genk_Logo_2016.svg/191px-KRC_Genk_Logo_2016.svg.png",
+      "name": "Genk",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/2/2c/YokohamaFMarinos.png",
+      "name": "Yokohama F. Marinos",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/7/71/Millwall_FC_logo.png",
+      "name": "Millwall",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/d/d7/Al-Ahli_SC_%28Jeddah%29_Logo.png",
+      "name": "Al-Ahli",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/Suwon_Samsung_Bluewings.svg/185px-Suwon_Samsung_Bluewings.svg.png",
+      "name": "Suwon Samsung Bluewings",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/0/01/Bursaspor.png",
+      "name": "Bursaspor",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Logo_of_Western_Sydney_Wanderers_FC.svg/185px-Logo_of_Western_Sydney_Wanderers_FC.svg.png",
+      "name": "Western Sydney Wanderers",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/8/84/Grasshopper_Club_Z%C3%BCrich_logo.svg/173px-Grasshopper_Club_Z%C3%BCrich_logo.svg.png",
+      "name": "Grasshoppers",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5a/Huddersfield_Town_A.F.C._logo.svg/158px-Huddersfield_Town_A.F.C._logo.svg.png",
+      "name": "Huddersfield Town",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/2/20/Hull_City_Crest_2014.svg/181px-Hull_City_Crest_2014.svg.png",
+      "name": "Hull City",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Celtic_FC.svg/240px-Celtic_FC.svg.png",
+      "name": "Celtic",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Hertha_BSC_Logo_2012.svg/260px-Hertha_BSC_Logo_2012.svg.png",
+      "name": "Hertha BSC",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/31/Queens_Park_Rangers_crest.svg/240px-Queens_Park_Rangers_crest.svg.png",
+      "name": "Luzern",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/VfL_Bochum_logo.svg/227px-VfL_Bochum_logo.svg.png",
+      "name": "VfL Bochum",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/e/e3/UrawaReds.png",
+      "name": "Urawa Red Diamonds",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/37/Hibernian_FC_logo.svg/226px-Hibernian_FC_logo.svg.png",
+      "name": "Hibernian",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0f/Melbourne_City_FC.svg/240px-Melbourne_City_FC.svg.png",
+      "name": "Melbourne City",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d5/Newcastle_United_Jets_Logo.svg/169px-Newcastle_United_Jets_Logo.svg.png",
+      "name": "Newcastle Jets",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4d/Br%C3%B8ndby_IF.svg/195px-Br%C3%B8ndby_IF.svg.png",
+      "name": "Brøndby",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Borussia_M%C3%B6nchengladbach_logo.svg/218px-Borussia_M%C3%B6nchengladbach_logo.svg.png",
+      "name": "Borussia Mönchengladbach",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/8/86/Sevilla_cf_200px.png",
+      "name": "Sevilla",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/4/43/Ipswich_Town.svg/192px-Ipswich_Town.svg.png",
+      "name": "Ipswich Town",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/c/c8/Brentford_F.C..png",
+      "name": "Brentford",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/f/f2/Udinese_calcio.png",
+      "name": "Udinese",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/9/93/FC_K%C3%B8benhavn.svg/240px-FC_K%C3%B8benhavn.svg.png",
+      "name": "Copenhagen",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/SV-Werder-Bremen-Logo.svg/159px-SV-Werder-Bremen-Logo.svg.png",
+      "name": "Werder Bremen",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b4/Tottenham_Hotspur.svg/234px-Tottenham_Hotspur.svg.png",
+      "name": "Tottenham Hotspur",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/1/11/FC_Girondins_de_Bordeaux_logo.svg/202px-FC_Girondins_de_Bordeaux_logo.svg.png",
+      "name": "Bordeaux",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/RB_Leipzig_2014_logo.svg/350px-RB_Leipzig_2014_logo.svg.png",
+      "name": "RB Leipzig",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/6/66/AtalantaBC.svg/154px-AtalantaBC.svg.png",
+      "name": "Atalanta",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/8/88/Olympique_de_Marseille_logo.svg/185px-Olympique_de_Marseille_logo.svg.png",
+      "name": "Marseille",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/VfB_Stuttgart_1893_Logo.svg/216px-VfB_Stuttgart_1893_Logo.svg.png",
+      "name": "VfB Stuttgart",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/3/3b/Tiburones_Rojos_Veracruz.png",
+      "name": "Veracruz",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/5/5e/Cdmunicipal.png",
+      "name": "Deportivo Municipal",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Logo_UTC.png/239px-Logo_UTC.png",
+      "name": "UTC",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Escudo_de_Atl%C3%A9tico_Junior.svg/210px-Escudo_de_Atl%C3%A9tico_Junior.svg.png",
+      "name": "Atlético Junior",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Escudo_del_Club_Universitario_de_Deportes.svg/240px-Escudo_del_Club_Universitario_de_Deportes.svg.png",
+      "name": "Universitario",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/3/33/Club_puebla_logo.png",
+      "name": "Puebla",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Escudo_Alianza_Lima.png",
+      "name": "Alianza Lima",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/Flamengo_logo.svg/197px-Flamengo_logo.svg.png",
+      "name": "Flamengo",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/0/01/Lobos_BUAP_logo.png",
+      "name": "Lobos BUAP",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Melgar.png/128px-Melgar.png",
+      "name": "Melgar",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d5/Vit%C3%B3ria_Guimar%C3%A3es.svg/272px-Vit%C3%B3ria_Guimar%C3%A3es.svg.png",
+      "name": "Vitória de Guimarães",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Brasao_do_Sao_Paulo_Futebol_Clube.svg/241px-Brasao_do_Sao_Paulo_Futebol_Clube.svg.png",
+      "name": "São Paulo",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Portland_Timbers_logo.svg/231px-Portland_Timbers_logo.svg.png",
+      "name": "Portland Timbers",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6a/Orlando_City_2014.svg/210px-Orlando_City_2014.svg.png",
+      "name": "Orlando City",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/2/27/Monarcas_Morelia_2.svg/178px-Monarcas_Morelia_2.svg.png",
+      "name": "Morelia",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e2/Watford.svg/215px-Watford.svg.png",
+      "name": "Watford",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/6/64/Aalborg_Fodbold.png",
+      "name": "AaB",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/5/55/Logo_Tigres_2018.png",
+      "name": "UANL",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/c/c9/RIVERNORMAL.png",
+      "name": "River Plate",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2e/Torino_FC_Logo.svg/200px-Torino_FC_Logo.svg.png",
+      "name": "Torino",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/5/52/AS_Roma_logo_%282013%29.svg/185px-AS_Roma_logo_%282013%29.svg.png",
+      "name": "Roma",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/d/d9/Hebei_China_Fortune_FC_logo.png",
+      "name": "Hebei China Fortune",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/8/87/GNK_Dinamo_Zagreb.svg/240px-GNK_Dinamo_Zagreb.svg.png",
+      "name": "Dinamo Zagreb",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/KAA_Gent_logo.svg/249px-KAA_Gent_logo.svg.png",
+      "name": "Gent",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/5/59/Bayer_04_Leverkusen_logo.svg/306px-Bayer_04_Leverkusen_logo.svg.png",
+      "name": "Bayer Leverkusen",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/FC_Red_Bull_Salzburg_logo.svg/295px-FC_Red_Bull_Salzburg_logo.svg.png",
+      "name": "Red Bull Salzburg",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/FC_Dynamo_Kyiv_logo.svg/289px-FC_Dynamo_Kyiv_logo.svg.png",
+      "name": "Dynamo Kyiv",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/HNK_Rijeka.svg/198px-HNK_Rijeka.svg.png",
+      "name": "Rijeka",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/ACF_Fiorentina_2.svg/164px-ACF_Fiorentina_2.svg.png",
+      "name": "Fiorentina",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Logo_TSG_Hoffenheim.svg/202px-Logo_TSG_Hoffenheim.svg.png",
+      "name": "1899 Hoffenheim",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Eintracht_Frankfurt_Logo.svg/240px-Eintracht_Frankfurt_Logo.svg.png",
+      "name": "Eintracht Frankfurt",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/FC_Schalke_04_Logo.svg/240px-FC_Schalke_04_Logo.svg.png",
+      "name": "Schalke 04",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/3/36/Randersfc.png",
+      "name": "Randers",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/e/ed/FC_Roskilde.jpg",
+      "name": "Roskilde",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/78/FC_Nordsjaelland.svg/211px-FC_Nordsjaelland.svg.png",
+      "name": "Nordsjælland",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/a/a9/Valur.png",
+      "name": "Valur",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/b/bf/FC_Rostov_logo.png",
+      "name": "Rostov",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/Aberdeen_FC_logo.svg/240px-Aberdeen_FC_logo.svg.png",
+      "name": "Aberdeen",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/f/fb/PFC_Levski_Sofia.png",
+      "name": "Levski Sofia",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/4/49/Bristol_City_F.C.png",
+      "name": "Bristol City",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/K.S.C._Lokeren_Oost-Vlaanderen_logo.svg/225px-K.S.C._Lokeren_Oost-Vlaanderen_logo.svg.png",
+      "name": "Lokeren",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7f/V%C3%A5lerenga_logo.svg/320px-V%C3%A5lerenga_logo.svg.png",
+      "name": "Vålerenga",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/0/05/PSV_Eindhoven.svg/320px-PSV_Eindhoven.svg.png",
+      "name": "PSV Eindhoven",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/6/62/Burnley_F.C._Logo.svg/210px-Burnley_F.C._Logo.svg.png",
+      "name": "Burnley",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7c/Everton_FC_logo.svg/235px-Everton_FC_logo.svg.png",
+      "name": "Everton",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/5/51/Karabukspor.png",
+      "name": "Kardemir Karabükspor",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3c/Cardiff_City_crest.svg/230px-Cardiff_City_crest.svg.png",
+      "name": "Cardiff City",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/SV_Sandhausen.svg/200px-SV_Sandhausen.svg.png",
+      "name": "SV Sandhausen",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Malm%C3%B6_FF_Logo.png/164px-Malm%C3%B6_FF_Logo.png",
+      "name": "Malmö",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c5/FC_Augsburg_logo.svg/184px-FC_Augsburg_logo.svg.png",
+      "name": "FC Augsburg",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/1/11/Reading_FC.svg/240px-Reading_FC.svg.png",
+      "name": "Reading",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/3/33/Enyimbafclogo.png",
+      "name": "Enyimba",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/3/3f/Newchippalogo.jpeg",
+      "name": "Chippa United",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/RC_Deportivo_La_Coru%C3%B1a_logo.svg/217px-RC_Deportivo_La_Coru%C3%B1a_logo.svg.png",
+      "name": "Deportivo La Coruña",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7c/Cercle_Brugge_KSV_logo.svg/185px-Cercle_Brugge_KSV_logo.svg.png",
+      "name": "Cercle Brugge",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/75/FSV_Mainz_05.svg/238px-FSV_Mainz_05.svg.png",
+      "name": "Mainz 05",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/FC_Nantes_logo.svg/175px-FC_Nantes_logo.svg.png",
+      "name": "Nantes",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/ADO_Den_Haag_logo.svg/197px-ADO_Den_Haag_logo.svg.png",
+      "name": "ADO Den Haag",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/2/20/UD_Las_Palmas_logo.svg/152px-UD_Las_Palmas_logo.svg.png",
+      "name": "Las Palmas",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/c/c2/TedaNew.png",
+      "name": "Tianjin TEDA",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/7/70/Trabzonspor.png",
+      "name": "Trabzonspor",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/4/4e/Hapoel_Be%27er_Sheva_F.C..png",
+      "name": "Hapoel Be'er Sheva",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/e/e1/ChangchunYataiFC03.png",
+      "name": "Changchun Yatai",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/2/27/FC_Crotone_Logo.png",
+      "name": "Crotone",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/1/1f/Sport_Club_Corinthians_Paulista_Logo.png",
+      "name": "Corinthians",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Gremio.svg/202px-Gremio.svg.png",
+      "name": "Grêmio",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Beijing_guoan_fc.svg/224px-Beijing_guoan_fc.svg.png",
+      "name": "Beijing Sinobo Guoan",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a1/FC_Shakhtar_Donetsk.svg/152px-FC_Shakhtar_Donetsk.svg.png",
+      "name": "Shakhtar Donetsk",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e4/LD_Alajuelense.svg/215px-LD_Alajuelense.svg.png",
+      "name": "Alajuelense",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/2/23/CS_Herediano.png",
+      "name": "Herediano",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/a/aa/LogoAguilasPereira.png",
+      "name": "Águilas Doradas",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d8/Bolognafc.svg/255px-Bolognafc.svg.png",
+      "name": "Bologna",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/6/61/IFK_Norrk%C3%B6ping_Logo.jpg",
+      "name": "Norrköping",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d6/Rcd_espanyol_logo.svg/166px-Rcd_espanyol_logo.svg.png",
+      "name": "Espanyol",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Logo_Sunderland.svg/288px-Logo_Sunderland.svg.png",
+      "name": "Sunderland",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e8/Minnesota_United_FC_%28MLS%29_Primary_logo.svg/153px-Minnesota_United_FC_%28MLS%29_Primary_logo.svg.png",
+      "name": "Minnesota United",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Vancouver_Whitecaps_FC_logo.svg/185px-Vancouver_Whitecaps_FC_logo.svg.png",
+      "name": "Vancouver Whitecaps FC",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/New_York_City_FC.svg/240px-New_York_City_FC.svg.png",
+      "name": "New York City FC",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9d/Deportivo_Saprissa.svg/240px-Deportivo_Saprissa.svg.png",
+      "name": "Saprissa",
+      "type": 2
+    },
+    {
+      "club_logo": "https://www.lausanne-sport.ch/wp-content/uploads/2018/04/logo-800x600.jpg",
+      "name": "Lausanne",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/1/13/Real_betis_logo.svg/292px-Real_betis_logo.svg.png",
+      "name": "Real Betis",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/e/ed/FK_Partizan.svg/163px-FK_Partizan.svg.png",
+      "name": "Partizan",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/f/f8/MTAFC_logo.png",
+      "name": "Maccabi Tel Aviv",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SD_Eibar_logo_2016.svg/155px-SD_Eibar_logo_2016.svg.png",
+      "name": "Eibar",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/71/RSC_Anderlecht_logo.svg/244px-RSC_Anderlecht_logo.svg.png",
+      "name": "Anderlecht",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Logo_FC_Red_Star_Belgrade.svg/166px-Logo_FC_Red_Star_Belgrade.svg.png",
+      "name": "Red Star Belgrade",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Crystal_Palace_FC_logo.svg/192px-Crystal_Palace_FC_logo.svg.png",
+      "name": "Crystal Palace",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/HSV-Logo.svg/320px-HSV-Logo.svg.png",
+      "name": "Hamburger SV",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/d/d9/Paok2013.png",
+      "name": "PAOK",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Fulham_FC_%28shield%29.svg/180px-Fulham_FC_%28shield%29.svg.png",
+      "name": "Fulham",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Toulouse_FC_logo.svg/240px-Toulouse_FC_logo.svg.png",
+      "name": "Toulouse",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/f/fd/FC_Basel_2_stars_transparent_background.png",
+      "name": "Basel",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/9/97/Antalyasporlogo.png",
+      "name": "Antalyaspor",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/5/53/FC_Cologne_logo.svg/211px-FC_Cologne_logo.svg.png",
+      "name": "1. FC Köln",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Escudo_del_Cruz_Azul_AC.svg/240px-Escudo_del_Cruz_Azul_AC.svg.png",
+      "name": "Cruz Azul",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Toluca_fc_escdo.png",
+      "name": "Toluca",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/4/49/F%C3%BAtbol_Club_Atlas.PNG",
+      "name": "Atlas",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/3/3a/ClubAmericaLogo-1.png",
+      "name": "América",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/70/Los_Angeles_Galaxy_logo.svg/189px-Los_Angeles_Galaxy_logo.svg.png",
+      "name": "LA Galaxy",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/a/a7/UNAM_Pumas.png",
+      "name": "UNAM",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/8/87/VisselKobe.png",
+      "name": "Vissel Kobe",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/e/e1/OsakaFC.png",
+      "name": "Cerezo Osaka",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Daegu_FC.svg/253px-Daegu_FC.svg.png",
+      "name": "Daegu FC",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/9/92/Jeonbuk_Hyundai_Motors.png",
+      "name": "Jeonbuk Hyundai Motors",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/c/c8/Sagan_Tosu_official_logo.png",
+      "name": "Sagan Tosu",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/0/06/Jeju_United_FC.svg/179px-Jeju_United_FC.svg.png",
+      "name": "Jeju United",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/5/57/Seongnam_FC_2017.png",
+      "name": "Seongnam FC",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/b/b5/Ulsan_Hyundai_FC.svg",
+      "name": "Ulsan Hyundai",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/9/9b/Sangju_Sangmu_FC.png",
+      "name": "Sangju Sangmu",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/6/66/Emblem_of_Incheon_United.svg/184px-Emblem_of_Incheon_United.svg.png",
+      "name": "Guangzhou Evergrande",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/4/45/FCTokyo.png",
+      "name": "FC Tokyo",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/6/67/FC_Seoul.png",
+      "name": "FC Seoul",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/8/82/Asan_Mugunghwa_FC.png",
+      "name": "Asan Mugunghwa",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Hellas_Verona_FC_logo.svg/184px-Hellas_Verona_FC_logo.svg.png",
+      "name": "Hellas Verona",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/f/f9/Swansea_City_AFC_logo.svg",
+      "name": "Swansea City",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/6/66/Emblem_of_Incheon_United.svg/184px-Emblem_of_Incheon_United.svg.png",
+      "name": "Incheon United",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/1/12/EA_Guingamp_logo.svg/320px-EA_Guingamp_logo.svg.png",
+      "name": "Guingamp",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/0/05/Leeds_United_Logo.png",
+      "name": "Leeds United",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/2/27/Seattle_Sounders_FC.svg",
+      "name": "Seattle Sounders FC",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/c/c9/Alainnewlogo.png",
+      "name": "Al Ain",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2e/Deportivo_Alaves_logo.svg/320px-Deportivo_Alaves_logo.svg.png",
+      "name": "Alavés",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/0/02/Waasland-Beveren_Logo.png",
+      "name": "Waasland-Beveren",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Logo-VfL-Wolfsburg.svg/240px-Logo-VfL-Wolfsburg.svg.png",
+      "name": "VfL Wolfsburg",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/9/9f/Tianjin_quanjian_FC_logo.png",
+      "name": "Tianjin Quanjian",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c0/FC_Dinamo_Bucuresti_logo.svg/201px-FC_Dinamo_Bucuresti_logo.svg.png",
+      "name": "Dinamo București",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/5/5b/Chorrillo_FC.png",
+      "name": "Chorrillo",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/5/53/San_Francisco_FC_%28Panama%29.svg/179px-San_Francisco_FC_%28Panama%29.svg.png",
+      "name": "San Francisco",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/5/51/New_York_Red_Bulls_logo.svg/298px-New_York_Red_Bulls_logo.svg.png",
+      "name": "New York Red Bulls",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/9/98/San_Jose_Earthquakes_2014.svg/193px-San_Jose_Earthquakes_2014.svg.png",
+      "name": "San Jose Earthquakes",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Houston_Dynamo_logo.svg/273px-Houston_Dynamo_logo.svg.png",
+      "name": "Houston Dynamo",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/5/5c/Dunajska_Streda.png",
+      "name": "Dunajská Streda",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/d/d3/CD_Olimpia_%28Honduras%29.jpg",
+      "name": "Olimpia",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/4/4b/CSD_Municipal.svg",
+      "name": "Municipal",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/7/7e/Atl%C3%A9tico_Bucaramanga_logo.png",
+      "name": "Atlético Bucaramanga",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/4/49/CAFETALOGO.png",
+      "name": "Tapachula",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/5/50/C.F._Universidad_de_Chile_logo.png",
+      "name": "Universidad de Chile",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/5/58/CD_Plaza_Amador.png",
+      "name": "Plaza Amador",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b8/Huachipato.svg/222px-Huachipato.svg.png",
+      "name": "Huachipato",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/RC_Deportivo_La_Coru%C3%B1a_logo.svg/217px-RC_Deportivo_La_Coru%C3%B1a_logo.svg.png",
+      "name": "Deportivo Fabril",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Sport_Boys.svg/240px-Sport_Boys.svg.png",
+      "name": "Sport Boys",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/1/13/Al_Shabab_FC_%28Riyadh%29_logo.png",
+      "name": "Al-Shabab",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/8/87/Al-Batin_F.C_logo.png",
+      "name": "Al-Batin",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/f/f1/Chateauroux2.png",
+      "name": "Châteauroux",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/f/f2/%D9%86%D8%A7%D8%AF%D9%8A_%D8%A7%D9%84%D8%B5%D8%A7%D9%81%D9%82%D8%B3%D9%8A.png",
+      "name": "CS Sfaxien",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f7/Dijon_FCO_logo.svg/222px-Dijon_FCO_logo.svg.png",
+      "name": "Dijon",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Logo_Etoile_du_Sahel.svg/210px-Logo_Etoile_du_Sahel.svg.png",
+      "name": "Étoile du Sahel",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/c/c0/Esp%C3%A9rance_de_Tunis.png",
+      "name": "Espérance",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/9/9d/Logo_Al-Nassr.png",
+      "name": "Al-Nassr",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a8/Montpellier_HSC_logo.svg/240px-Montpellier_HSC_logo.svg.png",
+      "name": "Montpellier",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/ES_Troyes_AC.svg/195px-ES_Troyes_AC.svg.png",
+      "name": "Troyes",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/8/8e/Ettifaq_FC_logo.gif",
+      "name": "Al-Ettifaq",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Stade_Rennais_FC.svg/218px-Stade_Rennais_FC.svg.png",
+      "name": "Rennes",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/c/c5/ClubAfricainlogo.gif",
+      "name": "Club Africain",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2e/OGC_Nice_logo.svg/199px-OGC_Nice_logo.svg.png",
+      "name": "Nice",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/9/96/Escudo-deportivo-cali-2012.png",
+      "name": "Deportivo Cali",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/c/c9/RIVERNORMAL.png",
+      "name": "Once Caldas",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/9/93/Pachuca_Tuzos_logo.svg/142px-Pachuca_Tuzos_logo.svg.png",
+      "name": "Pachuca",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/Levante_Uni%C3%B3n_Deportiva%2C_S.A.D._logo.svg/199px-Levante_Uni%C3%B3n_Deportiva%2C_S.A.D._logo.svg.png",
+      "name": "Levante",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Palmeiras_logo.svg/240px-Palmeiras_logo.svg.png",
+      "name": "Palmeiras",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/71/FC_Metz_logo.svg/210px-FC_Metz_logo.svg.png",
+      "name": "Metz",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/75/Gamba_Osaka_logo.svg/240px-Gamba_Osaka_logo.svg.png",
+      "name": "Gamba Osaka",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/e/e6/KashiwaReysol.png",
+      "name": "Kashiwa Reysol",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/1/16/KashimaAntlers.png",
+      "name": "Kashima Antlers",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Fortuna_D%C3%BCsseldorf.svg/240px-Fortuna_D%C3%BCsseldorf.svg.png",
+      "name": "Fortuna Düsseldorf",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/7/74/KawasakiFrontale.png",
+      "name": "Kawasaki Frontale",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Legia_Warszawa.svg/189px-Legia_Warszawa.svg.png",
+      "name": "Legia Warsaw",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3c/Spal2013_logo.svg/166px-Spal2013_logo.svg.png",
+      "name": "SPAL",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/1/1e/PFC_Ludogorets_Razgrad.png",
+      "name": "Ludogorets Razgrad",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lechia_Gdansk.png/240px-Lechia_Gdansk.png",
+      "name": "Lechia Gdańsk",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/5/58/G%C3%B3rnik_Zabrze_crest.svg/174px-G%C3%B3rnik_Zabrze_crest.svg.png",
+      "name": "Górnik Zabrze",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/c/c2/Horoya_AC_%28logo%29.png",
+      "name": "Horoya",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/Valenciennes_FC.svg/215px-Valenciennes_FC.svg.png",
+      "name": "Valenciennes",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/6/66/Alanyaspor.png",
+      "name": "Alanyaspor",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/d/d9/Kas_Eupen_Logo.png",
+      "name": "Eupen",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Hannover_96_Logo.svg/272px-Hannover_96_Logo.svg.png",
+      "name": "Hannover 96",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/6/68/Birmingham_City_FC_logo.svg",
+      "name": "Birmingham City",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f6/Amiens_SC_Logo.svg/247px-Amiens_SC_Logo.svg.png",
+      "name": "Amiens",
+      "type": 2
+    },
+    {
+      "club_logo": "https://upload.wikimedia.org/wikipedia/en/f/f8/Al-Hilal_newlogo.png",
+      "name": "Al-Hilal",
       "type": 2
     }
   ],
 
+
   "teams": [
     {
-      "name": "England",
-      "formation":{
-      	"gk":["Burnley","Stoke City","Everton"],
-      	"df":["Chelsea","Tottenham Hotspur","Manchester City","Manchester United","Tottenham Hotspur","Leicester City","Manchester City","Liverpool"],
-      	"mf":["Manchester United","Manchester City","Liverpool","Manchester City","Manchester United","Tottenham Hotspur","Tottenham Hotspur","Chelsea"],
-      	"sk":["Arsenal","Tottenham Hotspur","Leicester City","Manchester United"]
-      }
+      "formation": {
+        "df": [
+          "CSKA Moscow",
+          "Spartak Moscow",
+          "CSKA Moscow",
+          "Akhmat Grozny",
+          "Rubin Kazan",
+          "Rubin Kazan",
+          "Zenit Saint Petersburg"
+        ],
+        "gk": [
+          "Zenit Saint Petersburg",
+          "Club Brugge"
+        ],
+        "mf": [
+          "Villarreal",
+          "Zenit Saint Petersburg",
+          "Krasnodar",
+          "CSKA Moscow",
+          "Spartak Moscow",
+          "Lokomotiv Moscow",
+          "Lokomotiv Moscow",
+          "CSKA Moscow",
+          "Zenit Saint Petersburg",
+          "Spartak Moscow",
+          "Zenit Saint Petersburg"
+        ],
+        "sk": [
+          "Krasnodar",
+          "Arsenal Tula"
+        ]
+      },
+      "name": "Russia"
     },
     {
-      "name": "France",
-      "formation":{
-      	"gk":["Burnley","Stoke City","Everton"],
-      	"df":["Chelsea","Tottenham Hotspur","Manchester City","Manchester United","Tottenham Hotspur","Leicester City","Manchester City","Liverpool"],
-      	"mf":["Manchester United","Manchester City","Liverpool","Manchester City","Manchester United","Tottenham Hotspur","Tottenham Hotspur","Chelsea"],
-      	"sk":["Arsenal","Tottenham Hotspur","Leicester City","Manchester United"]
-      }
+      "formation": {
+        "df": [
+          "West Bromwich Albion",
+          "Aston Villa",
+          "West Bromwich Albion",
+          "Al Ahly",
+          "Al Ahly",
+          "Al-Fateh",
+          "Zamalek",
+          "Al Ahly"
+        ],
+        "gk": [
+          "Al Ahly",
+          "Al Ahly"
+        ],
+        "mf": [
+          "Los Angeles FC",
+          "Wigan Athletic",
+          "Zamalek",
+          "Arsenal",
+          "KuPS",
+          "Kasımpaşa"
+        ],
+        "sk": [
+          "Al Ahly",
+          "Liverpool",
+          "Al-Ittihad",
+          "Stoke City",
+          "Al-Raed",
+          "Atromitos"
+        ]
+      },
+      "name": "Egypt"
     },
     {
-      "name": "Germany",
-      "formation":{
-      	"gk":["Burnley","Stoke City","Everton"],
-      	"df":["Chelsea","Tottenham Hotspur","Manchester City","Manchester United","Tottenham Hotspur","Leicester City","Manchester City","Liverpool"],
-      	"mf":["Manchester United","Manchester City","Liverpool","Manchester City","Manchester United","Tottenham Hotspur","Tottenham Hotspur","Chelsea"],
-      	"sk":["Arsenal","Tottenham Hotspur","Leicester City","Manchester United"]
-      }
+      "formation": {
+        "df": [
+          "Atlético Madrid",
+          "Atlético Madrid",
+          "Peñarol",
+          "Independiente",
+          "Porto",
+          "Sporting CP",
+          "Lazio"
+        ],
+        "gk": [
+          "Independiente",
+          "Vasco da Gama"
+        ],
+        "mf": [
+          "Monterrey",
+          "Juventus",
+          "Peñarol",
+          "Boca Juniors",
+          "Sampdoria",
+          "Inter Milan",
+          "Genoa"
+        ],
+        "sk": [
+          "Celta Vigo",
+          "Monterrey",
+          "Paris Saint-Germain"
+        ]
+      },
+      "name": "Uruguay"
     },
-        {
-      "name": "Brazil",
-      "formation":{
-      	"gk":["Burnley","Stoke City","Everton"],
-      	"df":["Chelsea","Tottenham Hotspur","Manchester City","Manchester United","Tottenham Hotspur","Leicester City","Manchester City","Liverpool"],
-      	"mf":["Manchester United","Manchester City","Liverpool","Manchester City","Manchester United","Tottenham Hotspur","Tottenham Hotspur","Chelsea"],
-      	"sk":["Arsenal","Tottenham Hotspur","Leicester City","Manchester United"]
-      }
+    {
+      "formation": {
+        "df": [
+          "Olympiacos",
+          "Esteghlal",
+          "Akhmat Grozny",
+          "Al-Sadd",
+          "Padideh",
+          "Esteghlal",
+          "Esteghlal",
+          "Oostende"
+        ],
+        "gk": [
+          "Zob Ahan",
+          "Marítimo"
+        ],
+        "mf": [
+          "Saipa",
+          "Amkar Perm",
+          "AEK Athens",
+          "Esteghlal",
+          "Persepolis"
+        ],
+        "sk": [
+          "Olympiacos",
+          "Östersund",
+          "Heerenveen",
+          "Al-Gharafa",
+          "AZ",
+          "Rubin Kazan",
+          "Nottingham Forest"
+        ]
+      },
+      "name": "Iran"
     },
-        {
-      "name": "Argentina",
-      "formation":{
-      	"gk":["Burnley","Stoke City","Everton"],
-      	"df":["Chelsea","Tottenham Hotspur","Manchester City","Manchester United","Tottenham Hotspur","Leicester City","Manchester City","Liverpool"],
-      	"mf":["Manchester United","Manchester City","Liverpool","Manchester City","Manchester United","Tottenham Hotspur","Tottenham Hotspur","Chelsea"],
-      	"sk":["Arsenal","Tottenham Hotspur","Leicester City","Manchester United"]
-      }
+    {
+      "formation": {
+        "df": [
+          "Real Madrid",
+          "Lille",
+          "İstanbul Başakşehir",
+          "Juventus",
+          "Wolverhampton Wanderers",
+          "Fenerbahçe"
+        ],
+        "gk": [
+          "Numancia",
+          "IR Tanger"
+        ],
+        "mf": [
+          "Ajax",
+          "Feyenoord",
+          "Galatasaray",
+          "Getafe",
+          "Al-Jazira",
+          "Caen",
+          "Leganés",
+          "Feyenoord",
+          "Standard Liège"
+        ],
+        "sk": [
+          "RS Berkane",
+          "Yeni Malatyaspor",
+          "Málaga",
+          "FC St. Pauli"
+        ]
+      },
+      "name": "Morocco"
     },
-      {
-      "name": "Spain",
-      "formation":{
-      	"gk":["Burnley","Stoke City","Everton"],
-      	"df":["Chelsea","Tottenham Hotspur","Manchester City","Manchester United","Tottenham Hotspur","Leicester City","Manchester City","Liverpool"],
-      	"mf":["Manchester United","Manchester City","Liverpool","Manchester City","Manchester United","Tottenham Hotspur","Tottenham Hotspur","Chelsea"],
-      	"sk":["Arsenal","Tottenham Hotspur","Leicester City","Manchester United"]
-      }
+    {
+      "formation": {
+        "df": [
+          "Rangers",
+          "Beşiktaş",
+          "Borussia Dortmund",
+          "Dalian Yifang",
+          "Benfica",
+          "Porto",
+          "Napoli",
+          "Southampton"
+        ],
+        "gk": [
+          "Lyon",
+          "Göztepe"
+        ],
+        "mf": [
+          "Lokomotiv Moscow",
+          "Monaco",
+          "West Ham United",
+          "Manchester City",
+          "Sporting CP",
+          "Sporting CP",
+          "Leicester City"
+        ],
+        "sk": [
+          "Real Madrid",
+          "Milan",
+          "Valencia",
+          "Sporting CP",
+          "Beşiktaş"
+        ]
+      },
+      "name": "Portugal"
+    },
+    {
+      "formation": {
+        "df": [
+          "Real Madrid",
+          "Barcelona",
+          "Real Madrid",
+          "Real Sociedad",
+          "Chelsea",
+          "Real Madrid",
+          "Arsenal",
+          "Barcelona"
+        ],
+        "gk": [
+          "Athletic Bilbao",
+          "Napoli"
+        ],
+        "mf": [
+          "Barcelona",
+          "Barcelona",
+          "Atlético Madrid",
+          "Atlético Madrid",
+          "Bayern Munich",
+          "Real Madrid",
+          "Real Madrid"
+        ],
+        "sk": [
+          "Valencia",
+          "Real Madrid",
+          "Celta Vigo",
+          "Atlético Madrid",
+          "Manchester City"
+        ]
+      },
+      "name": "Spain"
+    },
+    {
+      "formation": {
+        "df": [
+          "Yokohama F. Marinos",
+          "Millwall",
+          "Al-Ahli",
+          "Suwon Samsung Bluewings",
+          "Bursaspor",
+          "Western Sydney Wanderers",
+          "Grasshoppers"
+        ],
+        "gk": [
+          "Feyenoord",
+          "Genk"
+        ],
+        "mf": [
+          "Huddersfield Town",
+          "Aston Villa",
+          "Hull City",
+          "Celtic"
+        ],
+        "sk": [
+          "Millwall",
+          "Hertha BSC",
+          "Luzern",
+          "VfL Bochum",
+          "Urawa Red Diamonds",
+          "Hibernian",
+          "Melbourne City",
+          "Newcastle Jets"
+        ]
+      },
+      "name": "Australia"
+    },
+    {
+      "formation": {
+        "df": [
+          "Borussia Mönchengladbach",
+          "Sevilla",
+          "Ipswich Town",
+          "Chelsea",
+          "Huddersfield Town",
+          "Brentford",
+          "Udinese"
+        ],
+        "gk": [
+          "Huddersfield Town",
+          "Brøndby"
+        ],
+        "mf": [
+          "Copenhagen",
+          "Werder Bremen",
+          "Tottenham Hotspur",
+          "Bordeaux",
+          "Ajax"
+        ],
+        "sk": [
+          "Feyenoord",
+          "Bordeaux",
+          "Ajax",
+          "Copenhagen",
+          "RB Leipzig",
+          "Atalanta",
+          "Celta Vigo"
+        ]
+      },
+      "name": "Denmark"
+    },
+    {
+      "formation": {
+        "df": [
+          "VfB Stuttgart",
+          "Paris Saint-Germain",
+          "Real Madrid",
+          "Barcelona",
+          "Marseille",
+          "Monaco",
+          "Atlético Madrid",
+          "Manchester City"
+        ],
+        "gk": [
+          "Marseille",
+          "Paris Saint-Germain"
+        ],
+        "mf": [
+          "Manchester United",
+          "Bayern Munich",
+          "Chelsea",
+          "Juventus",
+          "Sevilla"
+        ],
+        "sk": [
+          "Atlético Madrid",
+          "Monaco",
+          "Chelsea",
+          "Paris Saint-Germain",
+          "Barcelona",
+          "Lyon",
+          "Marseille"
+        ]
+      },
+      "name": "France"
+    },
+    {
+      "formation": {
+        "df": [
+          "Atlético Junior",
+          "Universitario",
+          "Puebla",
+          "Alianza Lima",
+          "Flamengo",
+          "Veracruz",
+          "Lobos BUAP",
+          "Melgar"
+        ],
+        "gk": [
+          "Deportivo Municipal",
+          "UTC"
+        ],
+        "mf": [
+          "Vitória de Guimarães",
+          "São Paulo",
+          "Feyenoord",
+          "Portland Timbers",
+          "Veracruz",
+          "Orlando City",
+          "Lobos BUAP"
+        ],
+        "sk": [
+          "Flamengo",
+          "Lokomotiv Moscow",
+          "Morelia",
+          "Watford",
+          "AaB"
+        ]
+      },
+      "name": "Peru"
+    },
+    {
+      "formation": {
+        "df": [
+          "Sevilla",
+          "Ajax",
+          "Torino",
+          "Roma",
+          "Sporting CP",
+          "Hebei China Fortune",
+          "Manchester United",
+          "Manchester City",
+          "Benfica"
+        ],
+        "gk": [
+          "River Plate",
+          "Chelsea"
+        ],
+        "mf": [
+          "Milan",
+          "Sevilla",
+          "Paris Saint-Germain",
+          "Independiente",
+          "West Ham United",
+          "Paris Saint-Germain",
+          "Boca Juniors"
+        ],
+        "sk": [
+          "Juventus",
+          "Barcelona",
+          "Manchester City",
+          "Juventus"
+        ]
+      },
+      "name": "Argentina"
+    },
+    {
+      "formation": {
+        "df": [
+          "Atlético Madrid",
+          "Sampdoria",
+          "Lokomotiv Moscow",
+          "Liverpool",
+          "Bayer Leverkusen",
+          "Red Bull Salzburg",
+          "Beşiktaş",
+          "Dynamo Kyiv"
+        ],
+        "gk": [
+          "Gent",
+          "Monaco"
+        ],
+        "mf": [
+          "Barcelona",
+          "Real Madrid",
+          "Real Madrid",
+          "Inter Milan",
+          "Rijeka",
+          "Fiorentina"
+        ],
+        "sk": [
+          "Inter Milan",
+          "1899 Hoffenheim",
+          "Milan",
+          "Juventus",
+          "Eintracht Frankfurt",
+          "Schalke 04"
+        ]
+      },
+      "name": "Croatia"
+    },
+    {
+      "formation": {
+        "df": [
+          "Valur",
+          "Rostov",
+          "Rostov",
+          "Aberdeen",
+          "Levski Sofia",
+          "Bristol City",
+          "Lokeren"
+        ],
+        "gk": [
+          "Roskilde",
+          "Nordsjælland"
+        ],
+        "mf": [
+          "Vålerenga",
+          "PSV Eindhoven",
+          "Burnley",
+          "Aston Villa",
+          "Everton",
+          "Kardemir Karabükspor",
+          "Cardiff City",
+          "SV Sandhausen",
+          "Udinese",
+          "Malmö"
+        ],
+        "sk": [
+          "Rostov",
+          "FC Augsburg",
+          "Reading"
+        ]
+      },
+      "name": "Iceland"
+    },
+    {
+      "formation": {
+        "df": [
+          "Amkar Perm",
+          "Cercle Brugge",
+          "Bursaspor",
+          "Mainz 05",
+          "Bursaspor",
+          "Nantes",
+          "ADO Den Haag",
+          "Kasımpaşa"
+        ],
+        "gk": [
+          "Chippa United",
+          "Deportivo La Coruña"
+        ],
+        "mf": [
+          "Leicester City",
+          "Las Palmas",
+          "Tianjin TEDA",
+          "Torino",
+          "Trabzonspor",
+          "Hapoel Be'er Sheva"
+        ],
+        "sk": [
+          "CSKA Moscow",
+          "Changchun Yatai",
+          "Chelsea",
+          "Crotone",
+          "Leicester City",
+          "Arsenal"
+        ]
+      },
+      "name": "Nigeria"
+    },
+    {
+      "formation": {
+        "df": [
+          "Paris Saint-Germain",
+          "Inter Milan",
+          "Grêmio",
+          "Atlético Madrid",
+          "Real Madrid",
+          "Paris Saint-Germain",
+          "Manchester City",
+          "Corinthians"
+        ],
+        "gk": [
+          "Corinthians",
+          "Manchester City"
+        ],
+        "mf": [
+          "Real Madrid",
+          "Beijing Sinobo Guoan",
+          "Barcelona",
+          "Barcelona",
+          "Manchester City",
+          "Shakhtar Donetsk",
+          "Chelsea"
+        ],
+        "sk": [
+          "Juventus",
+          "Manchester City",
+          "Paris Saint-Germain",
+          "Liverpool",
+          "Shakhtar Donetsk"
+        ]
+      },
+      "name": "Brazil"
+    },
+    {
+      "formation": {
+        "df": [
+          "Águilas Doradas",
+          "Bologna",
+          "Norrköping",
+          "Espanyol",
+          "Sunderland",
+          "Minnesota United",
+          "Celtic",
+          "Vancouver Whitecaps FC",
+          "New York City FC"
+        ],
+        "gk": [
+          "Alajuelense",
+          "Herediano"
+        ],
+        "mf": [
+          "Deportivo La Coruña",
+          "Saprissa",
+          "Saprissa",
+          "Sporting CP",
+          "New York City FC",
+          "Herediano",
+          "Lausanne",
+          "Portland Timbers"
+        ],
+        "sk": [
+          "Saprissa",
+          "Real Betis",
+          "Los Angeles FC"
+        ]
+      },
+      "name": "Costa Rica"
+    },
+    {
+      "formation": {
+        "df": [
+          "Villarreal",
+          "Beşiktaş",
+          "Anderlecht",
+          "Zenit Saint Petersburg",
+          "Roma",
+          "Werder Bremen",
+          "Red Star Belgrade",
+          "Fiorentina"
+        ],
+        "gk": [
+          "Maccabi Tel Aviv",
+          "Eibar"
+        ],
+        "mf": [
+          "Crystal Palace",
+          "Benfica",
+          "Southampton",
+          "Cardiff City",
+          "Hamburger SV",
+          "Lazio",
+          "Manchester United",
+          "Torino"
+        ],
+        "sk": [
+          "PAOK",
+          "Fulham",
+          "Red Star Belgrade",
+          "Eintracht Frankfurt"
+        ]
+      },
+      "name": "Serbia"
+    },
+    {
+      "formation": {
+        "df": [
+          "Arsenal",
+          "Toulouse",
+          "Borussia Mönchengladbach",
+          "Borussia Dortmund",
+          "Basel",
+          "Milan",
+          "Antalyaspor",
+          "Deportivo La Coruña"
+        ],
+        "gk": [
+          "RB Leipzig",
+          "Borussia Dortmund"
+        ],
+        "mf": [
+          "Atalanta",
+          "Arsenal",
+          "Udinese",
+          "1899 Hoffenheim",
+          "Bologna",
+          "Eintracht Frankfurt",
+          "Borussia Mönchengladbach",
+          "Stoke City"
+        ],
+        "sk": [
+          "Schalke 04",
+          "Benfica",
+          "Dinamo Zagreb",
+          "Borussia Mönchengladbach"
+        ]
+      },
+      "name": "Switzerland"
+    },
+    {
+      "formation": {
+        "df": [
+          "Hertha BSC",
+          "1. FC Köln",
+          "Borussia Mönchengladbach",
+          "Bayern Munich",
+          "Bayern Munich",
+          "Chelsea",
+          "Bayern Munich",
+          "Bayern Munich"
+        ],
+        "gk": [
+          "Paris Saint-Germain",
+          "Barcelona"
+        ],
+        "mf": [
+          "Juventus",
+          "Paris Saint-Germain",
+          "Real Madrid",
+          "Arsenal",
+          "Bayern Munich",
+          "Schalke 04",
+          "Bayern Munich",
+          "Bayer Leverkusen",
+          "Manchester City"
+        ],
+        "sk": [
+          "RB Leipzig",
+          "Borussia Dortmund",
+          "VfB Stuttgart"
+        ]
+      },
+      "name": "Germany"
+    },
+    {
+      "formation": {
+        "df": [
+          "Eintracht Frankfurt",
+          "Atlas",
+          "Porto",
+          "Real Sociedad",
+          "Porto",
+          "América",
+          "UANL"
+        ],
+        "gk": [
+          "Toluca",
+          "Standard Liège"
+        ],
+        "mf": [
+          "LA Galaxy",
+          "Sevilla",
+          "LA Galaxy",
+          "Porto",
+          "Real Betis",
+          "UANL",
+          "UNAM"
+        ],
+        "sk": [
+          "Eintracht Frankfurt",
+          "Benfica",
+          "Los Angeles FC",
+          "West Ham United",
+          "América",
+          "PSV Eindhoven"
+        ]
+      },
+      "name": "Mexico"
+    },
+    {
+      "formation": {
+        "df": [
+          "Jeonbuk Hyundai Motors",
+          "Sagan Tosu",
+          "Jeju United",
+          "Seongnam FC",
+          "Ulsan Hyundai",
+          "Sangju Sangmu",
+          "Sangju Sangmu",
+          "Guangzhou Evergrande",
+          "FC Tokyo",
+          "FC Seoul"
+        ],
+        "gk": [
+          "Cerezo Osaka",
+          "Daegu FC"
+        ],
+        "mf": [
+          "Asan Mugunghwa",
+          "Hellas Verona",
+          "FC Augsburg",
+          "Vissel Kobe",
+          "Swansea City",
+          "Jeonbuk Hyundai Motors",
+          "Incheon United"
+        ],
+        "sk": [
+          "Tottenham Hotspur",
+          "Jeonbuk Hyundai Motors",
+          "Red Bull Salzburg"
+        ]
+      },
+      "name": "South Korea"
+    },
+    {
+      "formation": {
+        "df": [
+          "Celtic",
+          "Manchester United",
+          "Krasnodar",
+          "Swansea City",
+          "Werder Bremen",
+          "Bologna",
+          "Bologna",
+          "Leeds United"
+        ],
+        "gk": [
+          "Guingamp",
+          "Swansea City"
+        ],
+        "mf": [
+          "Hull City",
+          "Hamburger SV",
+          "RB Leipzig",
+          "Seattle Sounders FC",
+          "Genoa",
+          "Krasnodar",
+          "Crotone",
+          "Toulouse"
+        ],
+        "sk": [
+          "Al Ain",
+          "Alavés",
+          "Toulouse",
+          "Waasland-Beveren"
+        ]
+      },
+      "name": "Sweden"
+    },
+    {
+      "formation": {
+        "df": [
+          "Tottenham Hotspur",
+          "Barcelona",
+          "Manchester City",
+          "Tottenham Hotspur",
+          "Paris Saint-Germain",
+          "Celtic",
+          "Anderlecht"
+        ],
+        "gk": [
+          "Liverpool",
+          "VfL Wolfsburg"
+        ],
+        "mf": [
+          "Tianjin Quanjian",
+          "Manchester City",
+          "Manchester United",
+          "Dalian Yifang",
+          "Borussia Mönchengladbach",
+          "Monaco",
+          "West Bromwich Albion"
+        ],
+        "sk": [
+          "Manchester United",
+          "Chelsea",
+          "Napoli",
+          "Real Sociedad",
+          "Borussia Dortmund"
+        ]
+      },
+      "name": "Belgium"
+    },
+    {
+      "formation": {
+        "df": [
+          "Manchester City",
+          "Tottenham Hotspur",
+          "Manchester City",
+          "Leicester City",
+          "Tottenham Hotspur",
+          "Chelsea",
+          "Manchester United",
+          "Manchester City",
+          "Manchester United",
+          "Liverpool"
+        ],
+        "gk": [
+          "Stoke City",
+          "Burnley"
+        ],
+        "mf": [
+          "Tottenham Hotspur",
+          "Manchester United",
+          "Liverpool",
+          "Tottenham Hotspur",
+          "Crystal Palace"
+        ],
+        "sk": [
+          "Tottenham Hotspur",
+          "Manchester City",
+          "Leicester City",
+          "Arsenal",
+          "Manchester United"
+        ]
+      },
+      "name": "England"
+    },
+    {
+      "formation": {
+        "df": [
+          "New York Red Bulls",
+          "San Jose Earthquakes",
+          "New York Red Bulls",
+          "Seattle Sounders FC",
+          "Houston Dynamo",
+          "Dunajská Streda",
+          "Olimpia",
+          "Municipal"
+        ],
+        "gk": [
+          "Chorrillo",
+          "San Francisco"
+        ],
+        "mf": [
+          "Atlético Bucaramanga",
+          "Tapachula",
+          "Universidad de Chile",
+          "Plaza Amador",
+          "Gent",
+          "San Jose Earthquakes",
+          "Gent"
+        ],
+        "sk": [
+          "Municipal",
+          "Huachipato",
+          "Deportivo Fabril",
+          "Alajuelense",
+          "Sport Boys"
+        ]
+      },
+      "name": "Panama"
+    },
+    {
+      "formation": {
+        "df": [
+          "Kasımpaşa",
+          "Leicester City",
+          "CS Sfaxien",
+          "Dijon",
+          "Étoile du Sahel",
+          "Gent",
+          "Al Ahly",
+          "Zamalek"
+        ],
+        "gk": [
+          "Al-Batin",
+          "Châteauroux"
+        ],
+        "mf": [
+          "Espérance",
+          "Al-Nassr",
+          "Al-Ahli",
+          "Montpellier"
+        ],
+        "sk": [
+          "Troyes",
+          "Al-Ettifaq",
+          "Rennes",
+          "Club Africain",
+          "Nice",
+          "Club Africain",
+          "Espérance",
+          "Dijon"
+        ]
+      },
+      "name": "Tunisia"
+    },
+    {
+      "formation": {
+        "df": [
+          "Milan",
+          "Pachuca",
+          "PSV Eindhoven",
+          "Barcelona",
+          "Girona",
+          "Boca Juniors",
+          "Tottenham Hotspur"
+        ],
+        "gk": [
+          "Deportivo Cali",
+          "Once Caldas"
+        ],
+        "mf": [
+          "Boca Juniors",
+          "Espanyol",
+          "Deportivo Cali",
+          "Bayern Munich",
+          "Juventus",
+          "América",
+          "Levante",
+          "River Plate"
+        ],
+        "sk": [
+          "Villarreal",
+          "Monaco",
+          "Sevilla",
+          "Palmeiras",
+          "Brighton & Hove Albion"
+        ]
+      },
+      "name": "Colombia"
+    },
+    {
+      "formation": {
+        "df": [
+          "Kashima Antlers",
+          "Kashima Antlers",
+          "Galatasaray",
+          "Urawa Red Diamonds",
+          "Marseille",
+          "Urawa Red Diamonds",
+          "Hamburger SV",
+          "Southampton"
+        ],
+        "gk": [
+          "Gamba Osaka",
+          "Kashiwa Reysol"
+        ],
+        "mf": [
+          "Pachuca",
+          "Getafe",
+          "Fortuna Düsseldorf",
+          "Borussia Dortmund",
+          "Fortuna Düsseldorf",
+          "Eibar",
+          "Cerezo Osaka",
+          "Eintracht Frankfurt",
+          "Kawasaki Frontale"
+        ],
+        "sk": [
+          "Leicester City",
+          "Mainz 05",
+          "1. FC Köln"
+        ]
+      },
+      "name": "Japan"
+    },
+    {
+      "formation": {
+        "df": [
+          "Legia Warsaw",
+          "Legia Warsaw",
+          "SPAL",
+          "Southampton",
+          "Monaco",
+          "Sampdoria",
+          "Borussia Dortmund"
+        ],
+        "gk": [
+          "Ipswich Town",
+          "Swansea City"
+        ],
+        "mf": [
+          "Ludogorets Razgrad",
+          "Sampdoria",
+          "West Bromwich Albion",
+          "Hull City",
+          "Lokomotiv Moscow",
+          "VfL Wolfsburg",
+          "Lechia Gdańsk",
+          "Napoli",
+          "Górnik Zabrze"
+        ],
+        "sk": [
+          "Napoli",
+          "Bayern Munich",
+          "Anderlecht",
+          "Sampdoria"
+        ]
+      },
+      "name": "Poland"
+    },
+    {
+      "formation": {
+        "df": [
+          "Valenciennes",
+          "Napoli",
+          "Anderlecht",
+          "Bordeaux",
+          "Alanyaspor",
+          "Eupen"
+        ],
+        "gk": [
+          "Horoya",
+          "SPAL"
+        ],
+        "mf": [
+          "Everton",
+          "Hannover 96",
+          "West Ham United",
+          "Birmingham City",
+          "Wolverhampton Wanderers",
+          "Stoke City"
+        ],
+        "sk": [
+          "Bursaspor",
+          "Stoke City",
+          "Liverpool",
+          "Amiens",
+          "Rennes",
+          "Rennes",
+          "Torino",
+          "Monaco"
+        ]
+      },
+      "name": "Senegal"
+    },
+    {
+      "formation": {
+        "df": [
+          "Al-Hilal",
+          "Al-Hilal",
+          "Al-Hilal",
+          "Al-Nassr",
+          "Al-Hilal",
+          "Al-Hilal",
+          "Al-Hilal"
+        ],
+        "gk": [
+          "Al-Hilal",
+          "Al-Hilal"
+        ],
+        "mf": [
+          "Al-Hilal",
+          "Leganés",
+          "Al-Shabab",
+          "Al-Hilal",
+          "Al-Hilal",
+          "Al-Hilal",
+          "Al-Shabab",
+          "Al-Hilal",
+          "Al-Hilal",
+          "Al-Hilal",
+          "Al-Hilal"
+        ],
+        "sk": [
+          "Al-Hilal",
+          "Al-Nassr",
+          "Levante"
+        ]
+      },
+      "name": "Saudi Arabia"
     }
   ]
 }

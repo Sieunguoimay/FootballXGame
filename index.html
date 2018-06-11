@@ -8,7 +8,7 @@
 	<style type="text/css">
 		@font-face{
 			font-family: game_font;
-			src:url('../WhichTeamIsThis/assets/font/Dusha_-_FIFA_World_Cup_2018.ttf');
+			src:url('../assets/font/Dusha_-_FIFA_World_Cup_2018.ttf');
 		}
 		#canvas{
 			display:block;
@@ -252,11 +252,11 @@ var teams = {
 
 		var difficultLevels = {
 				l1:["England","France","Germany","Brazil","Argentina","Spain"],
-				l2:["Belgium","Russia","Arab Saudi","South Korea","Japan,Portugal"],
+				l2:["Belgium","Russia","Saudi Arabia","South Korea","Japan","Portugal"],
 				l3:["Egypt","Senegal","Morocco","Uruguay","Iran"],
 				l4:["Mexico","Australia","Iceland","Peru","Denmark"],
 				l5:["Croatia","Nigeria","Switzerland","Costa Rica","Poland"],
-				l6:["Panama","Tunisia","Colombia","Serbia","Sweeden"]
+				l6:["Panama","Tunisia","Colombia","Serbia","Sweden"]
 			};
 
 
@@ -266,7 +266,7 @@ var teams = {
 
 			//choose the teams by generate the index.
 			var uniqueIndex;// = Math.floor(Math.random()*allTeams.length);
-			if(i<6){//difficult level 1
+			if(i<4){//difficult level 1
 				var indexInDL = Math.floor(Math.random()*difficultLevels.l1.length);
 				uniqueIndex = findTeamIndex(difficultLevels.l1[indexInDL]);
 				difficultLevels.l1.splice(indexInDL,1);
@@ -291,10 +291,25 @@ var teams = {
 				uniqueIndex = findTeamIndex(difficultLevels.l6[indexInDL]);
 				difficultLevels.l6.splice(indexInDL,1);
 			}
+			console.log(i);
 			console.log(uniqueIndex+" "+allTeams[uniqueIndex].name);
 
-			var formation={}
-			Object.assign(formation,allTeams[uniqueIndex].formation);
+
+
+
+
+
+			var formation={gk:[],df:[],mf:[],sk:[]};
+
+			for(var j = 0; j<allTeams[uniqueIndex].formation.gk.length; j++)
+				formation.gk.push(allTeams[uniqueIndex].formation.gk[j]);
+			for(var j = 0; j<allTeams[uniqueIndex].formation.df.length; j++)
+				formation.df.push(allTeams[uniqueIndex].formation.df[j]);
+			for(var j = 0; j<allTeams[uniqueIndex].formation.mf.length; j++)
+				formation.mf.push(allTeams[uniqueIndex].formation.mf[j]);
+			for(var j = 0; j<allTeams[uniqueIndex].formation.sk.length; j++)
+				formation.sk.push(allTeams[uniqueIndex].formation.sk[j]);
+			//Object.assign(formation,);
 
 			var ps = [];
 			//1 goalkeeper
@@ -1310,8 +1325,11 @@ PromptScene.prototype.draw = function(){
 				drawImage(this.image,WIDTH/2, HEIGHT/3);
 				drawText("CORRECT!",WIDTH/2, HEIGHT/3+230,TEXT_COLOR);
 			}else{
+				ctx.shadowColor = TEXT_COLOR;
+				ctx.shadowBlur = 100;
 				drawImage(teams._teams[level].name,WIDTH/2, HEIGHT/3);
 				drawText(teams._teams[level].name,WIDTH/2, HEIGHT/3+270,TEXT_COLOR);			
+				ctx.shadowBlur = 0;
 			}
 			if(score.added()&&level!=MaxLevel-1){
 				this.OKButtons[0].draw();
