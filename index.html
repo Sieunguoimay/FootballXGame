@@ -477,7 +477,7 @@ var hiddenpositions={
 					varprizedScores.put(this.seeClubNameButton.x,this.seeClubNameButton.y-100,-SCORE_TO_VIEW_CLUB_NAME);
 					this.positions[this.lastOpenIndices[this.lastOpenIndices.length-1]].showClubName = true;
 					this.lastOpenIndices.pop();
-					sounds["Button"].play();
+					//sounds["Button"].play();
 				}
 			}else{
 				score.color = '#e00';
@@ -1984,11 +1984,10 @@ function sound(src) {
     document.body.appendChild(this.sound);
 
     this.play = function(){
-    	if(this.sound)
-	        this.sound.play();
+	   //     this.sound.play();
     }
     this.stop = function(){
-        this.sound.pause();
+        //this.sound.pause();
     }    
 }
 
