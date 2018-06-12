@@ -40,5 +40,19 @@ my url:
 //-> id chua dung
 //-> game on web ko chay tren dien thoai->screen size fixed for PC
 //-> compress sound assets
+
 -> Hoan thien tip scene
-	
+-> chinh mau chu
+-> cho be cai logo lai
+-> am thanh moi vao bi ko keu
+-> lam chu tieng viet. thay chu cho background
+-> lam huong dan moi vao choi.
+
+
+
+tomorrow:
+	-> multiple records for scores
+	-> improve the effect
+	-> tim cach fix problem of size
+	-> DOMException: play() failed because the user didn't interact with the document first.
+
