@@ -25,9 +25,20 @@ my url:
 //- them 1 button quit game
 
 
-- change background
-- choose your answer
-- Tip scene
+//- change background
+//- choose your answer
+//- Tip scene
 //- disable button on answerbar
--at gameover, the position of 1/20 is not correct
--at gameover, the button next is not at right place after the show answer is selected
+//-at gameover, the position of 1/20 is not correct
+//-at gameover, the button next is not at right place after the show answer is selected
+
+
+//-> thay 15s constant cho moi lan auto open
+//-> chuyen cai button vao phia ben phai phia duoi points
+//-> answer bar: de 7 doi tuyen thoi. an cai button control di.
+
+//-> id chua dung
+//-> game on web ko chay tren dien thoai->screen size fixed for PC
+//-> compress sound assets
+-> Hoan thien tip scene
+	

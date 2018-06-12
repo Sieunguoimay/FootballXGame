@@ -2,6 +2,9 @@
 	font-family: game_font;
 	src:url('https://www.diunsa.net/recursos/fonts/Dusha_-_FIFA_World_Cup_2018.ttf');
 }
+html, body {
+    overflow: hidden;
+}
 #canvas{
 	display:block;
 	margin:auto;
