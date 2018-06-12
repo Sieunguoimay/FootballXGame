@@ -1985,9 +1985,11 @@ function sound(src) {
 
     this.play = function(){
 	   //     this.sound.play();
+	   console.log("play sound");
     }
     this.stop = function(){
         //this.sound.pause();
+	   console.log("stop sound");
     }    
     
 }
@@ -2292,8 +2294,7 @@ function update(){
 	}
 	if(currentState === states.Splash){
 		splash.update();
-	}else
-		sounds['MainMusic'].stop();
+	}
 	if(currentState === states.Hint){
 		hiddenpositions.hint();
 	}
