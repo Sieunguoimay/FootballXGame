@@ -2,44 +2,26 @@
 <html>
 <head>
 	<title>Which Team Is This?</title>
+
 	<meta charset="utf-8">
 	<meta http-equiv="cache-control" content="private, no-cache, no-store, must-revalidate, max-age=0" />
  	<meta http-equiv="Pragma" content="no-cache" />
  	<meta http-equiv="Expires" content="0" />
 
-	<style type="text/css">
-		@font-face{
-			font-family: game_font;
-			src:url('https://www.diunsa.net/recursos/fonts/Dusha_-_FIFA_World_Cup_2018.ttf');
-		}
-		#canvas{
-			display:block;
-			margin:auto;
-			position:absolute;
-			left: 0;
-			right: 0;
-		}
-		#canvasBg{
-			display:block;
-			margin:auto;
-			position:absolute;
-			left: 0;
-			right: 0;
-		}
-	</style>
+
 	<script src="https://cdn.firebase.com/js/client/2.3.0/firebase.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-
+	<link rel="stylesheet" type="text/css" href="main.css">
 </head>
-
 <body style="background-color:#117864">
-
-
 
 <canvas id="canvasBg"></canvas>
 <canvas id="canvas" ></canvas>
 <script type="text/javascript">
+
+
+
 
 function getQueryVariable(variable){
 	
@@ -276,12 +258,9 @@ var teams = {
 
 
 		var difficultLevels = {
-				l1:["England","France","Germany","Brazil","Argentina","Spain"],
-				l2:["Belgium","Russia","Saudi Arabia","South Korea","Japan","Portugal"],
-				l3:["Egypt","Senegal","Morocco","Uruguay","Iran"],
-				l4:["Mexico","Australia","Iceland","Peru","Denmark"],
-				l5:["Croatia","Nigeria","Switzerland","Costa Rica","Poland"],
-				l6:["Panama","Tunisia","Colombia","Serbia","Sweden"]
+				l1:["England","France","Germany","Brazil","Argentina","Spain","Belgium","Russia","Saudi Arabia","South Korea","Japan","Portugal"],
+				l2:["Egypt","Senegal","Morocco","Uruguay","Iran","Mexico","Australia","Iceland","Peru","Denmark"],
+				l3:["Croatia","Nigeria","Switzerland","Costa Rica","Poland","Panama","Tunisia","Colombia","Serbia","Sweden"]
 			};
 
 		for(var i = 0; i<MaxLevel; i++){
@@ -298,25 +277,14 @@ var teams = {
 				var indexInDL = Math.floor(Math.random()*difficultLevels.l2.length);
 				uniqueIndex = findTeamIndex(difficultLevels.l2[indexInDL]);
 				difficultLevels.l2.splice(indexInDL,1);			
-			}else if(i<10){
+			}else{
 				var indexInDL = Math.floor(Math.random()*difficultLevels.l3.length);
 				uniqueIndex = findTeamIndex(difficultLevels.l3[indexInDL]);
 				difficultLevels.l3.splice(indexInDL,1);
-			}else if(i<14){
-				var indexInDL = Math.floor(Math.random()*difficultLevels.l4.length);
-				uniqueIndex = findTeamIndex(difficultLevels.l4[indexInDL]);
-				difficultLevels.l4.splice(indexInDL,1);
-			}else if(i<17){
-				var indexInDL = Math.floor(Math.random()*difficultLevels.l5.length);
-				uniqueIndex = findTeamIndex(difficultLevels.l5[indexInDL]);
-				difficultLevels.l5.splice(indexInDL,1);
-			}else{
-				var indexInDL = Math.floor(Math.random()*difficultLevels.l6.length);
-				uniqueIndex = findTeamIndex(difficultLevels.l6[indexInDL]);
-				difficultLevels.l6.splice(indexInDL,1);
 			}
-			console.log(i);
-			console.log(uniqueIndex+" "+allTeams[uniqueIndex].name);
+
+			//console.log(i);
+			console.log(allTeams[uniqueIndex].name);
 
 
 
@@ -2524,6 +2492,7 @@ function sleep(milliseconds) {
   js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
+
 </script>
 
 
