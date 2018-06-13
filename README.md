@@ -53,7 +53,12 @@ my url:
 tomorrow:
 	-> multiple records for scores
 	-> improve the effect
-	-> tim cach fix problem of size
+	//-> tim cach fix problem of size
 	//-> DOMException: play() failed because the user didn't interact with the document first.
 
 	-> design lai cai hidden position . cho hieu ung bong bay len tren.
+
+
+
+	-> load lan thu 2
+	-> van de iframe 

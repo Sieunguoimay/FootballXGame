@@ -83,15 +83,16 @@ var arrLang =
 	leaderboard_txt:'Bảng Xếp Hạng',
 	wrong_answer:"NO NO NO!",
 	time_up_txt:"Hết Giờ!",
-	correct_answer:"CHUẨN LUÔN!",
+	correct_answer:"CHUẨN RỒI",
 	play_again_txt:"CHƠI LẠI",
 	how_to_play_txt:"HƯỚNG DẪN",
 	language_txt:"Ngôn Ngữ",
 	play_now_txt:"CHƠI"
 }};
-
-var text = arrLang['en-US'];//default
+var userLang = 'en-US';
+var text = arrLang[userLang];//default
 function setLanguage(){
+	//console.log("Language: "+userLang);
 	if(userLang)
 		text = arrLang[userLang];
 }
@@ -113,6 +114,7 @@ function getUserInfo(){
 	var token = getQueryVariable('access_token');
 	var user_id = getQueryVariable('user_id');
 	userLang = getQueryVariable('lang');
+	setLanguage();
 	//var base_url = "http://code.ttab.me:51167";
 	var base_url = "https://api.ttab.me";
 
@@ -2319,7 +2321,6 @@ function init(l){
 	level = l;
 	//console.log(teams._teams);
 	frame = 0;
-	setLanguage();
 	hiddenpositions.init();
 	clock.init(30);
 	score.init();
