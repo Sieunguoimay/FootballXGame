@@ -55,12 +55,12 @@ tomorrow:
 	//-> tim cach fix problem of size
 	//-> DOMException: play() failed because the user didn't interact with the document first.
 
-	-> design lai cai hidden position . cho hieu ung bong bay len tren.
+	//-> design lai cai hidden position . cho hieu ung bong bay len tren.
 
 
 
 	//-> multiple records for scores
-	-> load lan thu 2
+	//-> load lan thu 2
 	//-> van de iframe 
-	-> van de tru -10
+	//-> van de tru -10
 
