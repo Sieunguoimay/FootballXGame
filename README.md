@@ -54,5 +54,6 @@ tomorrow:
 	-> multiple records for scores
 	-> improve the effect
 	-> tim cach fix problem of size
-	-> DOMException: play() failed because the user didn't interact with the document first.
+	//-> DOMException: play() failed because the user didn't interact with the document first.
 
+	-> design lai cai hidden position . cho hieu ung bong bay len tren.

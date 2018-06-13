@@ -30,8 +30,10 @@ var userLang = navigator.language || navigator.userLanguage;
 
 
 var debugMode = false;
-var text = (userLang ==='en-US')?{
-//var text = (userLang ==='vi-vn')?{
+var arrLang = 
+{
+	'en-US':{
+//var text = (userLang ==='vi-VN')?{
 	game_question:"WHICH TEAM IS THIS?",
 	point_txt:"POINTS",
 	score_txt:'SCORE',
@@ -47,7 +49,7 @@ var text = (userLang ==='en-US')?{
 	end_game_txt:"End Game",
 	see_answer_txt:"See Answer",
 	continue_txt:"Continue",
-	continue_txt:"Next",
+	next_txt:"Next",
 	rank_txt:'RANK',
 	score_txt:'SCORE',
 	leaderboard_txt:'LEADERBOARD',
@@ -55,12 +57,15 @@ var text = (userLang ==='en-US')?{
 	time_up_txt:"TIME'S UP",
 	correct_answer:"CORRECT!",
 	play_again_txt:"PLAY AGAIN",
-	how_to_play_txt:"HOW TO PLAY"
-}:{
-	game_question:"ĐOÁN TÊN TUYỂN QUỐC GIA",    
+	how_to_play_txt:"HOW TO PLAY",
+	language_txt:"LANGUAGE",
+	play_now_txt:"PLAY NOW"
+},
+	'vi-VN':{
+	game_question:"ĐOÁN TÊN TUYỂN QUỐC GIA",
 	point_txt:"Điểm",
 	score_txt:'Tổng Điểm',
-	time_txt:'TIME',
+	time_txt:'TG',
 	click_to_open:'Lật xem CLB',
 	show_answer_txt:'Xem Đáp Án',
 	choose_answer_here_txt:'Chọn Kết Quả',
@@ -72,7 +77,7 @@ var text = (userLang ==='en-US')?{
 	end_game_txt:"Kết Thúc",
 	see_answer_txt:"Xem Kết Quả",
 	continue_txt:"Chơi Tiếp",
-	continue_txt:"Vòng Sau",
+	next_txt:"Tiếp",
 	rank_txt:'Thứ Hạng',
 	score_txt:'Tổng Điểm',
 	leaderboard_txt:'Bảng Xếp Hạng',
@@ -80,8 +85,16 @@ var text = (userLang ==='en-US')?{
 	time_up_txt:"Hết Giờ!",
 	correct_answer:"CHUẨN LUÔN!",
 	play_again_txt:"CHƠI LẠI",
-	how_to_play_txt:"HƯỚNG DẪN"
-};
+	how_to_play_txt:"HƯỚNG DẪN",
+	language_txt:"Ngôn Ngữ",
+	play_now_txt:"CHƠI"
+}};
+
+var text = arrLang['en-US'];//default
+function setLanguage(){
+	if(userLang)
+		text = arrLang[userLang];
+}
 
 
 
@@ -99,6 +112,7 @@ function getUserInfo(){
 
 	var token = getQueryVariable('access_token');
 	var user_id = getQueryVariable('user_id');
+	userLang = getQueryVariable('lang');
 	//var base_url = "http://code.ttab.me:51167";
 	var base_url = "https://api.ttab.me";
 
@@ -119,8 +133,6 @@ function getUserInfo(){
 	}
 
 	$.ajax(settings).done(function (response) {
-		//console.log(response.user.username);	
-	  	//console.log(response.user.id + response.user.nickname);
 	  user.id = response.user.id;
 	  user.name = response.user.nickname;
 	  if(response.user.username){
@@ -133,7 +145,7 @@ function getUserInfo(){
 
 
 function openLinkToSquad(team_id){
-	var base_url = 'https://footballx.live/t/id';
+	var base_url = 'https://footballx.live/t/';
 	window.open(base_url+team_id);
 }
 
@@ -1902,15 +1914,18 @@ function ButtonName(x,y,name,h=60){
 
 var splash = {
 	playButton:new Button('Play Button',WIDTH/2-481,HEIGHT/2+410,false,true),
+	languageButton:new Button('Language Button',WIDTH/2-694,HEIGHT/2+42),
 	leaderboardButton:new Button('Leaderboard Button',WIDTH/2-694,HEIGHT/2+123),
 	shareButton:new Button('Share Button',WIDTH/2-694,HEIGHT/2+205),
 	tipButton:new Button('Tip Button',WIDTH/2-694,HEIGHT/2+286),
 
-	displayButton1:new ButtonName(WIDTH/2-694,HEIGHT/2+123,'LEADERBOARD'),
+	displayButton0:new ButtonName(WIDTH/2-694,HEIGHT/2+42,text.language_txt),
+	displayButton1:new ButtonName(WIDTH/2-694,HEIGHT/2+123,text.leaderboard_txt),
 	displayButton2:new ButtonName(WIDTH/2-694,HEIGHT/2+205,'SHARE'),
-	displayButton3:new ButtonName(WIDTH/2-694,HEIGHT/2+286,'HOW TO PLAY'),
+	displayButton3:new ButtonName(WIDTH/2-694,HEIGHT/2+286,text.how_to_play_txt),
 	onpress:function(x,y){
 		this.playButton.press(x,y);
+		this.languageButton.press(x,y);
 		this.leaderboardButton.press(x,y);
 		this.shareButton.press(x,y);
 		this.tipButton.press(x,y);
@@ -1918,6 +1933,7 @@ var splash = {
 	onmousemove:function(x,y){
 		this.playButton.hover(x,y);
 
+		this.languageButton.hover(x,y);
 		this.leaderboardButton.hover(x,y);
 
 		this.shareButton.hover(x,y);
@@ -1925,6 +1941,7 @@ var splash = {
 	},
 	onrelease:function(){
 		this.playButton.release();
+		this.languageButton.release();
 		this.leaderboardButton.release();
 		this.shareButton.release();
 		this.tipButton.release();
@@ -1939,9 +1956,15 @@ var splash = {
 	update:function(){
 
 		this.playButton.update();
+		this.languageButton.update();
 		this.leaderboardButton.update();
 		this.shareButton.update();
 		this.tipButton.update();
+		if(this.languageButton.state === this.languageButton.states.HOVER){
+			this.displayButton0.show();
+		}else{
+			this.displayButton0.hide();
+		}
 		if(this.leaderboardButton.state === this.leaderboardButton.states.HOVER){
 			this.displayButton1.show();
 		}else{
@@ -1962,9 +1985,9 @@ var splash = {
 			currentState = states.Hint;
 			displayLevel.show(text.stage_txt);
 		}
+		if(this.languageButton.isTriggered()){
+		}
 		if(this.leaderboardButton.isTriggered()){
-
-			//promptScenes["Leaderboard"].loadScore();
 			promptScenes["Leaderboard"].show();
 		}
 		if(this.shareButton.isTriggered())
@@ -1975,17 +1998,30 @@ var splash = {
 	,draw:function(){
 		//drawImage("BackgroundMenu",WIDTH/2,HEIGHT/2);
 
+		//this.displayButton0.draw();
 		this.displayButton1.draw();
 		this.displayButton2.draw();
 		this.displayButton3.draw();
 
 		this.playButton.draw();
+		drawText(text.play_now_txt,WIDTH/2-481,HEIGHT/2+430,'#c1141b',80*this.playButton.scale+this.playButton.breadth);
+		//this.languageButton.draw();
 		this.leaderboardButton.draw();
 		this.shareButton.draw();
 		this.tipButton.draw();
 
 	}
 };
+
+
+
+
+
+
+
+
+
+
 var promptScenes = {};
 
 function onpress(evt){
@@ -2097,6 +2133,7 @@ function sound(src) {
 
 function loadSound(name){
 	sounds[name] = new sound('assets/sounds/'+name+'.mp3');
+	sounds[name].muted = 'true';
 }
 
 function loadImage(name,src = ""){
@@ -2132,7 +2169,7 @@ function loadAsset(){
 	loadSound('Leaderboard'); 
 	loadSound('Button'); 
 
-	totalResources = 23 + gamedata.clubs.length;
+	totalResources = 24 + gamedata.clubs.length;
 	//load assets from server
 	loadImage('Background');
 	loadImage('BackgroundMenu');
@@ -2142,12 +2179,11 @@ function loadAsset(){
 	loadImage('LogoWC');
 	loadImage('OfficialMascot');
 	loadImage('ClockIcon');
-//	loadImage('TriangleButton');
 	loadImage('OKButton');
-//	loadImage('HiddenPosition_hint');//10
 	loadImage('HiddenPosition_bright');
 	loadImage('HiddenPosition');
 	loadImage('Play Button');
+	loadImage('Language Button');
 	loadImage('Leaderboard Button');
 	loadImage('Leaderboard Background');
 	loadImage('Share Button');
@@ -2283,6 +2319,7 @@ function init(l){
 	level = l;
 	//console.log(teams._teams);
 	frame = 0;
+	setLanguage();
 	hiddenpositions.init();
 	clock.init(30);
 	score.init();
