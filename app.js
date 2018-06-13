@@ -5,6 +5,7 @@ function getQueryVariable(variable){
 	
 	var query = window.location.search.substring(1);
 	var vars = query.split("&");
+	console.log("query: "+vars);
 	for (var i=0;i<vars.length;i++) {
 		var pair = vars[i].split("=");
 		if(pair[0] == variable){return pair[1];}
@@ -114,6 +115,7 @@ function getUserInfo(){
 	var token = getQueryVariable('access_token');
 	var user_id = getQueryVariable('user_id');
 	userLang = getQueryVariable('lang');
+	console.log(userLang);
 	setLanguage();
 	//var base_url = "http://code.ttab.me:51167";
 	var base_url = "https://api.ttab.me";
