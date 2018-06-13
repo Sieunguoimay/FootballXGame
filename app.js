@@ -5,7 +5,7 @@ function getQueryVariable(variable){
 	
 	var query = window.location.search.substring(1);
 	var vars = query.split("&");
-	console.log("query: "+vars);
+	//console.log("query: "+vars);
 	for (var i=0;i<vars.length;i++) {
 		var pair = vars[i].split("=");
 		if(pair[0] == variable){return pair[1];}
@@ -59,13 +59,14 @@ var arrLang =
 	correct_answer:"CORRECT!",
 	play_again_txt:"PLAY AGAIN",
 	how_to_play_txt:"HOW TO PLAY",
+	share_txt:"SHARE",
 	language_txt:"LANGUAGE",
 	play_now_txt:"PLAY NOW"
 },
 	'vi-VN':{
 	game_question:"ĐOÁN TÊN TUYỂN QUỐC GIA",
 	point_txt:"Điểm",
-	score_txt:'Tổng Điểm',
+	score_txt:'Tổng',
 	time_txt:'TG',
 	click_to_open:'Lật xem CLB',
 	show_answer_txt:'Xem Đáp Án',
@@ -81,12 +82,13 @@ var arrLang =
 	next_txt:"Tiếp",
 	rank_txt:'Thứ Hạng',
 	score_txt:'Tổng Điểm',
-	leaderboard_txt:'Bảng Xếp Hạng',
+	leaderboard_txt:'BẢNG XẾP HẠNG',
 	wrong_answer:"NO NO NO!",
 	time_up_txt:"Hết Giờ!",
 	correct_answer:"CHUẨN RỒI",
 	play_again_txt:"CHƠI LẠI",
 	how_to_play_txt:"HƯỚNG DẪN",
+	share_txt:"CHIA SẺ",
 	language_txt:"Ngôn Ngữ",
 	play_now_txt:"CHƠI"
 }};
@@ -115,7 +117,7 @@ function getUserInfo(){
 	var token = getQueryVariable('access_token');
 	var user_id = getQueryVariable('user_id');
 	userLang = getQueryVariable('lang');
-	console.log(userLang);
+	//console.log(userLang);
 	setLanguage();
 	//var base_url = "http://code.ttab.me:51167";
 	var base_url = "https://api.ttab.me";
@@ -139,13 +141,13 @@ function getUserInfo(){
 	$.ajax(settings).done(function (response) {
 	  user.id = response.user.id;
 	  user.name = response.user.nickname;
+
 	  if(response.user.username){
 	  	user.name = response.user.username;
 	  }
 	});
 
 }
-
 
 
 function openLinkToSquad(team_id){
@@ -292,6 +294,17 @@ var teams = {
 	breadth:0,
 	level:1,
 	breadthLimit:10,
+	difficultLevelSource:{},
+	getDifficultLevel:function(level){
+		if(level<4){//difficult level 1
+			return this.difficultLevelSource.l1;
+		}else if(level<7){
+			return this.difficultLevelSource.l2;
+		}else{
+			return this.difficultLevelSource.l3;
+		}
+		return false;
+	},
 	load:function(JSONteams){
 		//select 20 teams to play for one load time
 		this._teams = [];
@@ -306,8 +319,22 @@ var teams = {
 				if(allTeams[i].name===name)
 					return i;
 		}
+		this.difficultLevelSource = {
+               l1:["England","France","Germany","Brazil","Argentina","Spain","Belgium","Portugal"],
+
+               l2:["Poland","Uruguay","Mexico","Australia","Iceland","Denmark","Colombia","Serbia","Sweden","Croatia","Russia","South Korea","Japan"],
+
+               l3:["Nigeria","Switzerland","Costa Rica","Panama","Tunisia","Saudi Arabia","Egypt","Senegal","Morocco","Iran","Peru"]
+           };
+        var difficultLevels = {l1:[],l2:[],l3:[]};
 
 
+        Object.assign(difficultLevels.l1,this.difficultLevelSource.l1);
+        Object.assign(difficultLevels.l2,this.difficultLevelSource.l2);
+        Object.assign(difficultLevels.l3,this.difficultLevelSource.l3);
+    /*
+        
+        }
 		var difficultLevels = {
 				l1:["England","France","Germany","Brazil","Argentina","Spain","Belgium","Russia","Saudi Arabia","South Korea","Japan","Portugal"],
 
@@ -315,7 +342,7 @@ var teams = {
 
 				l3:["Croatia","Nigeria","Switzerland","Costa Rica","Poland","Panama","Tunisia","Colombia","Serbia","Sweden"]
 			};
-
+	*/
 		for(var i = 0; i<MaxLevel; i++){
 
 			//generate unique number for one team
@@ -812,7 +839,7 @@ var score = {
 		}
 		if(this.count===10){
 			this.count = 0;
-			varprizedScores.put(this.x, this.y,this.amountToAdd>0?'+10':'-10');
+			varprizedScores.put(this.x, this.y,this.amountToAdd>=0?'+10':'-10');
 		}
 		var rythm = 0;
 		if(this.amountToAdd !=0){
@@ -1148,13 +1175,23 @@ var answerBar = {
 		}
 
 		var whereToInsertTheAnswer = Math.floor(Math.random()*(CARD_NUM-1));
+		var difficult = teams.getDifficultLevel(level);
+		//console.log(difficult);	
 		for(var i = 0; i<CARD_NUM-1; i++){
 
 			var uniqueIndex = 0;
 			var found = false;
 			while(!found){
 				found = true;
-				uniqueIndex = Math.floor(Math.random()*this.cardPool.length);
+
+				var a = Math.floor(Math.random()*difficult.length);
+				for(var j = 0; j<this.cardPool.length;j++)
+					if(this.cardPool[j].name===difficult[a]){
+						uniqueIndex = j;
+						break;
+					}
+
+				//uniqueIndex = Math.floor(Math.random()*this.cardPool.length);
 				//console.log(uniqueIndex+" " +answerIndex);
 				if(answerIndex === uniqueIndex){
 					found = false;
@@ -1231,8 +1268,8 @@ var answerBar = {
 					//on correct answer
 
 					//remove the cards
-					this.cardPool.splice(this.cards[i].idInCardPool,1);
-					this.cards.splice(i,1);
+					//this.cardPool.splice(this.cards[i].idInCardPool,1);
+					//this.cards.splice(i,1);
 
 
 					nextLevel(reasons.Correct);
@@ -1243,12 +1280,12 @@ var answerBar = {
 
 					//since in the debug mode, many answer in the answer cards is identical
 					//but they must be unique in the real game running
-						for(var j = 0; j<this.cards.length;j++)
+					/*	for(var j = 0; j<this.cards.length;j++)
 							if(answer === this.cards[j].name){
 								this.cardPool.splice(this.cards[j].idInCardPool,1);
 								this.cards.splice(j,1);						
 							}
-
+					*/
 					nextLevel(reasons.Wrong);
 				}
 				//end the level
@@ -1444,7 +1481,7 @@ PromptScene.prototype.update = function(){
 			this.count--;
 			if(this.count<=0&&score.added()){
 				promptScenes["GameOver"].show(this._id);
-
+				promptScenes["Leaderboard"].endGame = true;
 				this.showup = false;
 			}
 		}else{
@@ -1502,7 +1539,7 @@ PromptScene.prototype.draw = function(){
 			drawCoverWithHole(x-this.offsetW/2,y-this.offsetH/2,w+this.offsetW,h+this.offsetH,ZERO_NINE);
 			if(!this.paid){
 				drawImage(this.image,WIDTH/2, HEIGHT/3);
-				drawText(text.correct_answer,WIDTH/2, HEIGHT/3+230,TEXT_COLOR);
+				drawText(text.correct_answer,WIDTH/2, HEIGHT/3+230,TEXT_COLOR,80);
 			}else{
 				ctx.shadowColor = TEXT_COLOR;
 				ctx.shadowBlur = 100;
@@ -1668,6 +1705,8 @@ function Leaderboard(){
 	this.firstTime = true;
 	if(!this.loaded)
 		this.loadScore();
+	this.endGame = false;
+
 }	
 
 
@@ -1683,16 +1722,27 @@ Leaderboard.prototype.loadScore = function(){
 	}
 	//console.log(user.score+" "+user.time+" "+ user.id);
 	loaded_score_data.sort(function(a,b){
-		return (b.score - a.score);
+		return ((b.score-b.time/2000) - (a.score-a.time/2000));
 	});
 	//console.log(loaded_score_data);
 	var existed = false
 	for(var i = 0; i<loaded_score_data.length; i++)
 		if(loaded_score_data[i].id === user.id){
 			existed = true;
-			if(level===MaxLevel-1)//he has played
+			if(level===MaxLevel-1||this.endGame){//he has played
+				var date = (new Date()).toString();
+
+
+				if(loaded_score_data[i].records){
+					loaded_score_data[i].records.push({s:score._score,t:score._playtime,m:date});
+				}
+				else{
+					loaded_score_data[i].records = [];
+					loaded_score_data[i].records.push({s:score._score,t:score._playtime,m:date});
+				}
 				loaded_score_data[i].count++;
 
+			}
 			if(loaded_score_data[i].score < user.score){
 				loaded_score_data[i].score = user.score;
 				loaded_score_data[i].time = user.time;
@@ -1704,8 +1754,12 @@ Leaderboard.prototype.loadScore = function(){
 			}else{
 				user.score = loaded_score_data[i].score;
 				user.time = loaded_score_data[i].time;
-				this.rank = i+1;
 			}
+				this.rank = i+1;
+
+
+
+
 			break;
 		}
 
@@ -1713,7 +1767,7 @@ Leaderboard.prototype.loadScore = function(){
 		if(user.score>0){
 			loaded_score_data.push(user);
 			loaded_score_data.sort(function(a,b){
-				return (b.score - a.score);
+				return ((b.score-b.time/2000) - (a.score-a.time/2000));
 			});
 			function findrank(element) {
 				return (element.score <= score._score&&element.time >= score._playtime);
@@ -1925,7 +1979,7 @@ var splash = {
 
 	displayButton0:new ButtonName(WIDTH/2-694,HEIGHT/2+42,text.language_txt),
 	displayButton1:new ButtonName(WIDTH/2-694,HEIGHT/2+123,text.leaderboard_txt),
-	displayButton2:new ButtonName(WIDTH/2-694,HEIGHT/2+205,'SHARE'),
+	displayButton2:new ButtonName(WIDTH/2-694,HEIGHT/2+205,text.share_txt),
 	displayButton3:new ButtonName(WIDTH/2-694,HEIGHT/2+286,text.how_to_play_txt),
 	onpress:function(x,y){
 		this.playButton.press(x,y);
@@ -1953,6 +2007,10 @@ var splash = {
 	init:function(){
 		currentState = states.Splash;
 		firstTime = true;
+		this.displayButton0.name = text.language_txt;
+		this.displayButton1.name = text.leaderboard_txt;
+		this.displayButton2.name = text.share_txt;
+		this.displayButton3.name = text.how_to_play_txt;
 		init(0);
 
 
@@ -2341,13 +2399,18 @@ function init(l){
 		firstTime = false;
 	
 		answerBar.init();
-
 		promptScenes["GameOver"] = new GameOver("GameOver");
 		promptScenes["WrongAnswer"] = new PromptScene("WrongAnswer");
 		promptScenes["CorrectAnswer"] = new PromptScene("CorrectAnswer");
 		promptScenes["Leaderboard"] = new Leaderboard();
 		promptScenes["TipScene"] = new TipScene();
 		sounds['MainMusic'].play();
+
+
+		splash.displayButton0.name = text.language_txt;
+		splash.displayButton1.name = text.leaderboard_txt;
+		splash.displayButton2.name = text.share_txt;
+		splash.displayButton3.name = text.how_to_play_txt;
 
 	}else{
 		currentState = states.Hint;

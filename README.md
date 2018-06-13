@@ -51,7 +51,6 @@ my url:
 
 
 tomorrow:
-	-> multiple records for scores
 	-> improve the effect
 	//-> tim cach fix problem of size
 	//-> DOMException: play() failed because the user didn't interact with the document first.
@@ -60,5 +59,8 @@ tomorrow:
 
 
 
+	//-> multiple records for scores
 	-> load lan thu 2
-	-> van de iframe 
+	//-> van de iframe 
+	-> van de tru -10
+
