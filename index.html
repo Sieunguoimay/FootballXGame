@@ -121,7 +121,7 @@ function pull_user_language(){
 		if(user.id === loaded_score_data[i].id){
 			if(loaded_score_data[i].lang){
 				userLang = loaded_score_data[i].lang;
-				console.log("pull_user_language "+userLang);
+				//console.log("pull_user_language "+userLang);
 			}
 			existed = true;
 			break;
@@ -187,10 +187,10 @@ function getUserInfo(){
 	}
 
 	$.ajax(settings).done(function (response) {
-		console.log(response.user);
+		//console.log(response.user);
 	  user.id = response.user.id;
 	  user.name = response.user.nickname;
-	  console.log(user.id);
+	  //console.log(user.id);
 	  if(response.user.username){
 	  	user.name = response.user.username;
 	  }
