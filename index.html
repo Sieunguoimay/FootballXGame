@@ -52,7 +52,6 @@ var debugMode = false;
 var arrLang = 
 {
 	'en-US':{
-//var text = (userLang ==='vi-VN')?{
 	game_question:"WHICH TEAM IS THIS?",
 	point_txt:"POINTS",
 	score_txt:'SCORE',
@@ -99,10 +98,10 @@ var arrLang =
 	continue_txt:"Chơi Tiếp",
 	next_txt:"Tiếp",
 	rank_txt:'Thứ Hạng',
-	score_txt:'Tổng Điểm',
+	score_txt:'Tổng',
 	leaderboard_txt:'BẢNG XẾP HẠNG',
 	wrong_answer:"NO NO NO!",
-	time_up_txt:"Hết Giờ!",
+	time_up_txt:"HẾT GIỜ!",
 	correct_answer:"CHUẨN RỒI",
 	play_again_txt:"CHƠI LẠI",
 	how_to_play_txt:"HƯỚNG DẪN",
@@ -112,18 +111,46 @@ var arrLang =
 }};
 var userLang = 'en-US';
 var text = arrLang[userLang];//default
-function setLanguage(){
-	//console.log("Language: "+userLang);
-	if(userLang)
-		text = arrLang[userLang];
+
+
+
+
+function pull_user_language(){
+	var existed = false;
+	for(var i = 0; i<loaded_score_data.length; i++){
+		if(user.id === loaded_score_data[i].id){
+			if(loaded_score_data[i].lang){
+				userLang = loaded_score_data[i].lang;
+				console.log("pull_user_language "+userLang);
+			}
+			existed = true;
+			break;
+		}
+	}
+	if(!existed){
+		loaded_score_data.push(user);
+	}
 }
+
+function push_user_language(){
+			console.log("push_user_language ");
+	for(var i = 0; i<loaded_score_data.length; i++){
+		if(user.id === loaded_score_data[i].id){
+			loaded_score_data[i].lang = userLang;
+			console.log("push_user_language "+userLang);
+			break;
+		}
+	}
+
+}
+
 
 
 
 //user name to display
 var USER_NAME = "Anonymous";
 //keep the ID for later use
-var USER_ID = Math.floor(Math.random()*10);
+var USER_ID = 0;
 
 var user = {name:USER_NAME,id:USER_ID,score:0,time:0,count:0};
 
@@ -135,10 +162,13 @@ function getUserInfo(){
 	var token = getQueryVariable('access_token');
 	var user_id = getQueryVariable('user_id');
 	userLang = getQueryVariable('lang');
-	//console.log(userLang);
-	setLanguage();
-	//var base_url = "http://code.ttab.me:51167";
-	var base_url = "https://api.ttab.me";
+	if(userLang)
+		text = arrLang[userLang];
+
+
+
+	var base_url = "https://dev-api.ttab.me";
+	//var base_url = "https://api.ttab.me";
 
 	//console.log(token);
 	if(!token)
@@ -157,9 +187,10 @@ function getUserInfo(){
 	}
 
 	$.ajax(settings).done(function (response) {
+		console.log(response.user);
 	  user.id = response.user.id;
 	  user.name = response.user.nickname;
-
+	  console.log(user.id);
 	  if(response.user.username){
 	  	user.name = response.user.username;
 	  }
@@ -203,7 +234,6 @@ function loadLeaderboard(){
 			Object.assign(loaded_score_data,data.val());
 			promptScenes["Leaderboard"].loadScore();
 		}
-		getUserInfo();
 	}
 	function errData(err){
 		console.log("Error!");
@@ -214,12 +244,9 @@ function loadLeaderboard(){
 //myFBref.set({});
 
 function sendScore(){
-	//var userScoreToSend = {name:USER_NAME,id:USER_ID,score:score._score,time:score._playtime};
 	//send this score to somewhere please.
 	myFBref.set(loaded_score_data);
 	//ignore this line
-	//console.log("Sent Player Score");
-	//console.log(loaded_score_data);
 }
 
 
@@ -239,12 +266,10 @@ function loadGameAssetsFromServer(){
 	loadJSON('gamedata.json',function(data){
 		getUserInfo();
 		gamedata = JSON.parse(data);
-		//console.log(gamedata);
 		main();
 	});
 }
 loadGameAssetsFromServer();
-
 
 
 
@@ -309,6 +334,7 @@ var teams = {
 	level:1,
 	breadthLimit:10,
 	difficultLevelSource:{},
+	eleven_club_logos:{},
 	getDifficultLevel:function(level){
 		if(level<4){//difficult level 1
 			return this.difficultLevelSource.l1;
@@ -431,23 +457,47 @@ var teams = {
 			allTeams.splice(uniqueIndex,1);
 		}		
 	},
+
+
+
+	num_loaded_logos:0,
+	loadLogo:function(name,src){
+		this.eleven_club_logos[name] = new Image();
+
+		this.eleven_club_logos[name].onload = function(){
+			this.num_loaded_logos += 1;
+			if(this.num_loaded_logos===11){
+				////////loaded successfully///////
+				//logo ready to use
+				////////come on babe /////////////
+			}
+		}
+		this.eleven_club_logos[name].src = src;
+
+	},
+	load_eleven_logos:function(){
+		this.eleven_club_logos = {};
+		this.num_loaded_logos = 0;
+		for(var i = 0 ; i< gamedata.clubs.length; i++){
+			for(var j = 0; j<this._teams[level].positions.length;j++)
+			if(gamedata.clubs[i].name === this._teams[level].positions[j])
+				this.loadLogo(gamedata.clubs[i].name,gamedata.clubs[i].club_logo);
+		}
+	},
+
+
+
 	update:function(){
 		this.breadth = this.breadthLimit*Math.cos(3*frame*3.141592/180.0);		
 	},
 	draw:function(position,x,y){
-		//drawImage(this._teams[this.level-1].positions[position].club,x,y,100,200);
-		//if(position>NUMBER_OF_POS)
-			//console.log("One team has 11 players only, dude.");
-		//drawText(this._teams[this.level-1].positions[position],x,y,'rgba(0,0,0)',50+this.breadth);
-		//drawImage(this._teams[this.level-1].positions[position],x,y,);
 		var img = this._teams[level].positions[position];
 		var h = CLUB_LOGO_SIZE;
-		//console.log(img + " " + position);
 		ctx.shadowColor = '#fff';
 		ctx.shadowBlur = 50;
-		if(images[img]){
-			var w = h*(images[img].width/images[img].height);
-			drawImage(img,x,y-h/4,w+this.breadth,h+this.breadth);
+		if(this.eleven_club_logos[img]){
+			var w = h*(this.eleven_club_logos[img].width/this.eleven_club_logos[img].height);
+			drawImage3(this.eleven_club_logos,img,x,y-h/4,w+this.breadth,h+this.breadth);
 		}
 		ctx.shadowBlur = 0;
 	}
@@ -748,35 +798,76 @@ var clock = {
 		this.trigger = false;
 		this.beep = false;
 	},
-	countdown:function(){
-		this.currentTime = new Date();
-		this.deltaTime += (this.currentTime - this.lastTime);
-		this.lastTime = this.currentTime;
 
-		if(this.deltaTime>1000){
+	start_worker:function(){
+
+		if(typeof(Worker)!=="undefined"){
+			if(typeof(w)=="undefined"){
+				w = new Worker("worker.js");
+			}
+			w.onmessage = function(event){
+				clock.countdown();
+				if(clock.count === 0){
+					if(hiddenpositions.numberOpened<NUMBER_OF_POS&&scoreOfThisMatch>0){
+						hiddenpositions.autoopen();
+						clock.init(Math.max(15,clock.count));
+						clock.start();
+					}else{
+						nextLevel(reasons.Timeout);
+					}
+				}
+
+			}
+		}else{
+			console.log("browser does not support Web Workers");
+		}
+	},
+	stop_worker:function(){
+		w.terminate();
+		w = undefined;
+	},
+	countdown:function(){
+		//this.currentTime = new Date();
+		//this.deltaTime += (this.currentTime - this.lastTime);
+		//this.lastTime = this.currentTime;
+
+		//if(this.deltaTime>1000){
+		if(this.trigger){
+
 			if(this.count<=10){//play sound here
 				this.beep = true;;
 			}
 			this.count--;
-			this.deltaTime = 0;
-			score._playtime++;
-		}
 
-		if(this.count === 0)
+		//	this.deltaTime = 0;
+			score._playtime++;
+		//}
+
+		if(this.count <= 0)
 			this.trigger = false;
 		this.sec = Math.floor(this.count/1);
 		this.min = Math.floor(this.sec/60);
 		this.sec %= 60;
 		this.min %= 60; 
+		}
 	},
 	start:function(){
 		this.trigger = true;
 		this.lastTime = new Date();
 		this.firstTime = (this.count===30);
+		this.start_worker();
 	},
 	update(){
 		if(this.trigger){
-			this.countdown();
+
+			this.currentTime = new Date();
+			this.deltaTime += (this.currentTime - this.lastTime);
+			this.lastTime = this.currentTime;
+
+			if(this.deltaTime>1000)
+				this.deltaTime = 0;
+
+			//this.countdown();
 			if(this.firstTime){
 				if(this.countFirst>0){
 					this.beep = true;
@@ -2069,7 +2160,11 @@ var splash = {
 			displayLevel.show(text.stage_txt);
 		}
 		if(this.languageButton.isTriggered()){
-		}
+/*			userLang = ((userLang==='en-US')?'vi-VN':'en-US');
+			push_user_language();
+			sendScore();
+			location.reload();
+*/		}
 		if(this.leaderboardButton.isTriggered()){
 			promptScenes["Leaderboard"].show();
 		}
@@ -2081,14 +2176,15 @@ var splash = {
 	,draw:function(){
 		//drawImage("BackgroundMenu",WIDTH/2,HEIGHT/2);
 
-		//this.displayButton0.draw();
+//		this.displayButton0.draw();
 		this.displayButton1.draw();
 		this.displayButton2.draw();
 		this.displayButton3.draw();
 
 		this.playButton.draw();
-		drawText(text.play_now_txt,WIDTH/2-481,HEIGHT/2+430,'#c1141b',80*this.playButton.scale+this.playButton.breadth);
-		//this.languageButton.draw();
+		drawText(text.play_now_txt,WIDTH/2-481,HEIGHT/2+430,'#c1141b',
+			80*this.playButton.scale+this.playButton.breadth);
+//		this.languageButton.draw();
 		this.leaderboardButton.draw();
 		this.shareButton.draw();
 		this.tipButton.draw();
@@ -2105,7 +2201,24 @@ var splash = {
 
 
 
+
 var promptScenes = {};
+
+//dung jquery to handle event.///////////
+$("canvas").mousedown(function(evt){
+	onpress(evt);
+});
+
+$("canvas").mousemove(function(evt){
+	onmousemove(evt);
+});
+$("canvas").mouseup(function(evt){
+	onrelease(evt);
+});
+///////////////////////////////////////
+
+
+
 
 function onpress(evt){
 	mX = evt.offsetX*WIDTH/CANVAS_WIDTH;
@@ -2239,12 +2352,6 @@ function loadImage(name,src = ""){
 }
 function loadAsset(){
 
-/*	var tempdata = [];
-	for(var i = 0; i<gamedata.teams.length;i++){
-		tempdata.push(gamedata.teams[i]);
-	}*/
-	//console.log(tempdata.length+" length "+gamedata.levels.length);
-
 	loadSound('MainMusic');
 	loadSound('CoinFlip');
 	loadSound('CorrectAnswer'); 
@@ -2253,8 +2360,7 @@ function loadAsset(){
 	loadSound('Leaderboard'); 
 	loadSound('Button'); 
 
-	totalResources = 24;// + gamedata.clubs.length;
-	//totalResources = 24 + gamedata.clubs.length;
+	totalResources = 24+32;//gamedata.clubs.length;
 	//load assets from server
 	loadImage('Background');
 	loadImage('BackgroundMenu');
@@ -2285,7 +2391,8 @@ function loadAsset(){
 
 	//load the club logo assets
 	for(var i = 0; i<gamedata.clubs.length; i++)
-		loadImage(gamedata.clubs[i].name,gamedata.clubs[i].club_logo);
+		if(gamedata.clubs[i].type === 1)
+			loadImage(gamedata.clubs[i].name,gamedata.clubs[i].club_logo);
 
 }
 var progressBarDone = false
@@ -2324,27 +2431,18 @@ function main(){
 	}
 	resizeCanvas();
 	window.addEventListener('resize',function(){resizeCanvas();});
-	/////////////////////////////////////////////
-	var evt = "touchstart";
 
-/*	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-	    // Take the user to a different screen here.
-	    console.log("HEY PHONE");
-	}else{
+	/////////////////////////////////////////////
+/*	var evt = "touchstart";
+	evt = "mousedown";
+	document.addEventListener('mousemove',onmousemove);
+	document.addEventListener('mouseup',onrelease);
+	document.addEventListener('touchstart', {});
+	document.addEventListener(evt,onpress);
 */
 
-//	if(CANVAS_WIDTH>700){
-		evt = "mousedown";
-		document.addEventListener('mousemove',onmousemove);
-		document.addEventListener('mouseup',onrelease);
-		//console.log("PC");
-	//}
-	document.addEventListener(evt,onpress);
-	//document.addEventListener(evt,onrelease);
-	//document.addEventListener('mousewheel',onwheel, false);
 
-
-
+	//OK babe
 	//progress bar babe
 	var al = 0;
 	var	start = 4.72;
@@ -2368,17 +2466,14 @@ function main(){
 			ctx.shadowBlur = 0;			
 			ctx.fillStyle = TEXT_COLOR;
 			ctx.fillRect(x,y,al*w,100);
-			if(user.name!='Anonymous')
-				drawText(text.welcome_txt+' '+ user.name,WIDTH/2,y+60,'#222',50);
+			//if(user.name!='Anonymous')
+			drawText(text.welcome_txt+' '+ user.name,WIDTH/2,y+60,'#222',50);
 
 		}
 
 			if(al>=1.5){
 				clearTimeout(sim);
 				progressBarDone = true;
-				ctx.clearRect(0,0,WIDTH,HEIGHT);
-				ctx.fillStyle = '#f00';
-				ctx.fillRect(0,0,100,100);
 			}
 			al+=0.002;
 			//console.log(al);
@@ -2390,7 +2485,6 @@ function main(){
 	}
 	progressBg.src = 'assets/BackgroundMenu_blur.png';
 
-	//progressBarDone = true;
 
 
 	//load images
@@ -2408,6 +2502,7 @@ function main(){
 
 
 function init(l){
+
 	level = l;
 	//console.log(teams._teams);
 	frame = 0;
@@ -2415,19 +2510,14 @@ function init(l){
 	clock.init(30);
 	score.init();
 
-
 	if(firstTime){
 		teams.load(gamedata.teams);
-//		console.log(teams._teams);
 		score._score = 0;
 		score._playtime = 0;
-		getUserInfo();
-		loadLeaderboard();//OK babe
-
-
 		currentState = states.Splash;
 		firstTime = false;
 	
+		loadLeaderboard();
 		answerBar.init();
 		promptScenes["GameOver"] = new GameOver("GameOver");
 		promptScenes["WrongAnswer"] = new PromptScene("WrongAnswer");
@@ -2447,6 +2537,7 @@ function init(l){
 		displayLevel.show('Stage');
 		answerBar.selectSeven();
 	}
+	teams.load_eleven_logos();
 	scoreOfThisMatch = 100;
 }
 
@@ -2513,6 +2604,7 @@ function nextLevel(reason){
 		promptScenes["CorrectAnswer"].show();
 		sounds['CorrectAnswer'].play();
 	}
+	clock.stop_worker();
 	score.add(scoreOfThisMatch);
 }
 function update(){
@@ -2546,15 +2638,8 @@ function update(){
 	}
 	if(currentState === states.Game){
 		clock.update();
-		if(clock.count === 0){
-			if(hiddenpositions.numberOpened<NUMBER_OF_POS&&scoreOfThisMatch>0){
-				hiddenpositions.autoopen();
-				clock.init(Math.max(15,clock.count));
-				clock.start();
-			}else{
-				nextLevel(reasons.Timeout);
-			}
-		}
+
+		//here
 	}
 	if(currentState === states.Game||currentState === states.Hint){
 		hiddenpositions.update();
@@ -2661,7 +2746,11 @@ function drawImage2(name,x,y,w,h){
 	if(h==null) h = images[name].height;
 	ctxBg.drawImage(images[name],x-w/2,y-h/2,w,h);
 }
-
+function drawImage3(imgs,name,x,y,w,h){
+	if(w==null) w = imgs[name].width;
+	if(h==null) h = imgs[name].height;
+	ctx.drawImage(imgs[name],x-w/2,y-h/2,w,h);	
+}
 function drawText(text,x,y,color='#fff',size='100',align = 'center'){
 	ctx.fillStyle=color;
 	ctx.font = 'bold '+size+'px game_font';

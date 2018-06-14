@@ -18,8 +18,14 @@ vao day. de autheticate the token lay duoc o tren.
 http://code.ttab.me:4646/#/xuser/xuserAuth
 
 
+vao day de lay token dev:
+https://dev-footballx.ttab.me/
+
+
 my url:
 	http://localhost/FootballXGameProject/WhichTeamIsThis/index.html?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyMzc1LCJyb2xlIjowLCJ0eXBlX3VzZXIiOjAsImV4cCI6MTUyODg5NjUyNX0.hUo_4d0ueJzbjjWHrTa320qmVkj6Erw7YXaABnmbdoI&user_id=2375
+
+
 
 //- them 1 cai chi level 1/20 hay 15/20 at correct answer
 //- them 1 button quit game
@@ -64,3 +70,17 @@ tomorrow:
 	//-> van de iframe 
 	//-> van de tru -10
 
+	
+
+14/6/2018
+	//-> game slow: reason: loading club_logo all at the begining.
+		-solution. load only 2x(11 club_logos) at every begining of a new level. into the
+			->logos array put inside the teams object. for drawing.
+			->to make sure that the position passed in from the hiddenpositions
+			  is always under the set of logos. make sure that length of logo array is 11
+		- after using, discard the logos.
+
+	X-> change language using firebase for each user..
+	//-> chinh lai phong chu cho how to play
+	//-> ios safari problem
+	//->real time clock
