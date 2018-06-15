@@ -4,7 +4,9 @@
 }
 html, body {
     overflow: hidden;
+    margin:0;
 }
+
 #canvas{
 	display:block;
 	margin:auto;

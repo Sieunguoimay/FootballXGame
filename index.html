@@ -14,8 +14,7 @@
 
 
 </head>
-<body style="background-color:#117864">
-
+<body style="background-color:#193441;margin:0;">
 <canvas id="canvasBg"></canvas>
 <canvas id="canvas" ></canvas>
 <script type="text/javascript">
@@ -170,10 +169,8 @@ function getUserInfo(){
 	//var base_url = "https://dev-api.ttab.me";
 	var base_url = "https://api.ttab.me";
 
-	//console.log(token);
 	if(!token)
 		window.location = 'https://footballx.live/sign_in';
-	// "/v2/xuser/2375/refesh"
 	var settings = {
 	  "async": true,
 	  "crossDomain": true,
@@ -2123,6 +2120,7 @@ var splash = {
 		this.displayButton1.name = text.leaderboard_txt;
 		this.displayButton2.name = text.share_txt;
 		this.displayButton3.name = text.how_to_play_txt;
+		promptScenes["Leaderboard"].endGame = false;
 		init(0);
 
 
@@ -2400,8 +2398,8 @@ function main(){
 
 	//to solve the problem of canvas resizing//////////////////////////
 	let resizeCanvas = function(){
-		CANVAS_WIDTH = window.innerWidth-25;
-		CANVAS_HEIHGT = window.innerHeight-25;
+		CANVAS_WIDTH = window.innerWidth;
+		CANVAS_HEIHGT = window.innerHeight;
 
 		let ratio = 1587/1379;
 		if(CANVAS_HEIHGT<CANVAS_WIDTH/ratio){
@@ -2611,6 +2609,8 @@ function update(){
 	frame>100*3*3.141592?frame=0:frame++;
 	if(currentState === states.Prompt){
 		promptScenes["Leaderboard"].update();
+		//	init(0);
+
 		promptScenes["TipScene"].update();
 
 		if(promptScenes["CorrectAnswer"].update()
