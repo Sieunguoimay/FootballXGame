@@ -14,7 +14,7 @@
 
 
 </head>
-<body style="background-color:#193441;margin:0;">
+<body style="background-color:#1a7764;margin:0;">
 <canvas id="canvasBg"></canvas>
 <canvas id="canvas" ></canvas>
 <script type="text/javascript">
@@ -77,7 +77,9 @@ var arrLang =
 	how_to_play_txt:"HOW TO PLAY",
 	share_txt:"SHARE",
 	language_txt:"LANGUAGE",
-	play_now_txt:"PLAY NOW"
+	play_now_txt:"PLAY NOW",
+	matches_txt:"Match",
+	chat_txt:"Chat"
 },
 	'vi-VN':{
 	game_question:"ĐOÁN TÊN TUYỂN QUỐC GIA",
@@ -106,44 +108,12 @@ var arrLang =
 	how_to_play_txt:"HƯỚNG DẪN",
 	share_txt:"CHIA SẺ",
 	language_txt:"Ngôn Ngữ",
-	play_now_txt:"PLAY NOW"
+	play_now_txt:"PLAY NOW",
+	matches_txt:"Lich Thi Dau",
+	chat_txt:"Chem Gio"
 }};
 var userLang = 'en-US';
 var text = arrLang[userLang];//default
-
-
-
-
-function pull_user_language(){
-	var existed = false;
-	for(var i = 0; i<loaded_score_data.length; i++){
-		if(user.id === loaded_score_data[i].id){
-			if(loaded_score_data[i].lang){
-				userLang = loaded_score_data[i].lang;
-				//console.log("pull_user_language "+userLang);
-			}
-			existed = true;
-			break;
-		}
-	}
-	if(!existed){
-		loaded_score_data.push(user);
-	}
-}
-
-function push_user_language(){
-			console.log("push_user_language ");
-	for(var i = 0; i<loaded_score_data.length; i++){
-		if(user.id === loaded_score_data[i].id){
-			loaded_score_data[i].lang = userLang;
-			console.log("push_user_language "+userLang);
-			break;
-		}
-	}
-
-}
-
-
 
 
 //user name to display
@@ -161,6 +131,7 @@ function getUserInfo(){
 	var token = getQueryVariable('access_token');
 	var user_id = getQueryVariable('user_id');
 	userLang = getQueryVariable('lang');
+
 	if(userLang)
 		text = arrLang[userLang];
 
@@ -241,8 +212,33 @@ function loadLeaderboard(){
 //myFBref.set({});
 
 function sendScore(){
+	var corrected_data = [];
+	var total_play = 0;
+	for(var i = 0;i <loaded_score_data.length; i++){
+		corrected_data.push(loaded_score_data[i]);
+
+		var new_record = [];
+		if(loaded_score_data[i].records)
+		for(var j = 0; j<loaded_score_data[i].records.length; j++){
+			var existed = false;
+			for(var k = 0; k<new_record.length; k++)
+				if(loaded_score_data[i].records[j].s===new_record[k].s
+					&&loaded_score_data[i].records[j].t===new_record[k].t){
+					existed = true;
+				}
+			if(!existed){
+				new_record.push(loaded_score_data[i].records[j]);
+			}
+			total_play++;
+		}
+
+		corrected_data[corrected_data.length-1].records = [];
+		corrected_data[corrected_data.length-1].count = new_record.length;
+		Object.assign(corrected_data[corrected_data.length-1].records,new_record);
+	}
 	//send this score to somewhere please.
-	myFBref.set(loaded_score_data);
+	myFBref.set(corrected_data);
+	//myFBref.set(loaded_score_data);
 	//ignore this line
 }
 
@@ -1010,7 +1006,7 @@ var varprizedScores = {
 
 
 
-function Button(image,x,y,flip=false,breadthEnabled=false){
+function Button(image,x,y,flip=false,breadthEnabled=false,blur = true){
 	this.states = {NORMAL:0,HOVER:1,CLICK:2};
 	this.x = x, this.y = y;
 	this.scale = 1;
@@ -1025,6 +1021,7 @@ function Button(image,x,y,flip=false,breadthEnabled=false){
 	this.breadth = 0;
 	this.breadthLimit = 10;
 	this.disabled = false;
+	this.blur = blur;
 }
 Button.prototype.disable = function(){
 	this.disabled = true;
@@ -1093,10 +1090,13 @@ Button.prototype.draw = function(){
 		ctx.globalAlpha = 1;
 	this.w = images[this.image].width;
 	this.h = images[this.image].height;
+	if(this.blur){
 		ctx.shadowColor = '#000';
 		ctx.shadowBlur = 50;
+	}	
 	drawImage(this.image,this.x, this.y,this.w*this.scale+this.breadth,
 		this.h*this.scale+this.breadth,this.flip);
+	if(this.blur)
 		ctx.shadowBlur = 0;
 	ctx.globalAlpha = 1;
 }
@@ -2080,22 +2080,30 @@ function ButtonName(x,y,name,h=60){
 
 
 var splash = {
+
 	playButton:new Button('Play Button',WIDTH/2-481,HEIGHT/2+410,false,true),
 	languageButton:new Button('Language Button',WIDTH/2-694,HEIGHT/2+42),
 	leaderboardButton:new Button('Leaderboard Button',WIDTH/2-694,HEIGHT/2+123),
 	shareButton:new Button('Share Button',WIDTH/2-694,HEIGHT/2+205),
 	tipButton:new Button('Tip Button',WIDTH/2-694,HEIGHT/2+286),
 
+	matchButton:new Button(text.matches_txt+' Button',333,1275,false, false, false),
+	chatButton:new Button(text.chat_txt+' Button',WIDTH-333,1275,false, false, false),
+
 	displayButton0:new ButtonName(WIDTH/2-694,HEIGHT/2+42,text.language_txt),
 	displayButton1:new ButtonName(WIDTH/2-694,HEIGHT/2+123,text.leaderboard_txt),
 	displayButton2:new ButtonName(WIDTH/2-694,HEIGHT/2+205,text.share_txt),
 	displayButton3:new ButtonName(WIDTH/2-694,HEIGHT/2+286,text.how_to_play_txt),
+
 	onpress:function(x,y){
 		this.playButton.press(x,y);
 		this.languageButton.press(x,y);
 		this.leaderboardButton.press(x,y);
 		this.shareButton.press(x,y);
 		this.tipButton.press(x,y);
+
+		this.matchButton.press(x,y);
+		this.chatButton.press(x,y);
 	},
 	onmousemove:function(x,y){
 		this.playButton.hover(x,y);
@@ -2105,6 +2113,9 @@ var splash = {
 
 		this.shareButton.hover(x,y);
 		this.tipButton.hover(x,y);
+
+		this.matchButton.hover(x,y);
+		this.chatButton.hover(x,y);
 	},
 	onrelease:function(){
 		this.playButton.release();
@@ -2112,6 +2123,9 @@ var splash = {
 		this.leaderboardButton.release();
 		this.shareButton.release();
 		this.tipButton.release();
+
+		this.matchButton.release();
+		this.chatButton.release();
 	},
 	init:function(){
 		currentState = states.Splash;
@@ -2121,6 +2135,7 @@ var splash = {
 		this.displayButton2.name = text.share_txt;
 		this.displayButton3.name = text.how_to_play_txt;
 		promptScenes["Leaderboard"].endGame = false;
+
 		init(0);
 
 
@@ -2132,6 +2147,11 @@ var splash = {
 		this.leaderboardButton.update();
 		this.shareButton.update();
 		this.tipButton.update();
+
+		this.matchButton.update();
+		this.chatButton.update();
+
+
 		if(this.languageButton.state === this.languageButton.states.HOVER){
 			this.displayButton0.show();
 		}else{
@@ -2170,6 +2190,12 @@ var splash = {
 	        share();
 		if(this.tipButton.isTriggered())
 			promptScenes["TipScene"].show();
+		if(this.matchButton.isTriggered()){
+			window.open('https://footballx.live/matches');
+		}
+		if(this.chatButton.isTriggered()){
+			window.open('https://footballx.live/');
+		}
 	}
 	,draw:function(){
 		//drawImage("BackgroundMenu",WIDTH/2,HEIGHT/2);
@@ -2187,6 +2213,8 @@ var splash = {
 		this.shareButton.draw();
 		this.tipButton.draw();
 
+		this.matchButton.draw();
+		this.chatButton.draw();
 	}
 };
 
@@ -2358,7 +2386,7 @@ function loadAsset(){
 	loadSound('Leaderboard'); 
 	loadSound('Button'); 
 
-	totalResources = 24+32;//gamedata.clubs.length;
+	totalResources = 28+32;//gamedata.clubs.length;
 	//load assets from server
 	loadImage('Background');
 	loadImage('BackgroundMenu');
@@ -2387,6 +2415,11 @@ function loadAsset(){
 	//loadImage('ShowAnswerBar');
 	loadImage('TipBackground');
 
+	loadImage('Chat Button');
+	loadImage('Match Button');
+
+	loadImage('Chem Gio Button');
+	loadImage('Lich Thi Dau Button');
 	//load the club logo assets
 	for(var i = 0; i<gamedata.clubs.length; i++)
 		if(gamedata.clubs[i].type === 1)
@@ -2529,6 +2562,9 @@ function init(l){
 		splash.displayButton1.name = text.leaderboard_txt;
 		splash.displayButton2.name = text.share_txt;
 		splash.displayButton3.name = text.how_to_play_txt;
+
+		splash.chatButton.image = text.chat_txt+' Button';
+		splash.matchButton.image = text.matches_txt+' Button';
 
 	}else{
 		currentState = states.Hint;
