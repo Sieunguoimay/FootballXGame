@@ -1,4 +1,4 @@
-
+	
 function getQueryVariable(variable){
 	
 	var query = window.location.search.substring(1);
@@ -59,7 +59,9 @@ var arrLang =
 	language_txt:"LANGUAGE",
 	play_now_txt:"PLAY NOW",
 	matches_txt:"Match",
-	chat_txt:"Chat"
+	chat_txt:"Chat",
+	place_holder:"Enter Your Phone No",
+	you_are_on_top_20_txt:"You Are In Top 20!"
 },
 	'vi-VN':{
 	game_question:"ĐOÁN TÊN TUYỂN QUỐC GIA",
@@ -90,7 +92,10 @@ var arrLang =
 	language_txt:"Ngôn Ngữ",
 	play_now_txt:"PLAY NOW",
 	matches_txt:"Lich Thi Dau",
-	chat_txt:"Chem Gio"
+	chat_txt:"Chem Gio",
+	place_holder:"Nhập SDT",
+	you_are_on_top_20_txt:"Bạn Thuộc Top 20!"
+
 }};
 var userLang = 'en-US';
 var text = arrLang[userLang];//default
@@ -100,7 +105,7 @@ var text = arrLang[userLang];//default
 var USER_NAME = "Anonymous";
 //keep the ID for later use
 var USER_ID = 0;
-
+var HIGH_RANK = 100000;
 var user = {name:USER_NAME,id:USER_ID,score:0,time:0,count:0};
 
 //please give me the user_name and user_id from your website
@@ -267,6 +272,8 @@ var ctxBg = cvsBg.getContext("2d");
 
 var cvs = document.getElementById("canvas");
 var ctx = cvs.getContext("2d");
+
+
 
 var WIDTH = 1587;
 var HEIGHT = 1379;
@@ -489,7 +496,7 @@ function Clicktoflip(index,text,size=FONT_SIZE_FOR_TIP_BAR){
 	this.b = 0;
 	this.a = 0;
 	this.showup = true;
-	this.setPos = function(x,y,b,a){
+	this.setPos = function(x,y,b=1,a=1){
 		this.pivotX = x;
 		this.pivotY = y;
 		this.b = b;
@@ -741,7 +748,8 @@ var hiddenpositions={
 	},
 	hint:function(){
 		if(this.numberOpened===this.hintNum&&this.hintCount===0){
-			this.clicktoflips.splice(0,1);
+			if(this.clicktoflips.length>0)
+				this.clicktoflips.splice(0,1);
 			currentState = states.Game;
 			displayLevel.show(text.start_txt,35);
 			clock.start();
@@ -1022,18 +1030,27 @@ Button.prototype.isTriggered = function(){
 Button.prototype.press = function(x,y){
 	if(!this.disabled){
 
-		if(this.state === this.states.HOVER)
+		if(this.state === this.states.HOVER){
 			this.state = this.states.CLICK;
-		else if(pointInRect(x,y,this.x, this.y, this.w*this.scale,this.h*this.scale))
+			return true;
+		}
+		else if(pointInRect(x,y,this.x, this.y, this.w*this.scale,this.h*this.scale)){
 			this.state = this.states.CLICK;
+			return true;
+		}
 	}
+	return false;
 }
 Button.prototype.release = function(){
 	if(!this.disabled){
-	if(this.state === this.states.CLICK)
-		this.trigger = true;
-		this.state = this.states.NORMAL;
+
+		if(this.state === this.states.CLICK){
+			this.trigger = true;
+			this.state = this.states.NORMAL;
+			return true;
+		}
 	}
+	return false;
 }
 Button.prototype.hover = function(x,y){
 	if(!this.disabled){
@@ -1307,10 +1324,9 @@ var answerBar = {
 	onpress:function(x,y){
 		//for(var i = 0; i<this.buttons.length;i++)
 		//	this.buttons[i].press(x,y);
-		if(currentState === states.Game)
 		for(var i = 0; i<this.cards.length;i++){
 			if(i>=this.leftmostCard&&i<this.leftmostCard+this.displayPos.length)
-				this.cards[i].press(x-this.x,y-this.y);
+						this.cards[i].press(x-this.x,y-this.y);
 		}
 	},
 	onmousemove:function(x,y){
@@ -1326,7 +1342,19 @@ var answerBar = {
 		//	this.buttons[i].release();
 		for(var i = 0; i<this.cards.length;i++){
 			if(i>=this.leftmostCard&&i<this.leftmostCard+this.displayPos.length)
-				this.cards[i].release();
+				if(currentState === states.Game){
+					this.cards[i].release();
+				}else if(currentState === states.Hint){
+
+						if(this.cards[i].release()&&hiddenpositions.clicktoflips.length>0){
+							if(hiddenpositions.clicktoflips[hiddenpositions.clicktoflips.length-1].text ===text.choose_answer_here_txt){
+								hiddenpositions.clicktoflips.splice(hiddenpositions.clicktoflips.length-1,1);
+							}
+
+							this.cards[i].trigger = false;
+							break;
+						}
+				}
 		}
 	},
 	onwheel:function(delta){
@@ -1784,6 +1812,13 @@ GameOver.prototype.draw = function(){
 
 
 
+
+
+
+
+
+
+
 function Leaderboard(){
 	PromptScene.call(this,"Leaderboard Background",
 		new Button('HomeButton',1416,1220,false,true));
@@ -1852,6 +1887,8 @@ Leaderboard.prototype.loadScore = function(){
 			break;
 		}
 
+
+
 	if(!existed){
 		if(user.score>0){
 			loaded_score_data.push(user);
@@ -1867,6 +1904,28 @@ Leaderboard.prototype.loadScore = function(){
 			this.rank=loaded_score_data.length+1;
 		}
 	}
+
+
+
+
+
+
+	if(this.rank<HIGH_RANK&&score._score>0){
+		if(loaded_score_data[this.rank-1])
+		if(loaded_score_data[this.rank-1].phone==='undefined'){
+			//call the function to
+			//set phone number
+			promptScenes["PhoneScene"].show();
+		}
+	}
+
+
+
+
+
+
+
+
 
 
 
@@ -1919,6 +1978,11 @@ Leaderboard.prototype.loadScore = function(){
 				}else this.s = 40;
 			}
 		});
+}
+
+Leaderboard.prototype.setPhone = function(num){
+	if(loaded_score_data[this.rank-1])
+		loaded_score_data[this.rank-1].phone = num;
 }
 Leaderboard.prototype.show = function(){
 	this.showup = true;
@@ -1990,6 +2054,11 @@ Leaderboard.prototype.draw = function(){
 
 
 
+
+
+
+
+
 function TipScene(){
 	PromptScene.call(this,'TipBackground',new Button('HomeButton',1416,1220,false,true));
 	//this.OKButtons[0].image = 'HomeButton';
@@ -2021,6 +2090,216 @@ TipScene.prototype.draw = function(){
 		this.OKButtons[0].draw();
 	}
 }
+
+
+
+
+
+function TextBox(x,y,w,h){
+	this.x = x;
+	this.y = y;
+	this.w = w;
+	this.h = h;
+	this.size = 50;
+	this.place_holder = text.place_holder;
+	this.entered_text = "";
+	this.pos = x - w/2;
+	this.cursor_on_box = false;
+	this.alignment = 'left';
+
+	this.draw = function(){
+
+
+		drawText("",0,0,'#00000',this.size);
+		var text_size = getTextSize(this.entered_text);
+		if(text_size>this.w){
+			for(var i = 0; i<this.entered_text.length; i++){
+				if(getTextSize(this.entered_text.substring(0,i))>=(text_size-this.w)){
+					this.start_index = i;
+					break;
+				}
+			}
+			this.alignment = 'right';
+			this.pos = x+w/2-3;
+		}else{
+			this.start_index = 0;
+			this.alignment = 'left';
+			this.pos = x-w/2+3;
+		}
+
+		var offset = 10;
+		ctx.fillStyle = '#3d3935';
+		ctx.fillRect(this.x-this.w/2-offset,this.y-this.h/2-offset,this.w+2*offset,this.h+2*offset);
+		ctx.fillStyle = '#fffeed';
+		ctx.fillRect(this.x-this.w/2,this.y-this.h/2,this.w,this.h);
+		if(this.entered_text.length)
+			drawText(this.entered_text.substring(this.start_index,this.entered_text.length),this.pos,this.y+this.h/3.5,'#222222',this.size,this.alignment);
+		else{
+			if(!this.cursor_on_box)
+				drawText(this.place_holder,this.pos,this.y+this.h/3.5,'#aaaaaa',this.size,'left');
+		}
+	}
+
+	this.hover = function(x,y){
+
+		if(pointInRect(x,y,this.x, this.y, this.w, this.h)){
+			document.body.style.cursor = 'text';
+			return true;
+		}else
+			document.body.style.cursor = 'default';
+		return false;
+	}
+	this.add = function(key){
+		this.entered_text+=""+key;
+	}
+	this.press = function(x,y){
+		if(pointInRect(x,y,this.x, this.y, this.w, this.h)){
+			this.place_holder="";
+			this.cursor_on_box = true;
+			return true;
+		}else{
+			this.place_holder=text.place_holder;			
+			this.cursor_on_box = false;
+		}
+		return false;		
+	}
+}
+
+
+
+
+
+
+
+
+function PhoneScene(){
+	PromptScene.call(this,'PhoneScene Background',new Button('OKButton',1416,1220,false,true));
+	//this.OKButtons[0].image = 'HomeButton';
+	this.breadth = 0;
+	this.showup = false;
+	this.textBox = new TextBox(WIDTH/2,HEIGHT/2,500,50);
+}
+
+
+PhoneScene.prototype = Object.create(PromptScene.prototype);
+PhoneScene.prototype.constructor = PhoneScene;
+
+PhoneScene.prototype.show = function(){
+	this.breadth = 0;
+	this.breadthLimit = 50;
+	this.showup = true;
+	this.prevState = states.Splash;
+	currentState = states.Prompt;
+
+
+	if(this.textBox)
+		delete this.textBox;
+	this.textBox = new TextBox(WIDTH/2,HEIGHT/2+50,500,50);
+
+	if(this.clicktoflip)
+		delete clicktoflip;
+	this.clicktoflip = new Clicktoflip(0,text.you_are_on_top_20_txt,FONT_SIZE_FOR_TIP_BAR*0.95);
+}
+
+
+
+
+
+PhoneScene.prototype.onmousemove = function(x,y){
+	//PromptScene.prototype.onmousemove(this,x,y);
+	if(this.showup){
+		this.textBox.hover(x,y);
+		this.OKButtons[0].hover(x,y);
+	}
+}
+PhoneScene.prototype.onpress = function(x,y){
+	//PromptScene.prototype.onpress(this,x,y);
+	if(this.showup){
+		this.OKButtons[0].press(x,y);
+		this.textBox.press(x,y);
+	}
+}
+
+PhoneScene.prototype.onrelease = function(){
+	//PromptScene.prototype.onrelease(this);
+	if(this.showup)
+	this.OKButtons[0].release();
+}
+
+
+
+PhoneScene.prototype.keypress = function(keycode){
+	if(this.showup){
+	var key = String.fromCharCode(keycode);
+	if(keycode===107){
+		this.textBox.add('+');
+	}
+	else if((keycode>=48&&keycode<=57)){
+		this.textBox.add(key);
+	}else if(keycode>=96&&keycode<=105){
+		this.textBox.add(String.fromCharCode(keycode-(96-48)));		
+	}
+	else if(keycode ===13){
+		promptScenes["Leaderboard"].setPhone(this.textBox.entered_text);
+
+		this.showup = false;
+		currentState = this.prevState;
+		promptScenes["Leaderboard"].show();
+		document.body.style.cursor = 'default';
+
+	}else if(keycode===8){
+		if(this.textBox.entered_text.length>0)
+			this.textBox.entered_text= this.textBox.entered_text.substring(0,this.textBox.entered_text.length-1);
+	}
+	}
+}
+PhoneScene.prototype.update = function(){
+	if(this.showup){
+		this.breadth = this.breadthLimit*Math.cos(3*frame*3.141592/180.0);		
+
+		this.clicktoflip.setPos(WIDTH/2,HEIGHT/2,this.breadth,1.5+this.breadth/(20*this.breadthLimit));
+
+		this.clicktoflip.update();
+
+		this.OKButtons[0].update();
+		if(this.OKButtons[0].isTriggered()){
+			console.log('Hey');
+
+			promptScenes["Leaderboard"].setPhone(this.textBox.entered_text);
+
+			this.showup = false;
+
+			currentState = this.prevState;
+			promptScenes["Leaderboard"].show();
+			document.body.style.cursor = 'default';
+		}
+
+	}
+}
+
+PhoneScene.prototype.draw = function(){
+	if(this.showup){
+
+		drawImage(this.image,WIDTH/2,HEIGHT/2);
+		drawCover(ZERO_NINE);
+		this.OKButtons[0].draw();
+		this.textBox.draw();
+
+		this.clicktoflip.draw();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2221,7 +2500,20 @@ $("canvas").mousemove(function(evt){
 $("canvas").mouseup(function(evt){
 	onrelease(evt);
 });
+window.addEventListener('keydown',onkeypress,false);
 ///////////////////////////////////////
+function onkeypress(e){
+    var keynum;
+
+    if(window.event) { // IE                    
+      keynum = e.keyCode;
+    } else if(e.which){ // Netscape/Firefox/Opera                   
+      keynum = e.which;
+    }
+
+    //console.log(String.fromCharCode(keynum));
+    promptScenes["PhoneScene"].keypress(keynum);
+}
 
 
 
@@ -2238,6 +2530,7 @@ function onpress(evt){
 			promptScenes["WrongAnswer"].onpress(mX,mY);
 			promptScenes["Leaderboard"].onpress(mX,mY);
 			promptScenes["TipScene"].onpress(mX,mY);
+			promptScenes["PhoneScene"].onpress(mX,mY);
 			break;
 		case states.Splash:
 			splash.onpress(mX,mY);
@@ -2259,6 +2552,7 @@ function onpress(evt){
 	}
 }
 function onrelease(evt){
+
 	if(currentState === states.Splash){
 		splash.onrelease();
 	}
@@ -2270,6 +2564,7 @@ function onrelease(evt){
 		promptScenes["WrongAnswer"].onrelease();
 		promptScenes["Leaderboard"].onrelease();
 		promptScenes["TipScene"].onrelease();
+		promptScenes["PhoneScene"].onrelease();
 	}
 	if(currentState === states.Score){
 		promptScenes["GameOver"].onrelease();
@@ -2282,11 +2577,13 @@ function onmousemove(evt){
 	mX = evt.offsetX*WIDTH/CANVAS_WIDTH;
 	mY = evt.offsetY*HEIGHT/CANVAS_HEIHGT;
 
+
 	if(currentState === states.Prompt){
 		promptScenes["CorrectAnswer"].onmousemove(mX,mY);
 		promptScenes["WrongAnswer"].onmousemove(mX,mY);
 		promptScenes["Leaderboard"].onmousemove(mX,mY);
 		promptScenes["TipScene"].onmousemove(mX,mY);
+		promptScenes["PhoneScene"].onmousemove(mX,mY);
 	}
 	if(currentState == states.Splash){
 		splash.onmousemove(mX,mY);
@@ -2366,7 +2663,7 @@ function loadAsset(){
 	loadSound('Leaderboard'); 
 	loadSound('Button'); 
 
-	totalResources = 28+32;//gamedata.clubs.length;
+	totalResources = 29+32;//gamedata.clubs.length;
 	//load assets from server
 	loadImage('Background');
 	loadImage('BackgroundMenu');
@@ -2400,6 +2697,7 @@ function loadAsset(){
 
 	loadImage('Chem Gio Button');
 	loadImage('Lich Thi Dau Button');
+	loadImage('PhoneScene Background');
 	//load the club logo assets
 	for(var i = 0; i<gamedata.clubs.length; i++)
 		if(gamedata.clubs[i].type === 1)
@@ -2533,6 +2831,7 @@ function init(l){
 		promptScenes["GameOver"] = new GameOver("GameOver");
 		promptScenes["WrongAnswer"] = new PromptScene("WrongAnswer");
 		promptScenes["CorrectAnswer"] = new PromptScene("CorrectAnswer");
+		promptScenes["PhoneScene"] = new PhoneScene();
 		promptScenes["Leaderboard"] = new Leaderboard();
 		promptScenes["TipScene"] = new TipScene();
 		sounds['MainMusic'].play();
@@ -2628,6 +2927,7 @@ function update(){
 		//	init(0);
 
 		promptScenes["TipScene"].update();
+		promptScenes["PhoneScene"].update();
 
 		if(promptScenes["CorrectAnswer"].update()
 			||promptScenes["WrongAnswer"].update()){
@@ -2683,7 +2983,8 @@ function render(){
 		promptScenes["CorrectAnswer"].draw();
 		promptScenes["WrongAnswer"].draw();		
 		promptScenes["Leaderboard"].draw();		
-		promptScenes["TipScene"].draw();		
+		promptScenes["TipScene"].draw();
+		promptScenes["PhoneScene"].draw();	
 		//drawText(score.amountToAdd,1444,168,TEXT_COLOR,120);
 	}
 	if(currentState === states.Score){
@@ -2810,6 +3111,9 @@ function drawRectWithHole(x1,y1,w1,h1,x2,y2,w2,h2,color,alpha){
 	ctx.globalAlpha = 1;
 
 }
+function getTextSize(text){
+	return ctx.measureText(text).width;
+}
 function drawCoverWithHole(x,y,w,h,alpha=0.7){
 	drawRectWithHole(0,0,WIDTH,HEIGHT,x,y,w,h,'#000',alpha);
 }
@@ -2842,5 +3146,6 @@ function sleep(milliseconds) {
   js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
+
 
 

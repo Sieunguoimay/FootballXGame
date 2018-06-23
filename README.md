@@ -84,3 +84,7 @@ tomorrow:
 	//-> chinh lai phong chu cho how to play
 	//-> ios safari problem
 	//->real time clock
+
+
+- send score 
+- app.js 
