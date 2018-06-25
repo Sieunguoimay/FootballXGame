@@ -1,4 +1,3 @@
-	
 function getQueryVariable(variable){
 	
 	var query = window.location.search.substring(1);
@@ -61,7 +60,7 @@ var arrLang =
 	matches_txt:"Match",
 	chat_txt:"Chat",
 	place_holder:"Enter Your Phone No",
-	you_are_on_top_20_txt:"You Are In Top 20!"
+	you_are_on_top_20_txt:"You Are On Top 20!"
 },
 	'vi-VN':{
 	game_question:"ĐOÁN TÊN TUYỂN QUỐC GIA",
@@ -105,7 +104,7 @@ var text = arrLang[userLang];//default
 var USER_NAME = "Anonymous";
 //keep the ID for later use
 var USER_ID = 0;
-var HIGH_RANK = 100000;
+var HIGH_RANK = 20;
 var user = {name:USER_NAME,id:USER_ID,score:0,time:0,count:0};
 
 //please give me the user_name and user_id from your website
@@ -302,7 +301,7 @@ var SCORE_TO_VIEW_ANSWER = 25;
 var CLUB_LOGO_SIZE = 170;
 var scoreOfThisMatch = 0;
 var level = 1;
-var MaxLevel = 20;
+var MaxLevel = 15;
 
 //number of cards available for choosing on answer bar in each level
 var CARD_NUM = 7;
@@ -331,7 +330,7 @@ var teams = {
 		var allTeams = [];
 
 		Object.assign(allTeams,JSONteams);
-		MaxLevel = Math.min(allTeams.length,10);
+		MaxLevel = Math.min(allTeams.length,15);
 
 
 		let findTeamIndex = function(name){
@@ -373,7 +372,7 @@ var teams = {
 				var indexInDL = Math.floor(Math.random()*difficultLevels.l1.length);
 				uniqueIndex = findTeamIndex(difficultLevels.l1[indexInDL]);
 				difficultLevels.l1.splice(indexInDL,1);
-			}else if(i<7){
+			}else if(i<9){
 				var indexInDL = Math.floor(Math.random()*difficultLevels.l2.length);
 				uniqueIndex = findTeamIndex(difficultLevels.l2[indexInDL]);
 				difficultLevels.l2.splice(indexInDL,1);			
@@ -1270,6 +1269,7 @@ var answerBar = {
 			if(this.cardPool[i].name === teams._teams[level].name){//
 				this.cardPool[i].isAnswer = true;
 				answerIndex = i;
+				//console.log(this.cardPool[i].name);
 			}
 		}
 
@@ -1370,7 +1370,7 @@ var answerBar = {
 			var s = Math.abs(this.cards[i].velX);
 			if(s>maxCardHorizontalSpeed)
 				maxCardHorizontalSpeed = s;
-			if(this.cards[i].isTriggered()){
+			if(this.cards[i].isTriggered()&&currentState===states.Game){
 				//answer is selected
 				var selectedCard = this.cards[i].name;
 				var answer = teams._teams[level].name;
@@ -1910,16 +1910,17 @@ Leaderboard.prototype.loadScore = function(){
 
 
 
-	if(this.rank<HIGH_RANK&&score._score>0){
+	if(this.rank<=HIGH_RANK&&score._score>0){
+		console.log(this.rank+" "+HIGH_RANK+" "+score._score);
 		if(loaded_score_data[this.rank-1])
-		if(loaded_score_data[this.rank-1].phone==='undefined'){
-			//call the function to
-			//set phone number
-			promptScenes["PhoneScene"].show();
-		}
+			if(!loaded_score_data[this.rank-1].phone){
+				//call the function to
+				//set phone number
+				promptScenes["PhoneScene"].show();
+			}
 	}
 
-
+	//console.log(loaded_score_data[this.rank-1]);
 
 
 
@@ -2188,7 +2189,7 @@ PhoneScene.prototype.show = function(){
 	this.breadth = 0;
 	this.breadthLimit = 50;
 	this.showup = true;
-	this.prevState = states.Splash;
+	this.prevState = states.Score;
 	currentState = states.Prompt;
 
 
@@ -2244,7 +2245,7 @@ PhoneScene.prototype.keypress = function(keycode){
 
 		this.showup = false;
 		currentState = this.prevState;
-		promptScenes["Leaderboard"].show();
+		//promptScenes["Leaderboard"].show();
 		document.body.style.cursor = 'default';
 
 	}else if(keycode===8){
@@ -2270,7 +2271,7 @@ PhoneScene.prototype.update = function(){
 			this.showup = false;
 
 			currentState = this.prevState;
-			promptScenes["Leaderboard"].show();
+			//promptScenes["Leaderboard"].show();
 			document.body.style.cursor = 'default';
 		}
 
@@ -2844,7 +2845,6 @@ function init(l){
 
 		splash.chatButton.image = text.chat_txt+' Button';
 		splash.matchButton.image = text.matches_txt+' Button';
-
 	}else{
 		currentState = states.Hint;
 		displayLevel.show('Stage');
@@ -2917,7 +2917,8 @@ function nextLevel(reason){
 		promptScenes["CorrectAnswer"].show();
 		sounds['CorrectAnswer'].play();
 	}
-	clock.stop_worker();
+	if(clock.trigger)
+		clock.stop_worker();
 	score.add(scoreOfThisMatch);
 }
 function update(){
